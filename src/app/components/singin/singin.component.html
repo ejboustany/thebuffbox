@@ -1,0 +1,110 @@
+<div class="flex h-screen items-center justify-center mt-32 sm:mt-2">
+  <svg aria-hidden="true"
+    class="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]">
+    <rect width="100%" height="100%" fill="url(#:R1lda:)" stroke-width="0"></rect>
+    <svg x="50%" y="-96" stroke-width="0" class="overflow-visible">
+      <path transform="translate(64 160)"
+        d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z">
+      </path>
+      <path transform="translate(128 320)"
+        d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z">
+      </path>
+      <path transform="translate(288 480)"
+        d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z">
+      </path>
+      <path transform="translate(512 320)"
+        d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z">
+      </path>
+      <path transform="translate(544 640)"
+        d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z">
+      </path>
+      <path transform="translate(320 800)"
+        d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z">
+      </path>
+    </svg>
+    <defs>
+      <pattern id=":R1lda:" width="96" height="480" x="50%" patternUnits="userSpaceOnUse"
+        patternTransform="translate(0 -96)" fill="none">
+        <path
+          d="M128 0 98.572 147.138A16 16 0 0 1 82.883 160H13.117a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-45.117 320H-116M64-160 34.572-12.862A16 16 0 0 1 18.883 0h-69.766a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-109.117 160H-180M192 160l-29.428 147.138A15.999 15.999 0 0 1 146.883 320H77.117a16 16 0 0 0-15.69 12.862L34.573 467.138A16 16 0 0 1 18.883 480H-52M-136 480h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1-18.883 320h69.766a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 109.117 160H192M-72 640h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 45.117 480h69.766a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A15.999 15.999 0 0 1 173.117 320H256M-200 320h58.883a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A16 16 0 0 1-82.883 160h69.766a16 16 0 0 0 15.69-12.862L29.427 12.862A16 16 0 0 1 45.117 0H128">
+        </path>
+      </pattern>
+    </defs>
+  </svg>
+  <div class="w-full max-w-md space-y-8 px-6">
+    <div>
+      <h1 class="text-6xl font-bold tracking-tight primary-color sm:text-6xl text-center">PAGE PALOOZA</h1>
+      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        And
+        <span class="font-medium primary-color">create your webpage... within minutes!</span>
+      </p>
+    </div>
+    <form [formGroup]="signinForm" (ngSubmit)="login()" class="mt-8 space-y-6">
+      <input type="hidden" name="remember" value="true">
+      <div class="-space-y-px rounded-md shadow-sm">
+        <div>
+          <label for="email-address" class="sr-only">Email address</label>
+          <input formControlName="emailInput" [(ngModel)]="user.EmailAddress" email="true" id="email-address"
+            name="email" type="email" autocomplete="email" required
+            class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            placeholder="Email address">
+        </div>
+        <div>
+          <label for="password" class="sr-only">Password</label>
+          <input formControlName="passwordInput" [(ngModel)]="user.Password" id="password" name="password"
+            type="password" autocomplete="current-password" required
+            class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            placeholder="Password">
+        </div>
+      </div>
+
+      <div *ngIf="signinForm && signinForm.invalid && signinForm.touched" class="text-red-500">
+        <p *ngIf="signinForm.get('emailInput')?.errors?.['required']">Email is required.</p>
+        <p *ngIf="signinForm.get('emailInput')?.errors?.['email']">Please enter a valid email.</p>
+        <p *ngIf="signinForm.get('passwordInput')?.errors?.['required']">Password is required.</p>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <input id="remember-me" name="remember-me" type="checkbox"
+            class="h-4 w-4 rounded border-gray-300 primary-color">
+          <label for="remember-me" class="ml-2 block text-sm primary-color">Remember me</label>
+        </div>
+
+        <div class="text-sm">
+          <a [routerLink]="['/forgot-password']" class="font-medium primary-color">Forgot your password?</a>
+        </div>
+      </div>
+
+      <div>
+
+        <button mat-raised-button type="submit" [disabled]="isLoading"
+          class="group relative flex w-full justify-center rounded-md border border-transparent bg-primary-color text-white py-2 px-4 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <!-- Heroicon name: mini/lock-closed -->
+            <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+              aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+          <span *ngIf="!isLoading">Sign In</span>
+          <mat-progress-spinner *ngIf="isLoading" diameter="20" mode="indeterminate"></mat-progress-spinner>
+        </button>
+      </div>
+
+      <div class="text-sm text-center">
+        <p class="mt-2 text-center text-sm text-gray-600">
+          Don't have an account?
+          <a (click)="signUp()" class="cursor-pointer font-medium primary-color">Sign up!</a>
+        </p>
+      </div>
+
+      <div class="flex flex-col items-center pb-6">
+        <div id="buttonDiv"></div>
+      </div>
+    </form>
+  </div>
+</div>
