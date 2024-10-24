@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "thebuffbox:build:production"
+              "buildTarget": "thebuffbox:build:production"
             },
             "development": {
-              "browserTarget": "thebuffbox:build:development"
+              "buildTarget": "thebuffbox:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "thebuffbox:build"
+            "buildTarget": "thebuffbox:build"
           }
         },
         "test": {
