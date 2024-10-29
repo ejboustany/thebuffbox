@@ -1,0 +1,42 @@
+<app-app-menu></app-app-menu>
+
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <!-- <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+    </div>
+   -->
+    <div class="sm:mx-auto w-full max-w-2xl">
+        <app-onboarding-location-step1 [quiz]="quiz"
+            *ngIf="currentStep === 1"></app-onboarding-location-step1>
+        <app-onboarding-role-step2 [quiz]="quiz"
+            *ngIf="currentStep === 2"></app-onboarding-role-step2>
+        <app-onboarding-skills-step3 [quiz]="quiz"
+            *ngIf="currentStep === 3"></app-onboarding-skills-step3>
+        <app-onboarding-squad-step4 *ngIf="currentStep === 4" [quiz]="quiz"></app-onboarding-squad-step4>
+        <app-onboarding-aboutus-step5 [questionnaire]="quiz"
+            *ngIf="currentStep === 5"></app-onboarding-aboutus-step5>
+
+        <div [ngClass]="currentStep == 1 ? 'float-right' : ''"
+            class="flex justify-between py-6  ">
+
+            <button *ngIf="currentStep != 1" (click)="prevStep()"
+                class="flex items-center px-8 rounded-md border-2 py-1">
+                <!-- Back SVG icon -->
+                <svg class="h-5 w-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <!-- Back button text -->
+                Back
+            </button>
+
+            <button (click)="nextStep()"
+                class=" bg-primary-color text-white items-center px-12 rounded-md border-2 py-1">
+                Next
+            </button>
+
+        </div>
+    </div>
+
+</div>

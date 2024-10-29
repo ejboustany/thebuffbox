@@ -1,3 +1,5 @@
+<app-app-menu></app-app-menu>
+
 <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-36 sm:mt-32 md:mt-56">
     <svg aria-hidden="true"
         class="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]">
@@ -36,7 +38,7 @@
         <div class="mx-auto max-w-2xl lg:max-w-none">
             <div class="max-w-3xl opacity-100 translate-y-6 translate-z-0">
                 <h1 class="font-display text-5xl font-medium tracking-tight text-neutral-950 sm:text-7xl">Discover Your Perfect Protein Match with 
-                    <p class="bg-yellow-300 p-2 text-neutral-950">Buffbox.</p>
+                    <p class="highlight-green-bg p-2 text-neutral-950">Buffbox.</p>
                 </h1>
                 <p class="mt-6 text-xl text-neutral-600">Personalized protein samples, tailored just for you through an interactive quiz.</p>
             </div>
@@ -44,16 +46,19 @@
 
         <div class="flex flex-col space-y-4 sm:flex-row mt-6 sm:space-y-0 sm:space-x-4">
             <div class="mt-4 space-x-2">
-                <a class="inline-flex rounded-full px-4 py-1.5 text-md font-semibold transition  text-neutral-950 border-2 border-neutral-950 hover:bg-neutral-100"
-                    routerLink="/register">
+                <a routerLink="/take-quiz/1" class="inline-flex rounded-full px-4 py-1.5 text-md font-semibold transition  text-neutral-950 border-2 border-neutral-950 hover:bg-neutral-100">
                     <span class="relative top-px">Take Quiz</span>
                 </a>
-                <!-- <a routerLink="/our-process"
+                <a routerLink="/login"
                     class="inline-flex rounded-full px-4 py-1.5  text-md font-semibold transition bg-neutral-950 text-white hover:bg-neutral-800">
-                    Our Process
-                </a> -->
+                    Login
+                </a>
             </div>
         </div>
 
     </div>
 </div>
+
+<div id="checkout">
+    <!-- Checkout will insert the payment form here -->
+  </div>

@@ -1,0 +1,13 @@
+<div>
+  <ng-container *ngFor="let enum of enumValues">
+    <label class="flex items-center space-x-2 px-2">
+      <input
+        type="checkbox"
+        (change)="onChange(enum)"
+        [checked]="isChecked(enum)"
+        class="form-checkbox h-5 w-5 text-blue-600"
+      />
+      <span>{{ enum.displayName }}</span>
+    </label>
+  </ng-container>
+</div>

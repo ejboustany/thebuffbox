@@ -1,0 +1,14 @@
+<div>
+  <ng-container *ngFor="let enum of enumValues">
+    <label class="px-2">
+      <input
+        type="radio"
+        [value]="enum.id"
+        [name]="name"
+        [(ngModel)]="selectedValue"
+        (change)="onChange(enum)"
+      />
+      {{ enum.displayName }}
+    </label>
+  </ng-container>
+</div>

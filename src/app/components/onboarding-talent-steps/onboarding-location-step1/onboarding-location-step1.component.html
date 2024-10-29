@@ -1,0 +1,37 @@
+<div class="flex flex-col bg-gray-50 rounded-md border-2 border-gray-200">
+
+    <div class="border-b">
+        <div class="px-4 md:px-12 py-2 sm:w-full">
+            <h2 class="text-sm font-bold leading-9 tracking-tight text-gray-900">Step 01/05</h2>
+            <p class="text-sm -mt-4 leading-9 tracking-tight text-gray-400 mb-1">Your workout
+            </p>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+                <div class="bg-custom h-2.5 rounded-full" style="width: 20%"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="py-8 px-4 md:px-12">
+        <p class="rounded-md text-sm text-black text-xl font-bold mb-6">What type of exercise do you primarily engage
+            in?</p>
+
+        <app-checkbox-button [enumValues]="execiseTypes" [selectedValues]="quiz.exerciseTypes">
+        </app-checkbox-button>
+
+        <p class="rounded-md text-sm text-black text-xl font-bold py-6">How often do you exercise each week?</p>
+        <app-radio-button [enumValues]="exerciseFrequencies" [selectedValue]="quiz.exerciseFrequency"
+            (valueChange)="onExerciseFrequencyChange($event)"></app-radio-button>
+
+            <p class="rounded-md text-sm text-black text-xl font-bold py-6">What is your main fitness goal?</p>
+            
+            <app-checkbox-button [enumValues]="fitnessGoals" [selectedValues]="quiz.fitnessGoals">
+            </app-checkbox-button>
+
+            <p class="rounded-md text-sm text-black text-xl font-bold py-6">What are your main lifestyle and performance goal(s)?</p>
+            
+            <app-checkbox-button [enumValues]="lifestylePerformanceGoals" [selectedValues]="quiz.lifestylePerformanceGoals">
+            </app-checkbox-button>
+    
+    </div>
+</div>
