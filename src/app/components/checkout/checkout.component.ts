@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { loadStripe, StripeElements, StripeCardElement } from '@stripe/stripe-js';
+import { loadStripe, StripeElements, StripeCardElement, StripeCardNumberElement, StripeCardExpiryElement } from '@stripe/stripe-js';
 import { PaymentService } from 'src/app/services/payment.service';
 declare var Stripe: any;
 

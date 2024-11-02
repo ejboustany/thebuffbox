@@ -6,19 +6,18 @@
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
     </div>
    -->
-    <div class="sm:mx-auto w-full max-w-2xl">
-        <app-onboarding-location-step1 [quiz]="quiz"
-            *ngIf="currentStep === 1"></app-onboarding-location-step1>
-        <app-onboarding-role-step2 [quiz]="quiz"
-            *ngIf="currentStep === 2"></app-onboarding-role-step2>
-        <app-onboarding-skills-step3 [quiz]="quiz"
-            *ngIf="currentStep === 3"></app-onboarding-skills-step3>
-        <app-onboarding-squad-step4 *ngIf="currentStep === 4" [quiz]="quiz"></app-onboarding-squad-step4>
-        <app-onboarding-aboutus-step5 [questionnaire]="quiz"
-            *ngIf="currentStep === 5"></app-onboarding-aboutus-step5>
+    <div class="sm:mx-auto w-full max-w-6xl">
+        <app-onboarding-aboutus-step5 [quiz]="quiz" *ngIf="currentStep === 5"></app-onboarding-aboutus-step5>
+    </div>
 
-        <div [ngClass]="currentStep == 1 ? 'float-right' : ''"
-            class="flex justify-between py-6  ">
+    <div class="sm:mx-auto w-full max-w-2xl">
+        <app-onboarding-location-step1 [quiz]="quiz" *ngIf="currentStep === 1"></app-onboarding-location-step1>
+        <app-onboarding-role-step2 [quiz]="quiz" *ngIf="currentStep === 2"></app-onboarding-role-step2>
+        <app-onboarding-skills-step3 [quiz]="quiz" *ngIf="currentStep === 3"></app-onboarding-skills-step3>
+        <app-onboarding-squad-step4 *ngIf="currentStep === 4" [quiz]="quiz"></app-onboarding-squad-step4>
+
+
+        <div [ngClass]="currentStep == 1 ? 'float-right' : ''" class="flex justify-between py-6  ">
 
             <button *ngIf="currentStep != 1" (click)="prevStep()"
                 class="flex items-center px-8 rounded-md border-2 py-1">
@@ -38,5 +37,4 @@
 
         </div>
     </div>
-
 </div>

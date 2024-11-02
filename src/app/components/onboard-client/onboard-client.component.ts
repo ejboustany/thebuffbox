@@ -51,7 +51,7 @@ export class OnboardClientComponent {
         this.currentStep++;
         this.navigateToStep(this.currentStep);
       } else if (this.currentStep == 5) {
-        this.router.navigate(['/thank-you']);
+        this.router.navigate(['/checkout']);
       }
     });
   }
