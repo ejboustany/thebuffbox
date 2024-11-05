@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'register', component: SignUpComponent },
   { path: 'take-quiz/:step', component: OnboardClientComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout/:orderId', component: CheckoutComponent },
   { path: 'verification/:code/:userId', component: EmailVerificationComponent },
 ];
 

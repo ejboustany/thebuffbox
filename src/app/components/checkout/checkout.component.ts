@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { loadStripe, StripeElements, StripeCardElement, StripeCardNumberElement, StripeCardExpiryElement } from '@stripe/stripe-js';
 import { PaymentService } from 'src/app/services/payment.service';
+import { ActivatedRoute } from '@angular/router';
+import { OrderService } from 'src/app/services/order.service';
 declare var Stripe: any;
 
 @Component({
@@ -13,8 +15,20 @@ export class CheckoutComponent implements OnInit {
   elements: StripeElements | null = null;
   cardElement: StripeCardElement | null = null;
   clientSecret: string = '';
+  orderId: number;
+  order: any = {};
+  constructor(private http: HttpClient, private paymentService: PaymentService, private route: ActivatedRoute, private orderService: OrderService) {
+    this.route.params.subscribe(params => {
+      this.orderId = params['orderId'];
+    });
+    this.getCheckoutOrder(this.orderId);
+  }
 
-  constructor(private http: HttpClient, private paymentService: PaymentService) {}
+  getCheckoutOrder(orderId: number) {
+      return this.orderService.getCheckoutOrder(orderId).subscribe((res: any) => {
+        this.order = res;
+      });
+  }
 
   async ngOnInit() {
     Stripe = await loadStripe('pk_test_51OKudgHBiPwJgahsQu1sSsFrRuqF0SZjVjdaA9yC95MprKlXd2wjZs7q0a7c3JSyjT75zyoIZWzzCSLX53wKflo500nBm6EFJp'); // Replace with your publishable key
@@ -28,14 +42,14 @@ export class CheckoutComponent implements OnInit {
     }
 
     // Fetch PaymentIntent client secret from the backend
-    this.createStripePayment(100);
+    this.createStripePayment();
   }
 
   loadingPayment = false;
-  createStripePayment(credits: number) {
+  createStripePayment() {
     this.loadingPayment = true;
-  
-    this.paymentService.createPaymentIntent().subscribe(
+
+    this.paymentService.createPaymentIntent(this.orderId).subscribe(
       res => {
         // var stripe = Stripe(res.publicKey);
         this.clientSecret = res.clientSecret;
@@ -74,17 +88,29 @@ export class CheckoutComponent implements OnInit {
       const { error, paymentIntent } = await Stripe.confirmCardPayment(this.clientSecret, {
         payment_method: {
           card: this.cardElement,
-          billing_details: { name: 'Customer Name' },
+          billing_details: { name: this.order.identityEmail },
         },
       });
-
+  
+      console.log(error);
+        
       console.log(paymentIntent);
       if (error) {
         const errorMessage = document.getElementById('card-errors')!;
-
         errorMessage.classList.remove('hidden');
       } else if (paymentIntent?.status === 'succeeded') {
-        alert('Payment succeeded!');
+        // Send payment status to backend for verification
+        this.paymentService.verifyPayment(paymentIntent.id).subscribe(
+          res => {
+            alert("payment succeeded!")
+          },
+          error => {
+            // Handle API error here
+            console.error("API error:", error);
+            // Set loadingPayment to false in case of error
+            this.loadingPayment = false;
+          }
+        );
       }
     } else {
       alert('Stripe not initialized correctly.');

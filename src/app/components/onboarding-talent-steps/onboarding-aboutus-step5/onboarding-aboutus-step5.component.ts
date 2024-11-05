@@ -17,11 +17,10 @@ export class OnboardingAboutusStep5Component implements OnInit {
     this.getProductsFromQuestionaire();
   }
  
-
-
   getProductsFromQuestionaire(){
     return this.productService.getProductQuizResults(this.quiz).subscribe((res: any) => {
-      this.products = res;
+      this.products = res.products;
+      this.quiz.orderId = res.orderId;
     });
   }
 

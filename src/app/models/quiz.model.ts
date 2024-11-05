@@ -15,4 +15,5 @@ export class Quiz extends Base   {
     brandUsages: any[] = [];
     dislikedBrands: string;
     profileInfo: Identity;
+    orderId: number;
 }

@@ -17,13 +17,13 @@ export class PaymentService {
         return this.apiCallService.post(url);
     }
 
-    createPaymentIntent() {
-        const url = environment.api + "/Payment/createPaymentIntent";
+    createPaymentIntent(orderId: number) {
+        const url = environment.api + "/Payment/createPaymentIntent?orderId=" + orderId;
         return this.apiCallService.post(url);
     }
 
     verifyPayment(paymentId: string) {
-        const url = environment.api + "/Payment/VerifyPayment?purchaseId=" + paymentId;
+        const url = environment.api + "/Payment/VerifyPayment?paymentIntent=" + paymentId;
         return this.apiCallService.post(url);
     }
 }

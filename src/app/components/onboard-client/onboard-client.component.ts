@@ -31,7 +31,8 @@ export class OnboardClientComponent {
     flavors: [],
     textureDislikes: "",
     usedProteinBefore: null,
-    profileInfo: new Identity()
+    profileInfo: new Identity(),
+    orderId: 0
   };
 
   constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private quizService: QuizService) {
@@ -46,12 +47,11 @@ export class OnboardClientComponent {
     return this.quizService.submitQuiz(this.quiz).subscribe((res: any) => {
       this.quiz.id = res.id;
       this.quiz.profileInfo = res.profileInfo;
-      
       if (this.currentStep < 5) {
         this.currentStep++;
         this.navigateToStep(this.currentStep);
       } else if (this.currentStep == 5) {
-        this.router.navigate(['/checkout']);
+        this.router.navigate(['/checkout/' + this.quiz.orderId]);
       }
     });
   }

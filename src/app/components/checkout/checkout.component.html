@@ -1,18 +1,5 @@
 <app-app-menu></app-app-menu>
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
+
 <div class="bg-gray-50">
     <div class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
       <h2 class="sr-only">Checkout</h2>
@@ -113,38 +100,26 @@
   
           <div class="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
             <h3 class="sr-only">Items in your cart</h3>
-            <ul role="list" class="divide-y divide-gray-200">
-              <li class="flex px-4 py-6 sm:px-6">
-
-  
-                <div class="flex flex-1 flex-col">
-                    <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
-                        <div class="aspect-h-4 aspect-w-3  sm:aspect-none group-hover:opacity-75 sm:h-96">
-                          <img src="../../../../assets/thebuffboxx.png" 
-                          alt="Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green." 
-                          class="h-full w-full object-cover object-center sm:h-full sm:w-full">
-                        </div>
-                        <div class="flex flex-1 flex-col space-y-2 p-4">
-                          <h3 class="text-sm font-medium text-gray-900">
-                            <a href="#">
-                              <span aria-hidden="true" class="absolute inset-0"></span>
-                              Super Sampler
-                            </a>
-                          </h3>
-                          <p class="text-sm text-gray-500">This collection features single-serving packets of our top protein powders, allowing you to try various flavors and formulations without commitment.</p>
-                          <div class="flex flex-1 flex-col justify-end">
-                            <p class="text-sm italic text-gray-500">8 samples</p>
-         
-                          </div>
-                        </div>
-                      </div>
-  
-                 
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ">
+              <div *ngFor="let item of order.items" class="group relative flex flex-col overflow-hidden rounded-lg bg-white">
+                <div class="aspect-h-4 aspect-w-3 sm:aspect-none group-hover:opacity-75 sm:h-96">
+                  <img [src]="item.image.originalPath" class="h-full w-full object-cover object-center sm:h-full sm:w-full">
                 </div>
-              </li>
-  
-              <!-- More products... -->
-            </ul>
+                <div class="flex flex-1 flex-col space-y-2 p-4">
+                  <h3 class="text-sm font-medium text-gray-900">
+                    <a href="#">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      {{ item.name }}
+                    </a>
+                  </h3>
+                  <!-- <p class="text-sm text-gray-500">{{ item.description }}sfsfs</p> -->
+                  <div class="flex flex-1 flex-col justify-end">
+                    <p class="text-sm italic text-gray-500">{{ item.productTitle }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             <dl class="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
               <div class="flex items-center justify-between">
                 <dt class="text-sm">Subtotal</dt>
@@ -165,7 +140,8 @@
             </dl>
   
             <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
-              <button type="submit" class="w-full rounded-md border border-transparent bg-gray-900 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50">Confirm order</button>
+              <button (click)="handlePayment()" type="submit" class="w-full rounded-md border border-transparent bg-gray-900 px-4 py-3 text-base font-medium text-white shadow-sm 
+              hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50">Confirm order</button>
             </div>
           </div>
         </div>
