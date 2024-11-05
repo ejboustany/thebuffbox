@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { loadStripe, StripeElements, StripeCardElement, StripeCardNumberElement, StripeCardExpiryElement } from '@stripe/stripe-js';
 import { PaymentService } from 'src/app/services/payment.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 declare var Stripe: any;
 
@@ -17,7 +17,8 @@ export class CheckoutComponent implements OnInit {
   clientSecret: string = '';
   orderId: number;
   order: any = {};
-  constructor(private http: HttpClient, private paymentService: PaymentService, private route: ActivatedRoute, private orderService: OrderService) {
+  constructor(private http: HttpClient, private paymentService: PaymentService, private route: ActivatedRoute, 
+    private orderService: OrderService, private router: Router) {
     this.route.params.subscribe(params => {
       this.orderId = params['orderId'];
     });
@@ -25,9 +26,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   getCheckoutOrder(orderId: number) {
-      return this.orderService.getCheckoutOrder(orderId).subscribe((res: any) => {
-        this.order = res;
-      });
+    return this.orderService.getCheckoutOrder(orderId).subscribe((res: any) => {
+      this.order = res;
+
+      if (this.order.paymentStatus == null || this.order.paymentStatus == 3) {
+        this.createStripePayment();
+      }
+    });
   }
 
   async ngOnInit() {
@@ -42,7 +47,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     // Fetch PaymentIntent client secret from the backend
-    this.createStripePayment();
+
   }
 
   loadingPayment = false;
@@ -51,16 +56,7 @@ export class CheckoutComponent implements OnInit {
 
     this.paymentService.createPaymentIntent(this.orderId).subscribe(
       res => {
-        // var stripe = Stripe(res.publicKey);
         this.clientSecret = res.clientSecret;
-
-        // stripe.redirectToCheckout({
-        //   sessionId: res.sessionId
-        // }).then(() => {
-        //   // Handle any post-payment logic here if needed
-        // }).finally(() => {
-        //   this.loadingPayment = false; // Set loadingPayment to false when payment process is complete
-        // });
       },
       error => {
         // Handle API error here
@@ -91,18 +87,16 @@ export class CheckoutComponent implements OnInit {
           billing_details: { name: this.order.identityEmail },
         },
       });
-  
-      console.log(error);
-        
-      console.log(paymentIntent);
+
       if (error) {
         const errorMessage = document.getElementById('card-errors')!;
         errorMessage.classList.remove('hidden');
       } else if (paymentIntent?.status === 'succeeded') {
         // Send payment status to backend for verification
-        this.paymentService.verifyPayment(paymentIntent.id).subscribe(
+        console.log(this.order.identity);
+        this.paymentService.verifyPayment(paymentIntent.id, this.order.identity).subscribe(
           res => {
-            alert("payment succeeded!")
+            this.router.navigate(["thank-you"])
           },
           error => {
             // Handle API error here

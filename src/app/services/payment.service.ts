@@ -22,8 +22,8 @@ export class PaymentService {
         return this.apiCallService.post(url);
     }
 
-    verifyPayment(paymentId: string) {
+    verifyPayment(paymentId: string, identity: any) {
         const url = environment.api + "/Payment/VerifyPayment?paymentIntent=" + paymentId;
-        return this.apiCallService.post(url);
+        return this.apiCallService.post(url, identity);
     }
 }

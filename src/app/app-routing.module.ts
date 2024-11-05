@@ -6,6 +6,7 @@ import { SignUpComponent } from './components/signup/signup.component';
 import { OnboardClientComponent } from './components/onboard-client/onboard-client.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
+import { OnboardTalentThankyouComponent } from './components/onboarding-talent-steps/onboard-talent-thankyou/onboard-talent-thankyou.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout/:orderId', component: CheckoutComponent },
   { path: 'verification/:code/:userId', component: EmailVerificationComponent },
+  { path: 'thank-you', component: OnboardTalentThankyouComponent}
 ];
 
 @NgModule({
