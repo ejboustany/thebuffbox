@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout/:orderId', component: CheckoutComponent },
   { path: 'verification/:code/:userId', component: EmailVerificationComponent },
-  { path: 'thank-you', component: OnboardTalentThankyouComponent, canActivate: [AuthGuard] }
+  { path: 'thank-you/:orderId', component: OnboardTalentThankyouComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

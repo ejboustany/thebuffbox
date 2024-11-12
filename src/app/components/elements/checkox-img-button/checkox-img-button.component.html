@@ -1,0 +1,30 @@
+<p class="flex justify-center pb-4 font-bold text-black sm:text-[26px]">Select All That Apply</p>
+
+<div class="grid grid-cols-2 gap-4">
+  <ng-container *ngFor="let enum of enumValues">
+    <label
+      class="flex flex-col items-center justify-center cursor-pointer text-black shadow-md
+      transition-colors font-bold text-[20px] sm:text-[26px] w-full h-40 sm:h-48 mx-auto shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]"
+      [class.text-white]="isChecked(enum)"
+      [class.border-black]="isChecked(enum)"
+      [class.border-8]="isChecked(enum)">
+      
+      <!-- Image above the label -->
+      <img *ngIf="enum.img && enum.img != '' && enum.img != null"
+        [src]="'../../../../assets/Protein Powder Comanies/' + enum.img" 
+        class="mb-2 w-20 h-20 sm:w-32 sm:h-32 object-contain" />
+      
+      <!-- Hidden checkbox input -->
+      <input
+        type="checkbox"
+        (change)="onChange(enum)"
+        [checked]="isChecked(enum)"
+        class="hidden" />
+        
+      <!-- Label text -->
+      <span class="w-full text-center mt-auto py-2" [class.bg-black]="enum.img && isChecked(enum)">
+        {{ enum.displayName }}
+      </span>
+    </label>
+  </ng-container>
+</div>

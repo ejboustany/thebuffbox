@@ -12,4 +12,9 @@ export class OrderService {
         const url = environment.api + "/checkout/GetCheckoutOrder?orderId=" + orderId;
         return this.apiCallService.get(url);
     }
+
+    getById(orderId: any) {
+        const url = environment.api + "/order/GetItem?id=" + orderId;
+        return this.apiCallService.get(url);
+    }
 }

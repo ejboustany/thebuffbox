@@ -96,7 +96,7 @@ export class CheckoutComponent implements OnInit {
         console.log(this.order.identity);
         this.paymentService.verifyPayment(paymentIntent.id, this.order.identity).subscribe(
           res => {
-            this.router.navigate(["thank-you"])
+            this.router.navigate(["thank-you/" + this.order.id])
           },
           error => {
             // Handle API error here

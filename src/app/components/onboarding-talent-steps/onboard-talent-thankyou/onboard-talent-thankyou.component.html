@@ -1,10 +1,83 @@
 <app-inside-menu></app-inside-menu>
 
-<!-- Body with Centered Text -->
-<div class="flex items-center justify-center h-screen -mt-32 px-6">
-    <div class="mx-auto max-w-2xl text-center">
-        <h2 class="font-bold tracking-tight text-gray-900 sm:text-2xl">Thank you for your purchase!</h2>
-        <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci massa mauris justo, urna et feugiat sagittis et. Aliquet amet suspendisse tellus ultrices hac id imperdiet. Pellentesque sit sit suspendisse at. Mauris duis pharetra dictum aenean ac sed amet.</p>
-        <button routerLink="/login" class="sm:w-80 bg-primary-color text-white px-4 py-1.5 rounded font-semibold mt-6 mb-6">Login</button>
+<div class="bg-white">
+    <div class="mx-auto max-w-4xl py-16 sm:px-6 sm:py-16">
+      <div class="px-4 sm:px-0">
+        <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Your order has been placed succefully. 🎉</h1>
+        <p class="mt-2 text-sm text-gray-500">Check youe email for the invoice.</p>
+      </div>
+  
+      <div class="mt-16">
+        <h2 class="sr-only">Recent orders</h2>
+  
+        <div class="space-y-16 sm:space-y-24">
+          <div>
+            <h3 class="sr-only">Order placed on <time datetime="2021-01-22">January 22, 2021</time></h3>
+  
+            <div class="bg-gray-50 px-4 py-2 sm:rounded-lg sm:p-6 md:flex md:items-center md:justify-between md:space-x-6 lg:space-x-8">
+                <dl class="flex-auto space-y-4 divide-y divide-gray-200 text-sm text-gray-600 md:grid md:grid-cols-3 md:gap-x-6 md:space-y-0 
+                md:divide-y-0 lg:w-1/2 lg:flex-none lg:gap-x-8">
+                  <div class="flex justify-between md:block">
+                    <dt class="font-bold text-gray-900">Order number</dt>
+                    <dd class="md:mt-1">#{{order.orderNumer | lastCharacters:5}}</dd>
+                  </div>
+                  <div class="flex justify-between pt-4 md:block md:pt-0">
+                    <dt class="font-bold text-gray-900">Date placed</dt>
+                    <dd class="md:mt-1">
+                      <time datetime="2021-01-22">{{order.dateCreated | date}}</time>
+                    </dd>
+                  </div>
+                  <div class="flex justify-between pt-4  text-gray-900 md:block md:pt-0">
+                    <dt class="font-bold">Total amount</dt>
+                    <dd class="md:mt-1">${{order.total}}</dd>
+                  </div>
+                </dl>
+                <div class="mt-6 space-y-4 sm:flex sm:space-x-4 sm:space-y-0 md:mt-0">
+
+                  <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-2 px-6 font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Processing</span>
+             
+<!-- 
+                  <a href="#" class="flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:w-auto">
+                    View Orders
+                  </a> -->
+              
+                  
+                </div>
+              </div>
+              
+  
+            <div class="mt-6 flow-root px-4 sm:mt-10 sm:px-0">
+              <div class="-my-6 divide-y divide-gray-200 sm:-my-10">
+                <div *ngFor="let orderItem of order.items" class="flex py-6 sm:py-10">
+                  <div class="min-w-0 flex-1 lg:flex lg:flex-col">
+                    <div class="lg:flex-1">
+                      <div class="sm:flex">
+                        <div>
+                          <h4 class="font-bold text-gray-900">{{orderItem.productTitle}}</h4>
+                          <p class="mt-2 text-sm text-gray-500">{{orderItem.description}}</p>
+                        </div>
+                        <p class="mt-1 font-medium text-gray-900 sm:ml-6 sm:mt-0">${{orderItem.price}}</p>
+                      </div>
+                    </div>
+                
+                  </div>
+                  <div class="ml-4 shrink-0 sm:order-first sm:m-0 sm:mr-6">
+                    <img [src]="orderItem.image.originalPath" alt="Olive drab green insulated bottle with flared screw lid and flat top." 
+                    class="col-start-2 col-end-3 size-20 rounded-lg object-cover object-center sm:col-start-1 sm:row-span-2 
+                    sm:row-start-1 size-40">
+                  </div>
+                </div>
+
+                
+  
+                <!-- More products... -->
+              </div>
+            </div>
+          </div>
+  
+          <!-- More orders... -->
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  

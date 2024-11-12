@@ -1,4 +1,4 @@
-<nav class="bg-gray-300">
+<nav class="border-b-4">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -26,38 +26,20 @@
                     <div class="flex lg:flex-1">
                         <a href="/" class="-m-1.5 p-1.5">
                             <!-- <span>Your Company</span> -->
-                            <img class="h-10" src="../../../../assets/images/LNN-home.png" alt="">
+                            <!-- <img class="h-10" src="../../../../assets/images/LNN-home.png" alt=""> -->
                         </a>
                     </div>
                 </div>
                 
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <a routerLinkActive="bg-gray-800 text-white" routerLink="/book"
-                            class="font-medium px-3 py-2 rounded-md" aria-current="page">Book</a>
-
-                        <a routerLinkActive="bg-gray-800 text-white" routerLink="/call-history"
-                            class="font-medium px-3 py-2 rounded-md" aria-current="page">Call History</a>
-
-                            <a routerLinkActive="bg-gray-800 text-white" routerLink="/calendar"
-                            class="font-medium px-3 py-2 rounded-md" aria-current="page">Calendar</a>
+                        <a routerLinkActive="bg-gray-800 text-white" routerLink="/orders"
+                            class="font-bold px-3 py-2 rounded-md" aria-current="page">Orders</a>
 
                     </div>
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-               
-                <!-- <p class="text-sm mr-2 font-normal text-black">Calls: {{credits}}</p>
-                
-                <button  (click)="openSubscriptionPopup()" routerLinkActive="border-2 bg-primary-color" class="inline-flex 
-                items-center 
-                px-3 py-1 text-gray-500 
-                rounded-md likeNowNow-bg-primary border border-black">
-
-        <p class="text-sm font-normal text-black">Purchase Calls</p>
-    </button> -->
-
-
                 <div class="relative ml-3">
 
                     <div>
@@ -101,12 +83,8 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden" id="mobile-menu" [class.hidden]="!isMenuOpen">
         <div class="space-y-1 px-2 pt-2 pb-3">
-            <a routerLink="/book" routerLinkActive="bg-gray-800 text-white"
-                class="block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Book</a>
-            <a routerLink="/call-history" routerLinkActive="bg-gray-800 text-white"
-                class="block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Call History</a>
-                <a routerLink="/calendar" routerLinkActive="bg-gray-800 text-white"
-                class="block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Calendar</a>
+            <a routerLink="/orders" routerLinkActive="bg-gray-800 text-white"
+                class="block px-3 py-2 rounded-md text-base font-bold" aria-current="page">Orders</a>
         </div>
     </div>
 </nav>

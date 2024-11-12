@@ -34,6 +34,8 @@ import { OnboardingBrandsStep10Component } from './components/onboarding-talent-
 import { OnboardingBrandsDislikeStep11Component } from './components/onboarding-talent-steps/onboarding-brands-dislike-step11/onboarding-brands-dislike-step11.component';
 import { OnboardingRegisterStep12Component } from './components/onboarding-talent-steps/onboarding-register-step12/onboarding-register-step12.component';
 import { OnboardingResultsStep13Component } from './components/onboarding-talent-steps/onboarding-results-step13/onboarding-results-step13.component';
+import { CheckoxImgButtonComponent } from './components/elements/checkox-img-button/checkox-img-button.component';
+import { LastCharactersPipe } from './pipes/take-characters.pipe';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { OnboardingResultsStep13Component } from './components/onboarding-talent
     OnboardingFollowDietStep4Component,
     RadioButtonComponent,
     CheckboxButtonComponent,
+    CheckoxImgButtonComponent,
     CheckoutComponent,
     EmailVerificationComponent,
     InsideMenuComponent,
@@ -62,8 +65,10 @@ import { OnboardingResultsStep13Component } from './components/onboarding-talent
     OnboardingBrandsStep10Component,
     OnboardingBrandsDislikeStep11Component,
     OnboardingRegisterStep12Component,
-    OnboardingResultsStep13Component
+    OnboardingResultsStep13Component,
+    LastCharactersPipe
   ],
+  exports: [LastCharactersPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
