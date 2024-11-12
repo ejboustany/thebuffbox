@@ -29,8 +29,8 @@ export class QuizService {
     // }
 
     
-    submitQuiz(quiz: any) {
-        const url = environment.api + "/theQuiz/TakeQuiz";
+    submitQuiz(quiz: any, registration: boolean) {
+        const url = environment.api + "/theQuiz/TakeQuiz?registration=" + registration;
         return this.apiCallService.post(url, quiz);
     }
 }

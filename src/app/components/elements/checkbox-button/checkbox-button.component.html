@@ -1,13 +1,29 @@
-<div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
   <ng-container *ngFor="let enum of enumValues">
-    <label class="flex items-center space-x-2 px-2">
+    <label
+      class="flex flex-col items-center justify-center py-2 cursor-pointer text-black shadow-md
+      transition-colors font-bold text-[26px] min-w-[271px]"
+      [class.bg-black]="!enum.img && isChecked(enum)"
+      [class.text-white]="isChecked(enum)"
+      [class.border-black]="isChecked(enum)"
+      [class.py-2]="!enum.img"
+      [class.border-8]="enum.img && isChecked(enum)">
+      
+      <!-- Image above the label -->
+      <img *ngIf="enum.img && enum.img != '' && enum.img != null"
+        [src]="'../../../../assets/Protein Powder Comanies/' + enum.img" 
+        class="mb-2 w-24 h-24  object-contain" />
+      
+      <!-- Hidden checkbox input -->
       <input
         type="checkbox"
+    
         (change)="onChange(enum)"
         [checked]="isChecked(enum)"
-        class="form-checkbox h-5 w-5 text-blue-600"
-      />
-      <span>{{ enum.displayName }}</span>
+        class="hidden" />
+        
+      <!-- Label text -->
+      <span class="w-full items-center mx-auto text-center" [class.bg-black]="enum.img && isChecked(enum)">{{ enum.displayName }}</span>
     </label>
   </ng-container>
 </div>

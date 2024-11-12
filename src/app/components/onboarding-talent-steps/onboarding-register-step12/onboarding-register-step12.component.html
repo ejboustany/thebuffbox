@@ -1,0 +1,64 @@
+<div class="w-full bg-progress-bar h-3.5 sm:mb-12 mb-0.5">
+  <div class="bg-progress-bar-fill h-3.5" style="width: 40%"></div>
+</div>
+
+<div class="mx-auto sm:py-10 py-6 px-6 sm:px-10 lg:px-36">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div class="p-0.5 sm:p-8 lg:p-16">
+      <p class="text-[30px] sm:text-[64px] lg:text-[96px] leading-tight font-bold">
+        Almost Done...
+      </p>
+    </div>
+
+    <div class="flex justify-center items-center w-full">
+      <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="space-y-4">
+          <div>
+            <input [(ngModel)]="quiz.profileInfo.emailAddress" id="email" name="email" type="email"
+              placeholder="Email Address"
+              class="w-full text-center placeholder-black font-bold p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xl" />
+          </div>
+
+          <div>
+            <input [(ngModel)]="quiz.password" id="password" name="password" type="password" placeholder="Password"
+              class="w-full text-center placeholder-black font-bold p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xl" />
+          </div>
+
+          <div>
+            <input [(ngModel)]="quiz.password" id="password" name="password" type="password"
+              placeholder="Confirm Password"
+              class="w-full text-center placeholder-black font-bold p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xl" />
+          </div>
+
+          <div class="w-full mx-auto flex space-x-4">
+            <!-- Age Select -->
+            <div class="flex-1">
+              <div class="relative shadow-2xl">
+                <select id="age" [(ngModel)]="quiz.profileInfo.age"
+                  class="w-full text-center placeholder-black font-bold p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 
+                  shadow-2xl bg-white border border-gray-300">
+                  <!-- Placeholder option -->
+                  <option value="0" disabled selected>Age</option>
+                  <option *ngFor="let age of ageRange" [value]="age">{{ age }}</option>
+                </select>
+              </div>
+            </div>
+            
+          
+            <!-- Phone Number Input -->
+            <div class="flex-1">
+              <div class="relative shadow-2xl">
+                <input [(ngModel)]="quiz.profileInfo.phoneNumber" type="text" name="phone-number" id="phone-number"
+                  placeholder="Phone Number"
+                  class="w-full text-center placeholder-black font-bold p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xl" />
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

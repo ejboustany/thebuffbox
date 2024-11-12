@@ -52,6 +52,11 @@ export class TypesService {
         const url = environment.api + "/Types/ProteinMixes";
         return this.apiCallService.get(url);
       }
+
+      textures(){
+        const url = environment.api + "/Types/Textures";
+        return this.apiCallService.get(url);
+      }
     
       proteinBrands() {
         const url = environment.api + "/Types/ProteinBrands";

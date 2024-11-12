@@ -9,7 +9,7 @@ export class Quiz extends Base   {
     dietaryPreferences: any[] = [];
     dietaryRestrictions: any[] = [];
     flavors: any[] = [];
-    textureDislikes: string;
+    textures: any[] = [];
     usedProteinBefore: boolean | null;
     proteinMixes: any[] = [];
     brandUsages: any[] = [];

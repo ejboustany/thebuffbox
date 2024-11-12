@@ -1,0 +1,35 @@
+<div class="w-full bg-progress-bar h-3.5 sm:mb-12 mb-0.5">
+    <div class="bg-progress-bar-fill h-3.5" style="width: 95%"></div>
+</div>
+
+<div class="max-w-6xl mx-auto pb-6">
+    <div class="mx-auto px-4">
+        <p class="text-[30px] sm:text-[64px] lg:text-[96px] leading-tight font-bold">
+            Your curated selection:
+          </p>
+
+        <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-4">
+            <div *ngFor="let product of products"
+                class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
+                <div class="aspect-h-4 aspect-w-3  sm:aspect-none group-hover:opacity-75 sm:h-96">
+                    <img [src]="product.image.originalPath"
+                        alt="Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green."
+                        class="h-full w-full object-cover object-center sm:h-full sm:w-full">
+                </div>
+                <div class="flex flex-1 flex-col space-y-2 p-4">
+                    <h3 class="text-sm font-medium text-gray-900">
+                        <a href="#">
+                            <span aria-hidden="true" class="absolute inset-0"></span>
+                            {{product.title}}
+                        </a>
+                    </h3>
+                    <p class="text-sm text-gray-500">{{product.description}}</p>
+                    <div class="flex flex-1 flex-col justify-end">
+                        <p class="text-sm italic text-gray-500">{{product.gramsProteinContent}}g</p>
+                        <p class="text-base font-medium text-gray-900">${{product.price}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

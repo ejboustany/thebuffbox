@@ -1,40 +1,35 @@
 <app-app-menu></app-app-menu>
 
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-    <!-- <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+<div class="flex min-h-full flex-col justify-center">
+    <div class="sm:mx-auto w-full">
+        <app-onboarding-exercise-step1 [quiz]="quiz" *ngIf="currentStep === 1"></app-onboarding-exercise-step1>
+        <app-onboarding-exercise-freq-step2 [quiz]="quiz" *ngIf="currentStep === 2"></app-onboarding-exercise-freq-step2>
+        <app-onboarding-fitness-goal-step3 [quiz]="quiz" *ngIf="currentStep === 3"></app-onboarding-fitness-goal-step3>
+        <app-onboarding-follow-diet-step4 *ngIf="currentStep === 4" [quiz]="quiz"></app-onboarding-follow-diet-step4>
+        <app-onboarding-diet-restrictions-step5 [quiz]="quiz" *ngIf="currentStep === 5"></app-onboarding-diet-restrictions-step5>
+        <app-onboarding-flavors-step6 [quiz]="quiz" *ngIf="currentStep === 6"></app-onboarding-flavors-step6>
+        <app-onboarding-textures-step7 [quiz]="quiz" *ngIf="currentStep === 7"></app-onboarding-textures-step7>
+        <app-onboarding-tried-protein-step8 [quiz]="quiz" *ngIf="currentStep === 8"></app-onboarding-tried-protein-step8>
+        <app-onboarding-protein-mix-step9 [quiz]="quiz" *ngIf="currentStep === 9"></app-onboarding-protein-mix-step9>
+        <app-onboarding-brands-step10 [quiz]="quiz" *ngIf="currentStep === 10"></app-onboarding-brands-step10>
+        <app-onboarding-brands-dislike-step11 [quiz]="quiz" *ngIf="currentStep === 11"></app-onboarding-brands-dislike-step11>
+        <app-onboarding-register-step12 [quiz]="quiz" *ngIf="currentStep === 12"></app-onboarding-register-step12>
+        <app-onboarding-results-step13 [quiz]="quiz" *ngIf="currentStep === 13"></app-onboarding-results-step13>
     </div>
-   -->
-    <div class="sm:mx-auto w-full max-w-6xl">
-        <app-onboarding-aboutus-step5 [quiz]="quiz" *ngIf="currentStep === 5"></app-onboarding-aboutus-step5>
+
+    <div [ngClass]="currentStep == 1 ? 'float-right' : ''"
+        class="flex justify-center items-center py-6 border-t-2 border-gray-300 shadow-t-xl space-x-4">
+
+        <button *ngIf="currentStep != 1" (click)="prevStep()"
+            class="flex items-center justify-center px-8 border-2 py-1 min-w-[150px] min-h-[40px]">
+            Back
+        </button>
+
+        <button (click)="nextStep()"
+            class="bg-primary-color text-white items-center px-12  border-2 py-1 min-w-[150px] min-h-[40px]">
+            Next
+        </button>
+
     </div>
 
-    <div class="sm:mx-auto w-full max-w-2xl">
-        <app-onboarding-location-step1 [quiz]="quiz" *ngIf="currentStep === 1"></app-onboarding-location-step1>
-        <app-onboarding-role-step2 [quiz]="quiz" *ngIf="currentStep === 2"></app-onboarding-role-step2>
-        <app-onboarding-skills-step3 [quiz]="quiz" *ngIf="currentStep === 3"></app-onboarding-skills-step3>
-        <app-onboarding-squad-step4 *ngIf="currentStep === 4" [quiz]="quiz"></app-onboarding-squad-step4>
-
-
-        <div [ngClass]="currentStep == 1 ? 'float-right' : ''" class="flex justify-between py-6  ">
-
-            <button *ngIf="currentStep != 1" (click)="prevStep()"
-                class="flex items-center px-8 rounded-md border-2 py-1">
-                <!-- Back SVG icon -->
-                <svg class="h-5 w-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-                <!-- Back button text -->
-                Back
-            </button>
-
-            <button (click)="nextStep()"
-                class=" bg-primary-color text-white items-center px-12 rounded-md border-2 py-1">
-                Next
-            </button>
-
-        </div>
-    </div>
 </div>

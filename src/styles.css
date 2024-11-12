@@ -10,3 +10,11 @@
 .regular-text{
   color: #d8d5d5;
 }
+
+.bg-progress-bar-fill {
+  background: linear-gradient(90deg, #ECA741, #F05D23);
+}
+
+.bg-progress-bar {
+  background: linear-gradient(90deg, #B3B3B3, #585757);
+}

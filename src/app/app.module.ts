@@ -14,16 +14,26 @@ import { AppMenuComponent } from './components/app-menu/app-menu.component';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
 import { OnboardClientComponent } from './components/onboard-client/onboard-client.component';
 import { OnboardTalentThankyouComponent } from './components/onboarding-talent-steps/onboard-talent-thankyou/onboard-talent-thankyou.component';
-import { OnboardingAboutusStep5Component } from './components/onboarding-talent-steps/onboarding-aboutus-step5/onboarding-aboutus-step5.component';
-import { OnboardingLocaionStep1Component } from './components/onboarding-talent-steps/onboarding-location-step1/onboarding-location-step1.component';
-import { OnboardingRoleStep2Component } from './components/onboarding-talent-steps/onboarding-role-step2/onboarding-role-step2.component';
-import { OnboardingSkillsStep3Component } from './components/onboarding-talent-steps/onboarding-skills-step3/onboarding-skills-step3.component';
-import { OnboardingSquadStep4Component } from './components/onboarding-talent-steps/onboarding-squad-step4/onboarding-squad-step4.component';
+import { OnboardingDietRestrictionsStep5Component } from './components/onboarding-talent-steps/onboarding-diet-restrictions-step5/onboarding-diet-restrictions-step5.component';
+import { OnboardingExerciseStep1Component } from './components/onboarding-talent-steps/onboarding-exercise-step1/onboarding-exercise-step1.component';
+import { OnboardingExerciseFreqStep2Component } from './components/onboarding-talent-steps/onboarding-exercise-freq-step2/onboarding-exercise-freq-step2.component';
+import { OnboardingFitnessGoalStep3Component } from './components/onboarding-talent-steps/onboarding-fitness-goal-step3/onboarding-fitness-goal-step3.component';
+import { OnboardingFollowDietStep4Component } from './components/onboarding-talent-steps/onboarding-follow-diet-step4/onboarding-follow-diet-step4.component';
 import { RadioButtonComponent } from './components/elements/radio-button/radio-button.component';
 import { CheckboxButtonComponent } from './components/elements/checkbox-button/checkbox-button.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { InsideMenuComponent } from './components/inside-menu/inside-menu.component';
+import { OnboardingFlavorsStep6Component } from './components/onboarding-talent-steps/onboarding-flavors-step6/onboarding-flavors-step6.component';
+import { OnboardingTexturesStep7Component } from "./components/onboarding-talent-steps/onboarding-textures-step7/onboarding-textures-step7.component";
+import { OnboardingTriedProteinStep8Component } from './components/onboarding-talent-steps/onboarding-tried-protein-step8/onboarding-tried-protein-step8.component';
+import { OnboardingProteinMixStep9Component } from './components/onboarding-talent-steps/onboarding-protein-mix-step9/onboarding-protein-mix-step9.component';
+import { OnboardingBrandsStep10Component } from './components/onboarding-talent-steps/onboarding-brands-step10/onboarding-brands-step10.component';
+import { OnboardingBrandsDislikeStep11Component } from './components/onboarding-talent-steps/onboarding-brands-dislike-step11/onboarding-brands-dislike-step11.component';
+import { OnboardingRegisterStep12Component } from './components/onboarding-talent-steps/onboarding-register-step12/onboarding-register-step12.component';
+import { OnboardingResultsStep13Component } from './components/onboarding-talent-steps/onboarding-results-step13/onboarding-results-step13.component';
 
 @NgModule({
   declarations: [
@@ -35,15 +45,24 @@ import { EmailVerificationComponent } from './components/email-verification/emai
     QuestionnaireComponent,
     OnboardClientComponent,
     OnboardTalentThankyouComponent,
-    OnboardingAboutusStep5Component,
-    OnboardingLocaionStep1Component,
-    OnboardingRoleStep2Component,
-    OnboardingSkillsStep3Component,
-    OnboardingSquadStep4Component,
+    OnboardingDietRestrictionsStep5Component,
+    OnboardingExerciseStep1Component,
+    OnboardingFitnessGoalStep3Component,
+    OnboardingFollowDietStep4Component,
     RadioButtonComponent,
     CheckboxButtonComponent,
     CheckoutComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    InsideMenuComponent,
+    OnboardingExerciseFreqStep2Component,
+    OnboardingFlavorsStep6Component,
+    OnboardingTexturesStep7Component,
+    OnboardingTriedProteinStep8Component,
+    OnboardingProteinMixStep9Component,
+    OnboardingBrandsStep10Component,
+    OnboardingBrandsDislikeStep11Component,
+    OnboardingRegisterStep12Component,
+    OnboardingResultsStep13Component
   ],
   imports: [
     BrowserModule,
@@ -52,8 +71,9 @@ import { EmailVerificationComponent } from './components/email-verification/emai
     FormsModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    MatMenuModule,
+],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })

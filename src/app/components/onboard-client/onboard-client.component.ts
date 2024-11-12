@@ -29,28 +29,27 @@ export class OnboardClientComponent {
     brandUsages: [],
     proteinMixes: [],
     flavors: [],
-    textureDislikes: "",
+    textures: [],
     usedProteinBefore: null,
     profileInfo: new Identity(),
     orderId: 0
   };
 
   constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private quizService: QuizService) {
-
     this.route.params.subscribe(params => {
       this.currentStep = +params['step'] || 1;
     });
   }
 
   nextStep() {
-    console.log(this.quiz)
-    return this.quizService.submitQuiz(this.quiz).subscribe((res: any) => {
+    console.log(this.quiz);
+    return this.quizService.submitQuiz(this.quiz, this.currentStep == 12).subscribe((res: any) => {
       this.quiz.id = res.id;
       this.quiz.profileInfo = res.profileInfo;
-      if (this.currentStep < 5) {
+      if (this.currentStep < 13) {
         this.currentStep++;
         this.navigateToStep(this.currentStep);
-      } else if (this.currentStep == 5) {
+      } else if (this.currentStep == 13) {
         this.router.navigate(['/checkout/' + this.quiz.orderId]);
       }
     });

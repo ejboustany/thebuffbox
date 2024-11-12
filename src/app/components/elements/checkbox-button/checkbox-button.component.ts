@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './checkbox-button.component.css'
 })
 export class CheckboxButtonComponent {
-  @Input() enumValues: { displayName: string; value: any; isChecked: boolean }[];
+  @Input() enumValues: { displayName: string; value: any; img: string; isChecked: boolean }[];
   @Input() selectedValues: any[] = []; // Bind selected values as an array
 
   onChange(value: any) {

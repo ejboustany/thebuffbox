@@ -16,4 +16,8 @@ export class RadioButtonComponent {
     this.selectedValue = selectedEnum.id;
     this.valueChange.emit(this.selectedValue); // Emit value to parent
   }
+
+  isChecked(enumValue: any): boolean {
+    return this.selectedValue === enumValue.id;
+  }
 }
