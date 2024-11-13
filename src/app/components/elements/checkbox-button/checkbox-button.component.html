@@ -1,4 +1,4 @@
-<p class="flex justify-center pb-4 font-bold text-black sm:text-[26px]">Select All That Apply</p>
+<p class="flex justify-center pb-4 font-bold text-black sm:text-[26px]">{{!maxSelection ? "Select All That Apply" : "Select up to " + maxSelection}}</p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
   <ng-container *ngFor="let enum of enumValues">
     <label

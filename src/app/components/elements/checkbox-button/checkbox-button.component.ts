@@ -8,8 +8,11 @@ import { Component, Input } from '@angular/core';
 export class CheckboxButtonComponent {
   @Input() enumValues: { displayName: string; value: any; img: string; isChecked: boolean }[];
   @Input() selectedValues: any[] = []; // Bind selected values as an array
+  @Input() maxSelection: any;
 
   onChange(value: any) {
+    console.log(value);
+
     value.isChecked = !value.isChecked ?? false;
     if (value.isChecked && !this.selectedValues.includes(value.id)) {
       if (!this.selectedValues) {
@@ -17,7 +20,8 @@ export class CheckboxButtonComponent {
       }
   
       // Ensure value.id is not already in selectedValues
-      if (!this.selectedValues.includes(value.id)) {
+      if (!this.selectedValues.includes(value.id) && this.selectedValues.length != this.maxSelection) {
+
         this.selectedValues.push(value.id); // Add if checked and not already present
       }
     } else {
