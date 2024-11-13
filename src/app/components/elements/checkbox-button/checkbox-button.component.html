@@ -6,7 +6,7 @@
 
 
 
-      transition-colors font-bold text-[26px] min-w-[271px]"
+      transition-colors font-bold sm:text-[26px] sm:min-w-[271px] sm:max-w-[271px] sm:h-[73px] min-w-[270px] max-w-[361px] h-[47px] text-[20px]"
       [class.bg-black]="isChecked(enum)"
       [class.text-white]="isChecked(enum)"
       [class.border-black]="isChecked(enum)">
@@ -19,8 +19,10 @@
         [checked]="isChecked(enum)"
         class="hidden" />
         
-      <!-- Label text -->
-      <span class="w-full items-center mx-auto text-center" [class.bg-black]="enum.img && isChecked(enum)">{{ enum.displayName }}</span>
+        <span class="w-full mx-auto text-center break-words whitespace-normal px-6" 
+        [class.bg-black]="enum.img && isChecked(enum)">
+    {{ enum.displayName }}
+  </span>
     </label>
   </ng-container>
 </div>

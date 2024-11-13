@@ -17,18 +17,18 @@
           <div>
             <input [(ngModel)]="quiz.profileInfo.emailAddress" id="email" name="email" type="email"
               placeholder="Email Address"
-              class="w-full text-center placeholder-black font-bold p-2 border-none focus:outline-none shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]" />
+              class="w-full h-[47px] text-center placeholder-black font-bold p-2 border-none focus:outline-none shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]" />
           </div>
 
           <div>
             <input [(ngModel)]="quiz.password" id="password" name="password" type="password" placeholder="Password"
-              class="w-full text-center placeholder-black font-bold p-2 border-none focus:outline-none shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]" />
+              class="w-full h-[47px] text-center placeholder-black font-bold p-2 border-none focus:outline-none shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]" />
           </div>
 
           <div>
             <input [(ngModel)]="quiz.confirmPassword" id="password" name="password" type="password"
               placeholder="Confirm Password"
-              class="w-full text-center placeholder-black font-bold p-2 border-none focus:outline-none shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]" />
+              class="w-full h-[47px] text-center placeholder-black font-bold p-2 border-none focus:outline-none shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]" />
           </div>
 
           <div class="w-full mx-auto flex space-x-4">
@@ -36,7 +36,7 @@
             <div class="flex-1">
               <div class="relative shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]">
                 <select id="age" [(ngModel)]="quiz.profileInfo.age"
-                  class="w-full text-center placeholder-black font-bold p-2 focus:outline-none border-none">
+                  class="w-full h-[47px] text-center placeholder-black font-bold p-2 focus:outline-none border-none">
                   <!-- Placeholder option -->
                   <option value="0" disabled selected>Age</option>
                   <option *ngFor="let age of ageRange" [value]="age">{{ age }}</option>
@@ -50,7 +50,7 @@
               <div class="relative">
                 <input [(ngModel)]="quiz.profileInfo.phoneNumber" type="text" name="phone-number" id="phone-number"
                   placeholder="Phone Number"
-                  class="w-full text-center placeholder-black border-none font-bold p-2 focus:outline-none shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]" />
+                  class="w-full h-[47px] text-center placeholder-black border-none font-bold p-2 focus:outline-none shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]" />
               </div>
             </div>
           </div>
