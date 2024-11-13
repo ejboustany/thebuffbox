@@ -1,8 +1,8 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
   <ng-container *ngFor="let enum of enumValues">
     <label
-      class="flex items-center justify-center px-4 py-2 cursor-pointer border border-gray-300 text-black shadow-md
-      transition-colors font-bold text-[26px] min-w-[271px]"
+      class="flex items-center justify-center px-4 py-2 cursor-pointer border border-gray-300 text-black shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]
+       font-bold sm:text-[26px] sm:min-w-[271px] sm:max-w-[271px] sm:h-[73px] min-w-[270px] max-w-[361px] h-[47px] text-[20px]"
       [class.bg-black]="isChecked(enum)"
       [class.text-white]="isChecked(enum)"
       [class.border-black]="isChecked(enum)">
