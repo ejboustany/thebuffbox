@@ -1,0 +1,6 @@
+.sticky-footer {
+    position: sticky;
+    bottom: 0;
+    background-color: white; /* Background color to overlay content behind it */
+    z-index: 10; /* Ensure it stays above other elements */
+}

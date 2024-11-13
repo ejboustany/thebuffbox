@@ -17,8 +17,7 @@
         <app-onboarding-results-step13 [quiz]="quiz" *ngIf="currentStep === 13"></app-onboarding-results-step13>
     </div>
 
-    <div [ngClass]="currentStep == 1 ? 'float-right' : ''"
-        class="flex justify-center items-center py-6 border-t-2 border-gray-300 shadow-t-xl space-x-4">
+    <div class="sticky-footer flex justify-center items-center py-6 border-t-2 border-gray-300 shadow-t-xl space-x-4">
 
         <button *ngIf="currentStep != 1" (click)="prevStep()"
             class="flex items-center justify-center px-8 border-2 py-1 min-w-[150px] min-h-[40px]">
@@ -26,7 +25,7 @@
         </button>
 
         <button (click)="nextStep()"
-            class="bg-primary-color text-white items-center px-12  border-2 py-1 min-w-[150px] min-h-[40px]">
+            class="bg-primary-color text-white items-center px-12 border-2 py-1 min-w-[150px] min-h-[40px]">
             Next
         </button>
 
