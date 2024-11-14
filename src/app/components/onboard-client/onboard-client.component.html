@@ -25,11 +25,11 @@
     <!-- Sticky Bottom Navigation Bar -->
     <div class="sticky-footer flex justify-center items-center py-6 shadow-top-custom space-x-4 bg-white">
         <button *ngIf="currentStep != 1" (click)="prevStep()"
-                class="flex items-center justify-center px-8 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-black">
+                class="sm:text-[26px] text-[20px] flex items-center justify-center px-8 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-black">
             Back
         </button>
         <button (click)="nextStep()"
-                class="bg-primary-color text-white items-center px-12 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-none">
+                class="sm:text-[26px] text-[20px] bg-primary-color text-white items-center px-12 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-none">
             Next
         </button>
     </div>
