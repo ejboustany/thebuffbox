@@ -9,6 +9,7 @@ import { TypesService } from 'src/app/services/types.service';
 })
 export class OnboardingExerciseStep1Component {
   @Input() quiz: any;
+  @Input() progress: string = "7%";
   execiseTypes: any;
   exerciseFrequencies: any;
   fitnessGoals: any;

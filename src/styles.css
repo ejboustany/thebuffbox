@@ -15,6 +15,24 @@
   background: linear-gradient(90deg, #ECA741, #F05D23);
 }
 
-.bg-progress-bar {
-  background: linear-gradient(90deg, #B3B3B3, #585757);
+/* .bg-progress-bar {
+  background: linear-gradient(90deg, #ecebeb, #949191);
+} */
+
+.gradient-36deg {
+  background: linear-gradient(36deg, #ececec, #c7c6c6);
 }
+
+  /* Bottom shadow for the progress bar container */
+  .shadow-bottom {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Customize the shadow for the bottom */
+  }
+
+  /* Inner shadows and other styles remain as they are */
+  .shadow-inner-tunnel {
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.15), inset 0 -4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-tunnel-inner {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  }

@@ -12,6 +12,7 @@ export class OnboardingProteinMixStep9Component implements OnInit {
   }
   @Input() quiz: any;
   proteinMixes: any;
+  @Input() progress: string = "7%";
 
   constructor(private typesServeice: TypesService) { }
 

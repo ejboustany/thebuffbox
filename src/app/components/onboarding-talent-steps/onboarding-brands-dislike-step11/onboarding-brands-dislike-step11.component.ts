@@ -11,6 +11,8 @@ export class OnboardingBrandsDislikeStep11Component implements OnInit {
       this.chips = this.quiz.dislikedBrands.split(",");
     }
   }
+
+  @Input() progress: string = "7%";
   @Input() quiz: any;
 
   searchTerm: string = '';

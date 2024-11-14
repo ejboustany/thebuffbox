@@ -1,10 +1,8 @@
 <p class="flex justify-center pb-4 font-bold text-black sm:text-[26px]">{{!maxSelection ? "Select All That Apply" : "Select up to " + maxSelection}}</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
   <ng-container *ngFor="let enum of enumValues">
     <label
-      class="flex flex-col items-center justify-center py-2 cursor-pointer text-black shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]
-
-
+      class="flex flex-col items-center justify-center py-2 cursor-pointer text-black shadow-[rgba(0,0,0,0.25)_4px_8px_12px_4px]
 
       transition-colors font-bold sm:text-[26px] sm:min-w-[271px] sm:max-w-[271px] sm:h-[73px] min-w-[270px] max-w-[361px] h-[47px] text-[20px]"
       [class.bg-black]="isChecked(enum)"

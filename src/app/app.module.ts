@@ -36,6 +36,7 @@ import { OnboardingRegisterStep12Component } from './components/onboarding-talen
 import { OnboardingResultsStep13Component } from './components/onboarding-talent-steps/onboarding-results-step13/onboarding-results-step13.component';
 import { CheckoxImgButtonComponent } from './components/elements/checkox-img-button/checkox-img-button.component';
 import { LastCharactersPipe } from './pipes/take-characters.pipe';
+import { QuizProgressBarComponent } from './components/elements/quiz-progress-bar/quiz-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { LastCharactersPipe } from './pipes/take-characters.pipe';
     OnboardingBrandsDislikeStep11Component,
     OnboardingRegisterStep12Component,
     OnboardingResultsStep13Component,
-    LastCharactersPipe
+    LastCharactersPipe,
+    QuizProgressBarComponent
   ],
   exports: [LastCharactersPipe],
   imports: [

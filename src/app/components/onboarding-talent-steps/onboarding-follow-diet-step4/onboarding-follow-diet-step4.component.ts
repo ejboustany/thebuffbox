@@ -9,7 +9,7 @@ import { TypesService } from 'src/app/services/types.service';
 export class OnboardingFollowDietStep4Component {
   @Input() quiz: any;
   dietaryPreferences : any;
-  
+  @Input() progress: string = "7%";
   ageRange: number[] = Array.from({ length: 100 }, (_, i) => i + 1); // Ages 1 to 100
   constructor(private typesServeice: TypesService) { }
 

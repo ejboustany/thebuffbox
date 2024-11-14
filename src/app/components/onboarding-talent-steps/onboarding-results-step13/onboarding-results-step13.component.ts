@@ -1,3 +1,4 @@
+import { ArrayType } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -8,6 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class OnboardingResultsStep13Component implements OnInit {
   @Input() quiz: any;
+  @Input() progress: string = '7%';
   products: any;
 
   constructor(private productService: ProductService) {

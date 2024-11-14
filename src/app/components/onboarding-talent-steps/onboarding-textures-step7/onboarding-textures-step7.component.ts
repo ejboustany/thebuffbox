@@ -10,6 +10,8 @@ export class OnboardingTexturesStep7Component {
   ngOnInit(): void {
     this.getTextures();
   }
+
+  @Input() progress: string = "7%";
   @Input() quiz: any;
   textures: any;
 

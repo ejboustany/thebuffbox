@@ -9,6 +9,7 @@ import { TypesService } from 'src/app/services/types.service';
 export class OnboardingFlavorsStep6Component implements OnInit {
   @Input() quiz: any;
   flavors:any;
+  @Input() progress: string = "7%";
   constructor(private typesServeice: TypesService) { }
   ngOnInit(): void {
     this.getFlavors();

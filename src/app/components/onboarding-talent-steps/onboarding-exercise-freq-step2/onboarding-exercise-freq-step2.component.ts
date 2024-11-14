@@ -7,30 +7,10 @@ import { TypesService } from 'src/app/services/types.service';
   styleUrls: ['./onboarding-exercise-freq-step2.component.css']
 })
 export class OnboardingExerciseFreqStep2Component {
-  dietaryPreferences : any;
-  dietaryRestrictions:any;
   exerciseFrequencies: any;
-  flavors:any;
+  @Input() progress: string = "7%";
   @Input() quiz: any;
   constructor(private typesServeice: TypesService) { }
-
-  getFitnessGoals() {
-    return this.typesServeice.dietaryPreferences().subscribe((res: any) => {
-      this.dietaryPreferences = res;
-    });
-  }
-
-  getRestrictions() {
-    return this.typesServeice.restrictions().subscribe((res: any) => {
-      this.dietaryRestrictions = res;
-    });
-  }
-
-  getFlavors() {
-    return this.typesServeice.flavors().subscribe((res: any) => {
-      this.flavors = res;
-    });
-  }
 
   ngOnInit(): void {
     this.getExerciseFrequencies();

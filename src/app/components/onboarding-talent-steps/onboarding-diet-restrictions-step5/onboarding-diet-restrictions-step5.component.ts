@@ -10,7 +10,7 @@ import { TypesService } from 'src/app/services/types.service';
 export class OnboardingDietRestrictionsStep5Component implements OnInit {
   @Input() quiz: any;
   products: any;
-
+  @Input() progress: string = "7%";
   dietaryRestrictions:any;
   constructor(private typesService: TypesService){
 
