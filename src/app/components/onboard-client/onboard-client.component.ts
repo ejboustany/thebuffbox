@@ -24,7 +24,7 @@ export class OnboardClientComponent {
     fitnessGoals: [],
     lifestylePerformanceGoals: [],
     dietaryPreferences: [],
-    dislikedBrands: "",
+    dislikedBrands: [],
     dietaryRestrictions: [],
     brandUsages: [],
     proteinMixes: [],

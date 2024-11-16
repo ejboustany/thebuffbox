@@ -13,7 +13,7 @@ export class Quiz extends Base   {
     usedProteinBefore: boolean | null;
     proteinMixes: any[] = [];
     brandUsages: any[] = [];
-    dislikedBrands: string;
+    dislikedBrands: any[] = [];
     profileInfo: Identity;
     orderId: number;
 }

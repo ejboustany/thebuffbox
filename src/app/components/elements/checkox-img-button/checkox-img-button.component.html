@@ -6,8 +6,9 @@
       class="flex flex-col items-center justify-center cursor-pointer text-black shadow-md
       transition-colors font-bold text-[20px] sm:text-[26px] w-full h-40 sm:h-48 mx-auto shadow-[rgba(0,0,0,0.1)_2px_4px_6px_2px]"
       [class.text-white]="isChecked(enum)"
-      [class.border-black]="isChecked(enum)"
-      [class.border-8]="isChecked(enum)">
+      [class.border-black]="!isLiked(enum) && isChecked(enum)"
+      [class.border-8]="isLiked(enum) || isChecked(enum)"
+      [class.border-green-500]="isLiked(enum)">
       
       <!-- Image above the label -->
       <img *ngIf="enum.img && enum.img != '' && enum.img != null"
@@ -19,10 +20,11 @@
         type="checkbox"
         (change)="onChange(enum)"
         [checked]="isChecked(enum)"
+        [disabled]="isLiked(enum)"
         class="hidden" />
         
       <!-- Label text -->
-      <span class="w-full text-center mt-auto py-2" [class.bg-black]="enum.img && isChecked(enum)">
+      <span class="w-full text-center mt-auto py-2" [class.bg-black]="!isLiked(enum) && enum.img && isChecked(enum)" [class.bg-green-500]="isLiked(enum)">
         {{ enum.displayName }}
       </span>
     </label>

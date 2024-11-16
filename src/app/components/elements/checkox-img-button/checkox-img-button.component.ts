@@ -8,7 +8,8 @@ import { Component, Input } from '@angular/core';
 export class CheckoxImgButtonComponent {
   @Input() enumValues: { displayName: string; value: any; img: string; isChecked: boolean }[];
   @Input() selectedValues: any[] = []; // Bind selected values as an array
-
+  @Input() prevLikedValues: any[] = [];
+  
   onChange(value: any) {
     value.isChecked = !value.isChecked ?? false;
     if (value.isChecked && !this.selectedValues.includes(value.id)) {
@@ -31,5 +32,10 @@ export class CheckoxImgButtonComponent {
 
   isChecked(enumValue: any): boolean {
     return this.selectedValues.includes(enumValue.id);
+  }
+
+
+  isLiked(enumValue: any): boolean {
+    return this.prevLikedValues.includes(enumValue.id);
   }
 }

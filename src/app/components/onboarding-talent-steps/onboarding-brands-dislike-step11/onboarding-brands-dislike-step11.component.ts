@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TypesService } from 'src/app/services/types.service';
 
 @Component({
   selector: 'app-onboarding-brands-dislike-step11',
@@ -6,32 +7,20 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrl: './onboarding-brands-dislike-step11.component.css'
 })
 export class OnboardingBrandsDislikeStep11Component implements OnInit {
-  ngOnInit(): void {
-    if(this.quiz.dislikedBrands != "" && this.quiz.dislikedBrands != null){
-      this.chips = this.quiz.dislikedBrands.split(",");
-    }
-  }
-
-  @Input() progress: string = "7%";
+  proteinBrands: any;
   @Input() quiz: any;
+  @Input() progress: string = "7%";
+  constructor(private typesServeice: TypesService) {
 
-  searchTerm: string = '';
-  chips: string[] = [];
-
-  addChip(): void {
-    if (this.searchTerm.trim()) {
-      this.chips.push(this.searchTerm.trim());
-      this.searchTerm = ''; // Clear input
-
-      this.quiz.dislikedBrands = this.getChipsAsString();
-    }
   }
 
-  removeChip(index: number): void {
-    this.chips.splice(index, 1);
+  ngOnInit(): void {
+    this.getProteinBrands();
   }
 
-  getChipsAsString(): string {
-    return this.chips.join(',');
+  getProteinBrands() {
+    return this.typesServeice.proteinBrands().subscribe((res: any) => {
+      this.proteinBrands = res;
+    });
   }
 }

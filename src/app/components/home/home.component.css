@@ -1,3 +1,7 @@
 .highlight-green-bg {
     background-color: rgb(71 253 161);
 }
+
+.hero-bg-image {
+    background-image: url('/assets/buffbox-box.png');
+}

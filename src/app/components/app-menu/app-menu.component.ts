@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './app-menu.component.css'
 })
 export class AppMenuComponent {
-  isMenuOpen: boolean = false; // Initial state of the menu
+  isDropdownOpen = false;
 
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen; // Toggle the menu state
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }
