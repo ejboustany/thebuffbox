@@ -16,4 +16,6 @@ export class Quiz extends Base   {
     dislikedBrands: any[] = [];
     profileInfo: Identity;
     orderId: number;
+    password: any;
+    confirmPassword: any;
 }

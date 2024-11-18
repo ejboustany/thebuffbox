@@ -6,30 +6,49 @@
     <div class="flex-grow overflow-y-auto">
         <!-- Steps Content -->
         <div class="sm:mx-auto w-full">
-            <app-onboarding-exercise-step1 [quiz]="quiz" *ngIf="currentStep === 1" [progress]="'7%'"></app-onboarding-exercise-step1>
-            <app-onboarding-exercise-freq-step2 [quiz]="quiz" *ngIf="currentStep === 2" [progress]="'14%'"></app-onboarding-exercise-freq-step2>
-            <app-onboarding-fitness-goal-step3 [quiz]="quiz" *ngIf="currentStep === 3" [progress]="'21%'"></app-onboarding-fitness-goal-step3>
-            <app-onboarding-follow-diet-step4 *ngIf="currentStep === 4" [quiz]="quiz" [progress]="'28%'"></app-onboarding-follow-diet-step4>
-            <app-onboarding-diet-restrictions-step5 [quiz]="quiz" *ngIf="currentStep === 5" [progress]="'35%'"></app-onboarding-diet-restrictions-step5>
-            <app-onboarding-flavors-step6 [quiz]="quiz" *ngIf="currentStep === 6" [progress]="'42%'"></app-onboarding-flavors-step6>
-            <app-onboarding-textures-step7 [quiz]="quiz" *ngIf="currentStep === 7" [progress]="'49%'"></app-onboarding-textures-step7>
-            <app-onboarding-tried-protein-step8 [quiz]="quiz" *ngIf="currentStep === 8" [progress]="'56%'"></app-onboarding-tried-protein-step8>
-            <app-onboarding-protein-mix-step9 [quiz]="quiz" *ngIf="currentStep === 9" [progress]="'63%'"></app-onboarding-protein-mix-step9>
-            <app-onboarding-brands-step10 [quiz]="quiz" *ngIf="currentStep === 10" [progress]="'70%'"></app-onboarding-brands-step10>
-            <app-onboarding-brands-dislike-step11 [quiz]="quiz" *ngIf="currentStep === 11" [progress]="'78%'"></app-onboarding-brands-dislike-step11>
-            <app-onboarding-register-step12 [quiz]="quiz" *ngIf="currentStep === 12" [progress]="'88%'"></app-onboarding-register-step12>
-            <app-onboarding-results-step13 [quiz]="quiz" *ngIf="currentStep === 13" [progress]="'95%'"></app-onboarding-results-step13>
+            <app-onboarding-exercise-step1 [quiz]="quiz" *ngIf="currentStep === 1"
+                [progress]="'7%'"></app-onboarding-exercise-step1>
+            <app-onboarding-exercise-freq-step2 [quiz]="quiz" *ngIf="currentStep === 2"
+                [progress]="'14%'"></app-onboarding-exercise-freq-step2>
+            <app-onboarding-fitness-goal-step3 [quiz]="quiz" *ngIf="currentStep === 3"
+                [progress]="'21%'"></app-onboarding-fitness-goal-step3>
+            <app-onboarding-follow-diet-step4 *ngIf="currentStep === 4" [quiz]="quiz"
+                [progress]="'28%'"></app-onboarding-follow-diet-step4>
+            <app-onboarding-diet-restrictions-step5 [quiz]="quiz" *ngIf="currentStep === 5"
+                [progress]="'35%'"></app-onboarding-diet-restrictions-step5>
+            <app-onboarding-flavors-step6 [quiz]="quiz" *ngIf="currentStep === 6"
+                [progress]="'42%'"></app-onboarding-flavors-step6>
+            <app-onboarding-textures-step7 [quiz]="quiz" *ngIf="currentStep === 7"
+                [progress]="'49%'"></app-onboarding-textures-step7>
+            <app-onboarding-tried-protein-step8 [quiz]="quiz" *ngIf="currentStep === 8"
+                [progress]="'56%'"></app-onboarding-tried-protein-step8>
+            <app-onboarding-protein-mix-step9 [quiz]="quiz" *ngIf="currentStep === 9"
+                [progress]="'63%'"></app-onboarding-protein-mix-step9>
+            <app-onboarding-brands-step10 [quiz]="quiz" *ngIf="currentStep === 10"
+                [progress]="'70%'"></app-onboarding-brands-step10>
+            <app-onboarding-brands-dislike-step11 [quiz]="quiz" *ngIf="currentStep === 11"
+                [progress]="'78%'"></app-onboarding-brands-dislike-step11>
+            <app-onboarding-register-step12 [quiz]="quiz" *ngIf="currentStep === 12"
+                [progress]="'88%'"></app-onboarding-register-step12>
+            <app-onboarding-results-step13 [quiz]="quiz" *ngIf="currentStep === 13"
+                [progress]="'95%'"></app-onboarding-results-step13>
         </div>
     </div>
 
     <!-- Sticky Bottom Navigation Bar -->
     <div class="sticky-footer flex justify-center items-center py-6 shadow-top-custom space-x-4 bg-white">
         <button *ngIf="currentStep != 1" (click)="prevStep()"
-                class="sm:text-[26px] text-[20px] flex items-center justify-center px-8 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-black">
+            class="sm:text-[26px] text-[20px] flex items-center justify-center px-8 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-black">
             Back
         </button>
-        <button (click)="nextStep()"
-                class="sm:text-[26px] text-[20px] bg-primary-color text-white items-center px-12 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-none">
+        <button (click)="nextStep()" [disabled]="(currentStep == 12 && (!quiz.profileInfo.emailAddress || quiz.profileInfo.emailAddress == '' || !quiz.password || quiz.password == '' || quiz.confirmPassword == '')) || 
+                    (currentStep == 6 && (!quiz.flavors || quiz.flavors.length == 0))" [ngClass]="{
+          'bg-primary-color text-white cursor-pointer': !((currentStep == 12 && (!quiz.profileInfo.emailAddress || quiz.profileInfo.emailAddress == '' || !quiz.password || quiz.password == '' || quiz.confirmPassword == '')) || 
+          (currentStep == 6 && (!quiz.flavors || quiz.flavors.length == 0))),
+          'bg-gray-300 text-gray-500 cursor-not-allowed': ((currentStep == 12 && (!quiz.profileInfo.emailAddress || quiz.profileInfo.emailAddress == '' || !quiz.password || quiz.password == '' || quiz.confirmPassword == '')) || 
+          (currentStep == 6 && (!quiz.flavors || quiz.flavors.length == 0)))
+        }"
+            class="sm:text-[26px] text-[20px] items-center px-12 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-none">
             Next
         </button>
     </div>

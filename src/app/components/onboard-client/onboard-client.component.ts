@@ -32,7 +32,9 @@ export class OnboardClientComponent {
     textures: [],
     usedProteinBefore: null,
     profileInfo: new Identity(),
-    orderId: 0
+    orderId: 0,
+    password: "",
+    confirmPassword: ""
   };
 
   constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private quizService: QuizService) {
