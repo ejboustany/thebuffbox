@@ -1,9 +1,9 @@
 <nav class="sticky top-0 bg-white z-50 shadow-md">
-  <div class="mx-auto px-6 lg:px-32">
+  <div class="mx-auto px-6 lg:px-48">
     <div class="flex h-[80px] justify-between">
       <div class="flex">
         <div class="flex shrink-0 items-center">
-          <a routerLink="/">
+          <a href="/">
             <img class="sm:h-7 h-6 w-auto" src="../../../assets/Buffbox_Wordmark.svg" alt="Your Company">
           </a>
         </div>
@@ -21,8 +21,9 @@
         <!-- Desktop Menu -->
         <div class="hidden md:ml-4 md:flex md:shrink-0 md:items-center">
           <div class="relative hidden md:ml-6 md:flex md:items-center md:space-x-12">
-            <a routerLink="/take-quiz/1" class="text-[22px] px-3 py-2 font-bold text-black">Get Started</a>
-            <a href="#how-it-works" class="text-[22px] px-3 py-2 text-black">How It Works</a>
+            <a routerLink="/take-quiz/1" class="text-[22px] px-3 py-2 font-bold text-black" [ngClass]="{'gradient-border': !isHowItWorksActive}" >Get Started</a>
+            <a href="#how-it-works"   [ngClass]="{'gradient-border': isHowItWorksActive}" 
+            (click)="scrollToSection('how-it-works')" class="text-[22px] px-3 py-2 text-black">How It Works</a>
             <a routerLink="/login" class="text-[22px] px-3 py-2 text-black">Log In</a>
           </div>
         </div>
@@ -33,8 +34,9 @@
   <!-- Mobile menu, show/hide based on menu state -->
   <div class="md:hidden" [ngClass]="{'hidden': !isDropdownOpen}">
     <div class="space-y-4 px-6 pb-3 pt-4 sm:px-3">
-      <a routerLink="/take-quiz/1" class="block text-xl font-bold text-black">Get Started</a>
-      <a href="#how-it-works" class="block text-xl font-bold text-black">How It Works</a>
+      <a routerLink="/take-quiz/1" class="block text-xl font-bold text-black" [ngClass]="{'gradient-border': !isHowItWorksActive}" >Get Started</a>
+      <a href="#how-it-works"   [ngClass]="{'gradient-border': isHowItWorksActive}" 
+      (click)="scrollToSection('how-it-works')" class="block text-xl font-bold text-black">How It Works</a>
       <a routerLink="/login" class="block text-xl font-bold text-black">Log In</a>
     </div>
   </div>

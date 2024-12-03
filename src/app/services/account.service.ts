@@ -119,4 +119,9 @@ export class AccountService {
         const url = this.apiUrl + "/Identity/SaveImage";
         return this.apiCallService.post(url, user);
     }
+
+    sendContact(contact: any) {
+        const url = environment.api + "/contact/SendContactEmail";
+        return this.apiCallService.post(url, contact);
+    }
 }

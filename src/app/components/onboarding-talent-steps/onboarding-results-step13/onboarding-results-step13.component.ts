@@ -1,5 +1,6 @@
 import { ArrayType } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class OnboardingResultsStep13Component implements OnInit {
   @Input() progress: string = '7%';
   products: any;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private router: Router) {
 
   }
 
@@ -25,5 +26,9 @@ export class OnboardingResultsStep13Component implements OnInit {
       this.products = res.products;
       this.quiz.orderId = res.orderId;
     });
+  }
+
+  checkout(){
+    this.router.navigate(['/checkout/' + this.quiz.orderId]);
   }
 }

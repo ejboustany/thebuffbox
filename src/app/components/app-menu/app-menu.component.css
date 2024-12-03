@@ -1,0 +1,5 @@
+.gradient-border {
+    border-top: 6px solid transparent; /* Set the border width for the top */
+    border-image: linear-gradient(90deg, #ECA741, #F05D23) 1;
+    display: inline-block; /* Ensure the element respects the padding */
+  }
