@@ -12,7 +12,7 @@
 }
 
 .bg-progress-bar-fill {
-  background: linear-gradient(90deg, #ECA741, #F05D23);
+  background: linear-gradient(90deg,#F05D23 ,  #ECA741);
 }
 
 /* .bg-progress-bar {

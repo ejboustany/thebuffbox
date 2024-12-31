@@ -1,0 +1,45 @@
+<app-quiz-progress-bar [progress]="progress"></app-quiz-progress-bar>
+
+<div class="mx-auto  px-8 -mt-12 sm:py-0 py-8">
+    <div class="mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6  lg:grid-cols-4">
+
+            <div *ngFor="let product of products">
+                <div class="group relative flex flex-col overflow-hidden "
+                [ngStyle]="{
+                    'background-image': 'url(' + '/assets/flavor-bg/' + product.flavorBgImageName + ')',
+                    'background-size': 'contain',
+                    'background-repeat': 'no-repeat',
+                    'background-position': 'center',
+                    'height': '465px' 
+                  }"
+                >
+                <img [src]="product.image.originalPath"   class="mt-48 object-contain max-w-full h-[286px]">
+            </div>
+            
+
+                <div class="flex flex-col space-y-2 justify-center text-center">
+                    <p class="font-bold text-black text-[30px]">
+                        {{product.brandText}}
+                    </p>
+                    <p class=" text-black text-[25px]">
+                        {{product.flavorSubCategoryText}}
+                    </p>
+                    <p  class=" text-black text-[14px]">{{product.description}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <div class="flex flex-col items-center gap-y-4 pt-6">
+        <a (click)="checkout()"
+            class="cursor-pointer bg-gradient-to-r from-[#F9A438] to-[#F05E23] rounded-md px-6 h-[50px] sm:h-[60px] text-[18px]
+                 sm:text-[20px] font-semibold text-center flex items-center justify-center w-64 text-white shadow-sm">
+            Continue
+        </a>
+        <p class="text-sm flex text-center justify-center w-64"> Please note: this purchase is for sample packets, not full-size tubs.</p>
+    </div> -->
+    
+    
+</div>

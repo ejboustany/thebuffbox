@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { environment } from 'src/app/environments/environment';
@@ -11,32 +11,26 @@ import { AccountService } from 'src/app/services/account.service';
   templateUrl: './inside-menu.component.html',
   styleUrl: './inside-menu.component.css'
 })
-export class InsideMenuComponent implements OnInit{
-  user: Identity;
+export class InsideMenuComponent  implements OnInit {
+  isDropdownOpen = false;
+  @Input() allowClosing: boolean = false;
 
-  constructor(private accountService: AccountService, private _ngZone: NgZone, private router: Router, private dialog: MatDialog){
-    accountService.setApiUrl(environment.api);
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
+
+  isHowItWorksActive = false;
 
   ngOnInit(): void {
-    if (this.accountService.getToken()) {
-      this.accountService.getUserInfo().subscribe();
+    // this.trackSectionVisibility();
+  }
+
+  scrollToSection(id: string): void {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      this.isHowItWorksActive = true;
     }
-    this.accountService.auth.subscribe((res: AuthenticationInfo) => {
-      this.user = res?.identity;
-    });
-  }
-
-  public logout(){
-    this.accountService.logout();
-    this._ngZone.run(() => {
-      this.router.navigate(['/']).then(() => window.location.reload());
-    })
-  }
-
-  isMenuOpen = false;
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
   }
 
 }

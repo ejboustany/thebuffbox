@@ -35,6 +35,9 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  inputValue: string = '';
+
+
   async ngOnInit() {
     Stripe = await loadStripe('pk_test_51OKudgHBiPwJgahsQu1sSsFrRuqF0SZjVjdaA9yC95MprKlXd2wjZs7q0a7c3JSyjT75zyoIZWzzCSLX53wKflo500nBm6EFJp'); // Replace with your publishable key
 
