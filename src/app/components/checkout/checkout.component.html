@@ -60,7 +60,7 @@
             <!-- Address Line #1 -->
             <div class="flex-1">
               <div class="relative">
-                <input type="text" id="address-line-1"
+                <input type="text" id="address-line-1"  name="address-line-1"
                   class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
                   placeholder=" " [(ngModel)]="order.identity.shippingAddress.street" />
                 <label for="address-line-1" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
@@ -73,7 +73,7 @@
             <!-- Address Line #2 -->
             <div class="flex-1">
               <div class="relative">
-                <input type="text" id="address-line-2"
+                <input type="text" id="address-line-2"  name="address-line-2"
                   class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
                   placeholder=" " [(ngModel)]="order.identity.shippingAddress.street2" />
                 <label for="address-line-2" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
@@ -89,7 +89,7 @@
             <div class="flex-1">
 
               <div class="relative">
-                <input type="text" id="city-field"
+                <input type="text" id="city-field"  name="city"
                   class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
                   placeholder=" " [(ngModel)]="order.identity.shippingAddress.city" />
                 <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
@@ -102,7 +102,7 @@
             <div class="flex-1">
 
               <div class="relative">
-                <input type="text" id="state-field"
+                <input type="text" id="state-field"  name="state"
                   class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
                   placeholder=" " [(ngModel)]="order.identity.shippingAddress.state" />
                 <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
@@ -114,7 +114,7 @@
 
             <div class="flex-1">
               <div class="relative">
-                <input type="text" id="code-field"
+                <input type="text" id="code-field"  name="zip"
                   class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
                   placeholder=" " [(ngModel)]="order.identity.shippingAddress.postalCode" />
                 <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 

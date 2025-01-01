@@ -12,4 +12,5 @@ export class Identity extends Base   {
     phoneNumber: number;
     address: Address;
     permissions: any;
+    shippingAddress: Address;
 }

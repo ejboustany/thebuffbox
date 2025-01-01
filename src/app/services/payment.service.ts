@@ -18,14 +18,14 @@ export class PaymentService {
         return this.apiCallService.post(url);
     }
 
-    createPaymentIntent(orderId: number) {
-        const url = environment.api + "/Payment/createPaymentIntent?orderId=" + orderId;
-        return this.apiCallService.post(url);
+    createPaymentIntent(orderId: number, paymentMethodId: string, planId: string, identity: any) {
+        const url = environment.api + "/Payment/createPaymentIntent?orderId=" + orderId + "&paymentMethodId=" + paymentMethodId + "&planId=" + planId;
+        return this.apiCallService.post(url, identity);
     }
 
-    verifyPayment(paymentId: string, identity: any) {
-        const url = environment.api + "/Payment/VerifyPayment?paymentIntent=" + paymentId;
-        return this.apiCallService.post(url, identity).pipe(
+    verifyPayment(paymentId: string, paymentMethodId: string) {
+        const url = environment.api + "/Payment/Subscribe?paymentIntent=" + paymentId + "&paymentMethodId="+paymentMethodId;
+        return this.apiCallService.post(url).pipe(
             map(data => {
                 localStorage.setItem("auth", data.token);
                 localStorage.setItem("authRefreshToken", data.refresh_token);

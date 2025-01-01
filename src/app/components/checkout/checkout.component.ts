@@ -16,7 +16,7 @@ export class CheckoutComponent implements OnInit {
   cardElement: StripeCardElement | null = null;
   clientSecret: string = '';
   orderId: number;
-  order: any = {};
+  order: any = { identity: { shippingAddress:{} } };
   constructor(private http: HttpClient, private paymentService: PaymentService, private route: ActivatedRoute, 
     private orderService: OrderService, private router: Router) {
     this.route.params.subscribe(params => {
@@ -30,7 +30,7 @@ export class CheckoutComponent implements OnInit {
       this.order = res;
 
       if (this.order.paymentStatus == null || this.order.paymentStatus == 3) {
-        this.createStripePayment();
+        //this.createStripePayment();
       }
     });
   }
@@ -48,27 +48,24 @@ export class CheckoutComponent implements OnInit {
         this.cardElement.mount('#card-element'); // Mount Stripe card element
       }
     }
-
-    // Fetch PaymentIntent client secret from the backend
-
   }
 
-  loadingPayment = false;
-  createStripePayment() {
-    this.loadingPayment = true;
+  // loadingPayment = false;
+  // createStripePayment() {
+  //   this.loadingPayment = true;
 
-    this.paymentService.createPaymentIntent(this.orderId).subscribe(
-      res => {
-        this.clientSecret = res.clientSecret;
-      },
-      error => {
-        // Handle API error here
-        console.error("API error:", error);
-        // Set loadingPayment to false in case of error
-        this.loadingPayment = false;
-      }
-    );
-  }
+  //   this.paymentService.createPaymentIntent(this.orderId).subscribe(
+  //     res => {
+  //       this.clientSecret = res.clientSecret;
+  //     },
+  //     error => {
+  //       // Handle API error here
+  //       console.error("API error:", error);
+  //       // Set loadingPayment to false in case of error
+  //       this.loadingPayment = false;
+  //     }
+  //   );
+  // }
 
 
   getCardStyle() {
@@ -84,31 +81,60 @@ export class CheckoutComponent implements OnInit {
 
   async handlePayment() {
     if (Stripe && this.cardElement) {
-      const { error, paymentIntent } = await Stripe.confirmCardPayment(this.clientSecret, {
-        payment_method: {
-          card: this.cardElement,
-          billing_details: { name: this.order.identityEmail },
-        },
+      const { paymentMethod, error } = await Stripe.createPaymentMethod({
+        type: 'card',
+        card: this.cardElement,
       });
+      
 
-      if (error) {
-        const errorMessage = document.getElementById('card-errors')!;
-        errorMessage.classList.remove('hidden');
-      } else if (paymentIntent?.status === 'succeeded') {
-        // Send payment status to backend for verification
-        console.log(this.order.identity);
-        this.paymentService.verifyPayment(paymentIntent.id, this.order.identity).subscribe(
-          res => {
-            this.router.navigate(["thank-you/" + this.order.id])
-          },
-          error => {
-            // Handle API error here
-            console.error("API error:", error);
-            // Set loadingPayment to false in case of error
-            this.loadingPayment = false;
-          }
-        );
+    const paymentMethodId = paymentMethod.id;
+
+    console.log(paymentMethod);
+    console.log(error);
+
+    const planId = 'your-plan-id'; // Replace with actual plan ID or subscription data
+    await this.paymentService.createPaymentIntent(this.orderId, paymentMethodId, planId, this.order.identity).subscribe(
+      res => {
+        this.clientSecret = res.clientSecret;
+
+        this.paymentService.verifyPayment(this.clientSecret, paymentMethodId).subscribe(
+              res => {
+                this.router.navigate(["thank-you/" + this.order.id])
+              },
+              error => {
+                // Handle API error here
+                console.error("API error:", error);
+                // Set loadingPayment to false in case of error
+              }
+            );
+      },
+      error => {
+        // Handle API error here
+        console.error("API error:", error);
       }
+    );
+
+      console.log(paymentMethod);
+      console.log(error);
+
+      // if (error) {
+      //   const errorMessage = document.getElementById('card-errors')!;
+      //   errorMessage.classList.remove('hidden');
+      // } else if (paymentIntent?.status === 'succeeded') {
+      //   // Send payment status to backend for verification
+      //   console.log(this.order.identity);
+      //   this.paymentService.verifyPayment(paymentIntent.id, this.order.identity).subscribe(
+      //     res => {
+      //       this.router.navigate(["thank-you/" + this.order.id])
+      //     },
+      //     error => {
+      //       // Handle API error here
+      //       console.error("API error:", error);
+      //       // Set loadingPayment to false in case of error
+      //       this.loadingPayment = false;
+      //     }
+      //   );
+      // }
     } else {
       alert('Stripe not initialized correctly.');
     }
