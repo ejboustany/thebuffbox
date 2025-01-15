@@ -12,4 +12,9 @@ export class ProductService {
         const url = environment.api + "/product/GetProductQuizResults";
         return this.apiCallService.post(url, quiz);
     }
+
+    getProductByQuiz(quizId: any) {
+        const url = environment.api + "/product/GetQuizProducts?quizId=" + quizId;
+        return this.apiCallService.get(url);
+    }
 }

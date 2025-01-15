@@ -1,3 +1,4 @@
+<app-app-menu [hideMenu]="true" ></app-app-menu>
 <app-quiz-progress-bar [progress]="progress"></app-quiz-progress-bar>
 
 <div class="mx-auto  px-8 -mt-12 sm:py-0 py-8">
@@ -32,14 +33,13 @@
         </div>
     </div>
 
-    <!-- <div class="flex flex-col items-center gap-y-4 pt-6">
-        <a (click)="checkout()"
+    <div class="sticky-footer flex flex-col justify-center items-center py-6 shadow-top-custom space-x-4 bg-white gap-y-2">
+        <a [routerLink]="'/subscribe/' + quiz.orderId"
             class="cursor-pointer bg-gradient-to-r from-[#F9A438] to-[#F05E23] rounded-md px-6 h-[50px] sm:h-[60px] text-[18px]
                  sm:text-[20px] font-semibold text-center flex items-center justify-center w-64 text-white shadow-sm">
             Continue
         </a>
-        <p class="text-sm flex text-center justify-center w-64"> Please note: this purchase is for sample packets, not full-size tubs.</p>
-    </div> -->
-    
+        <p class="text-sm flex text-center justify-center w-80"> Please note: this purchase is for sample packets, not full-size tubs.</p>
+    </div>
     
 </div>

@@ -1,0 +1,12 @@
+.gradient-bg {
+    background: linear-gradient(to right, #F05E23, #ECA741);
+}
+
+.header {
+    background-color: #EAEAEA;
+    color: #878787 ;
+}
+
+.order-item-bg {
+    background-color: #F0F0F0;
+}

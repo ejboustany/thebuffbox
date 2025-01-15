@@ -1,0 +1,22 @@
+<app-inside-menu></app-inside-menu>
+
+<div class="flex items-center justify-center flex-col">
+    <div class="flex items-center justify-center py-6 flex-col max-w-sm text-center">
+        <p class="font-bold text-[23px] py-6">Payment Information</p>
+        <div class="flex items-center justify-between pb-4 w-full">
+            <div class="flex-1">
+                <img src="../../../assets/visa-icon.png" alt="Visa Icon">
+            </div>
+
+            <div class="text-[15px]">ending with <b>{{paymentInfo.last4Digits}}</b></div>
+        </div>
+        <div class="text-[15px]">Expiring <b>{{paymentInfo.expiryMonth}}/{{paymentInfo.expiryYear}}</b></div>
+    </div>
+
+    <div class="flex items-center justify-center  flex-col max-w-sm text-center">
+        <p class="font-bold text-[23px] py-6">Billing Address</p>
+        <div class="text-[20px]">{{user.firstName}} {{user.lastName}}</div>
+        <div class="text-[20px]">{{user.shippingAddress.street}}</div>
+        <div class="text-[20px]">{{user.shippingAddress.city}}, {{user.shippingAddress.postalCode}}</div>
+    </div>
+</div>

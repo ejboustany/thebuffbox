@@ -1,4 +1,4 @@
-<app-inside-menu [allowClosing]="true"></app-inside-menu>
+<app-inside-menu [allowClosing]="true" [showBottomMenu]="false"></app-inside-menu>
 
 <div class="max-w-2xl mx-auto sm:px-0 px-4">
   <div class="pb-24 pt-12">
@@ -7,21 +7,19 @@
     <form>
       <div>
         <div class="flex flex-col  justify-center items-center">
-          <img src="../../../assets/4-samplebox-border.png" alt="4 sampleb buffbox"
+          <img src="../../../assets/checkout-discover-plan.png" alt="4 sampleb buffbox"
             class="w-auto h-auto max-w-none pb-6">
-          <p class="text-[25px] font-bold text-gray-900 text-center pb-6">Buffbox</p>
-          <p class="text-[23px] font-medium text-gray-900 text-center pb-12">Includes 4 curated samples</p>
+          <p class="text-[25px] font-bold text-gray-900 text-center pb-6">Discover Plan</p>
+          <p class="text-[23px] font-medium text-gray-900 text-center pb-12">Includes Buffbox w/ 4 samples </p>
         </div>
 
         <div class="border-t border-gray-200 py-12">
           <h2 class="text-[23px] font-bold text-gray-900 text-center pb-4">Delivery Schedule</h2>
           <p class="text-center text-[23px] pb-2">Adjust how often a new tub is delivered</p>
-          <p class="text-center text-[12px] pb-6">Each tub is delivered one at a time. You'll receive all 4 tubs over
-            your delivery schedule</p>
+          <p class="text-center text-[12px] pb-6">(This can be changed in your account at any time)</p>
 
-          <app-delivery-tracker></app-delivery-tracker>
+          <app-delivery-tracker [selectedDay]="deliveryDuration"></app-delivery-tracker>
          
-          <p class="text-[12px] text-center pt-6">(This can be changed in your account at any time)</p>
         </div>
 
 
@@ -129,7 +127,7 @@
         <div class="border-t border-gray-200 py-12">
           <h2 class="text-[23px] font-bold text-gray-900 text-center pb-6">Payment Info</h2>
           <div class="mt-4">
-            <div id="card-element" class="p-3 border-2 border-gray-300 rounded-md shadow-sm mb-4 py-4 text-[16px]">
+            <div id="card-element" class="p-3 border-2 border-gray-300 rounded-md shadow-sm mb-8 py-4 text-[16px]">
             </div>
           </div>
         </div>
@@ -167,13 +165,13 @@
             <dl class="space-y-6  pb-6">
               <div class="flex items-center justify-between border-t border-gray-200 pt-6">
                 <dt class="text-[16px] font-medium">Total (USD)</dt>
-                <dd class="text-[16px] font-medium">${{order.total}}</dd>
+                <dd class="text-[16px] font-bold">${{order.total}}</dd>
               </div>
             </dl>
 
             <div class="py-6">
               <button (click)="handlePayment()" type="submit"
-                class="w-full rounded-xl bg-progress-bar-fill px-4 py-2 text-[25px] font-bold text-white 
+                class="w-full rounded-xl bg-progress-bar-fill px-4 py-2 text-[25px] font-bold text-black 
                 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50">Confirm order</button>
             </div>
           </div>

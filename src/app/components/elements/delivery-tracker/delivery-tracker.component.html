@@ -1,46 +1,54 @@
 <div class="py-2">
-    <div class="flex items-center text-center justify-center pb-2">
-      <!-- Step 1 Circle -->
-      <div class="flex items-center justify-center">
-        30 Days
-      </div>
-
-      <!-- Line between Steps -->
-      <div class="w-[88px] h-2 bg-white"></div>
-
-      <!-- Step 2 Circle -->
-      <div class="flex items-center justify-center">
-        45 Days
-      </div>
-
-      <!-- Line between Steps -->
-      <div class="w-[88px] h-2 bg-white"></div>
-
-      <!-- Step 3 Circle -->
-      <div class="flex items-center justify-center">
-        60 Days
-      </div>
+  <div class="flex items-center text-center justify-center pb-2">
+    <div class="flex items-center justify-center cursor-pointer" (click)="selectDay(0)">
+      30 Days
     </div>
-
-
-    <div class="flex items-center text-center justify-center">
-      <!-- Step 1 Circle -->
-      <div class="flex items-center justify-center w-10 h-10 rounded-full border-8 border-black text-black tracking-bg">
-      </div>
-
-      <!-- Line between Steps -->
-      <div class="w-28 h-2 bg-black"></div>
-
-      <!-- Step 2 Circle -->
-      <div class="flex items-center justify-center w-10 h-10 rounded-full border-8 border-black text-black">
-      </div>
-
-      <!-- Line between Steps -->
-      <div class="w-28 h-2 bg-black"></div>
-
-      <!-- Step 3 Circle -->
-      <div
-        class="flex items-center justify-center w-10 h-10 rounded-full border-8 border-black text-black ">
-      </div>
+    <div class="w-[88px] h-2 bg-white"></div>
+    <div class="flex items-center justify-center cursor-pointer" (click)="selectDay(1)">
+      45 Days
+    </div>
+    <div class="w-[88px] h-2 bg-white"></div>
+    <div class="flex items-center justify-center cursor-pointer" (click)="selectDay(2)">
+      60 Days
     </div>
   </div>
+
+  <div class="flex items-center text-center justify-center">
+    <!-- 30 Days Circle -->
+    <div
+      class="flex items-center justify-center w-10 h-10 rounded-full border-8  border-black cursor-pointer"
+      [ngClass]="{
+        'tracking-bg': selectedDay === 0,
+        'bg-white': selectedDay !== 0
+      }"
+      (click)="selectDay(0)"
+    >
+    </div>
+
+    <div class="w-28 h-2 bg-black"></div>
+
+    <!-- 45 Days Circle -->
+    <div
+      class="flex items-center justify-center w-10 h-10 rounded-full border-8 border-black cursor-pointer"
+      [ngClass]="{
+        'tracking-bg': selectedDay === 1,
+        'bg-white': selectedDay !== 1
+      }"
+      (click)="selectDay(1)"
+    >
+    </div>
+
+    <div class="w-28 h-2 bg-black"></div>
+
+    <!-- 60 Days Circle -->
+    <div
+      class="flex items-center justify-center w-10 h-10 rounded-full border-8 border-black cursor-pointer"
+      [ngClass]="{
+       'tracking-bg': selectedDay === 2,
+        'bg-white': selectedDay !== 2
+      }"
+      (click)="selectDay(2)"
+    >
+    </div>
+  </div>
+</div>

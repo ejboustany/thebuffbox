@@ -1,20 +1,5 @@
 <app-inside-menu></app-inside-menu>
 
-<nav class="flex justify-between items-center px-6 lg:px-56 py-6 border-b-2 shadown-lg">
-    <a routerLink="/profile" routerLinkActive="active px-1 !text-black"
-        class="inline-block text-center py-0.5 inactive font-bold relative text-[21px]">
-        Profile
-    </a>
-
-    <a routerLink="/membership" routerLinkActive="active px-1 !text-black"
-        class="inline-block text-center py-0.5 inactive font-bold relative text-[21px]">
-        Membership
-    </a>
-    <a routerLink="/billing" routerLinkActive="active px-1 !text-black"
-        class="inline-block text-center py-0.5 inactive font-bold relative text-[21px]">
-        Billing
-    </a>
-</nav>
 
 <div class="flex justify-center pt-8">
     <h1 class="font-bold text-[30px]">Account Info</h1>
@@ -22,34 +7,57 @@
 
 <div class="max-w-md mx-auto sm:px-0 px-4 pb-16 pt-6">
     <div class="flex flex-col gap-4">
-        <!-- First Name -->
-        <div class="flex-1">
-            <div class="relative">
-                <input type="text" id="username" name="username"
-                    class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                    placeholder=" " [(ngModel)]="user.emailAddress"/>
-                <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
-            peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                    Username
-                </label>
+
+          <div class="flex flex-col md:flex-row gap-4 gap-x-1 w-full">
+            <div class="flex-1">
+
+                <div class="relative">
+                    <input type="text" id="firstName" name="firstName" (ngModelChange)="onFieldChange()"
+                        class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
+                        placeholder=" " [(ngModel)]="user.firstName" />
+                    <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+              peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
+                        First Name
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex-1">
+
+                <div class="relative">
+                    <input type="text" id="last-name" name="last-name" (ngModelChange)="onFieldChange()"
+                        class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
+                        placeholder=" " [(ngModel)]="user.lastName"/>
+                    <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+              peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
+                        Last Name
+                    </label>
+                </div>
             </div>
         </div>
 
-        <div class="flex-1">
+          <div class="flex-1">
             <div class="relative">
-                <input type="email" id="email" name="email"
-                    class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                    placeholder=" " [(ngModel)]="user.emailAddress"/>
-                <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
-            peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                    Email
-                </label>
+              <input 
+                type="text" 
+                id="email" 
+                name="email"
+                class="peer w-full border-2 rounded-md p-2 pt-6 bg-gray-200 text-gray-500 cursor-not-allowed focus:outline-none focus:ring-0 focus:border-gray-300"
+                placeholder=" " 
+                [(ngModel)]="user.emailAddress"
+                [disabled]="true" />
+              <label 
+                for="email" 
+                class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+                peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
+                Email
+              </label>
             </div>
-        </div>
+          </div>
 
         <div class="flex-1">
             <div class="relative">
-                <input type="text" id="phone" name="phone"
+                <input type="text" id="phone" name="phone" (ngModelChange)="onFieldChange()"
                     class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
                     placeholder=" " [(ngModel)]="user.phoneNumber"/>
                 <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
@@ -63,7 +71,7 @@
             <div class="flex-1">
 
                 <div class="relative">
-                    <input type="text" id="age" name="age"
+                    <input type="number" id="age" name="age" (ngModelChange)="onFieldChange()"
                         class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
                         placeholder=" " [(ngModel)]="user.age" />
                     <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
@@ -76,7 +84,7 @@
             <div class="flex-1">
 
                 <div class="relative">
-                    <input type="text" id="zip-code" name="zip-code"
+                    <input type="text" id="zip-code" name="zip-code" (ngModelChange)="onFieldChange()"
                         class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
                         placeholder=" " [(ngModel)]="user.shippingAddress.postalCode"/>
                     <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
@@ -87,7 +95,19 @@
             </div>
         </div>
     </div>
-    <button class="update-info w-full py-2 my-4 rounded-xl font-bold text-[25px]">Update Info</button>
+    
+    <button
+    class="w-full py-2 my-4 rounded-xl font-bold text-[25px]"
+    [ngClass]="{
+      'bg-black text-white': !isDisabled,
+      'update-info cursor-not-allowed': isDisabled
+    }"
+    [disabled]="isDisabled"
+    (click)="save()"
+  >
+    Update Info
+  </button>
+  
 
     <button class="w-full py-2 rounded-xl font-bold text-black text-[25px] border-2 border-black">Change
         Password</button>
@@ -105,5 +125,7 @@
         <p class="text-[16px] py-4">Update your Buffbox quiz answers at any time! This include flavors, dietary restirctions, allergies, etc! </p>
     </div>
 
-    <button class="w-full py-2 rounded-xl font-bold text-black text-[25px] border-2 border-black">Change Preferences</button>
+    <button [routerLink]="'/take-quiz/1/' + user.quizId" class="w-full py-2 rounded-xl font-bold text-black text-[25px] border-2 border-black">Change Preferences</button>
+
+    <button [routerLink]="'/take-quiz/1/' + user.quizId" class="w-full py-2 rounded-xl font-bold text-black text-[25px] border-2 border-black my-6">Order History</button>
 </div>

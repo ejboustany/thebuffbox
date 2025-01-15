@@ -37,3 +37,11 @@
 .animate-scroll {
   animation: scroll 20s linear infinite;
 }
+
+.video-border {
+  border-radius: 16px;
+  border: 7px solid #000;
+}
+.bg-quiz-view{
+  background-color: #181818;
+}

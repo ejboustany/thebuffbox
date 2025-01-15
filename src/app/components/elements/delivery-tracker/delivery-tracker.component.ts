@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-delivery-tracker',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './delivery-tracker.component.css'
 })
 export class DeliveryTrackerComponent {
+  @Input() selectedDay: number = 0; // Default selected day
 
+  selectDay(day: number): void {
+    this.selectedDay = day;
+  }
 }

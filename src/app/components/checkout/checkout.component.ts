@@ -17,6 +17,8 @@ export class CheckoutComponent implements OnInit {
   clientSecret: string = '';
   orderId: number;
   order: any = { identity: { shippingAddress:{} } };
+  deliveryDuration: number = 0;
+
   constructor(private http: HttpClient, private paymentService: PaymentService, private route: ActivatedRoute, 
     private orderService: OrderService, private router: Router) {
     this.route.params.subscribe(params => {
@@ -28,15 +30,10 @@ export class CheckoutComponent implements OnInit {
   getCheckoutOrder(orderId: number) {
     return this.orderService.getCheckoutOrder(orderId).subscribe((res: any) => {
       this.order = res;
-
-      if (this.order.paymentStatus == null || this.order.paymentStatus == 3) {
-        //this.createStripePayment();
-      }
     });
   }
 
   inputValue: string = '';
-
 
   async ngOnInit() {
     Stripe = await loadStripe('pk_test_51OKudgHBiPwJgahsQu1sSsFrRuqF0SZjVjdaA9yC95MprKlXd2wjZs7q0a7c3JSyjT75zyoIZWzzCSLX53wKflo500nBm6EFJp'); // Replace with your publishable key
@@ -49,24 +46,6 @@ export class CheckoutComponent implements OnInit {
       }
     }
   }
-
-  // loadingPayment = false;
-  // createStripePayment() {
-  //   this.loadingPayment = true;
-
-  //   this.paymentService.createPaymentIntent(this.orderId).subscribe(
-  //     res => {
-  //       this.clientSecret = res.clientSecret;
-  //     },
-  //     error => {
-  //       // Handle API error here
-  //       console.error("API error:", error);
-  //       // Set loadingPayment to false in case of error
-  //       this.loadingPayment = false;
-  //     }
-  //   );
-  // }
-
 
   getCardStyle() {
     return {
@@ -85,21 +64,16 @@ export class CheckoutComponent implements OnInit {
         type: 'card',
         card: this.cardElement,
       });
-      
 
     const paymentMethodId = paymentMethod.id;
 
-    console.log(paymentMethod);
-    console.log(error);
-
-    const planId = 'your-plan-id'; // Replace with actual plan ID or subscription data
-    await this.paymentService.createPaymentIntent(this.orderId, paymentMethodId, planId, this.order.identity).subscribe(
+    await this.paymentService.createPaymentIntent(this.orderId, paymentMethodId, this.order.identity).subscribe(
       res => {
         this.clientSecret = res.clientSecret;
 
-        this.paymentService.verifyPayment(this.clientSecret, paymentMethodId).subscribe(
+        this.paymentService.verifyPayment(this.clientSecret, paymentMethodId, this.deliveryDuration, this.orderId).subscribe(
               res => {
-                this.router.navigate(["thank-you/" + this.order.id])
+                this.router.navigate(["profile"]);
               },
               error => {
                 // Handle API error here
@@ -113,28 +87,6 @@ export class CheckoutComponent implements OnInit {
         console.error("API error:", error);
       }
     );
-
-      console.log(paymentMethod);
-      console.log(error);
-
-      // if (error) {
-      //   const errorMessage = document.getElementById('card-errors')!;
-      //   errorMessage.classList.remove('hidden');
-      // } else if (paymentIntent?.status === 'succeeded') {
-      //   // Send payment status to backend for verification
-      //   console.log(this.order.identity);
-      //   this.paymentService.verifyPayment(paymentIntent.id, this.order.identity).subscribe(
-      //     res => {
-      //       this.router.navigate(["thank-you/" + this.order.id])
-      //     },
-      //     error => {
-      //       // Handle API error here
-      //       console.error("API error:", error);
-      //       // Set loadingPayment to false in case of error
-      //       this.loadingPayment = false;
-      //     }
-      //   );
-      // }
     } else {
       alert('Stripe not initialized correctly.');
     }

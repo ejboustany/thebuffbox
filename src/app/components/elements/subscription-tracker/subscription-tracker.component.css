@@ -1,0 +1,15 @@
+.step{
+    color: #CACACA;
+}
+
+.dash {
+     background-color: #CACACA;
+}
+
+.tracking-bg{
+    background: linear-gradient(to bottom, #F9A438, #F05E23);
+}
+
+.gap{
+    column-gap: 6px;
+}

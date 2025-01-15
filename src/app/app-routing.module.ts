@@ -10,6 +10,14 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { ThankyouComponent } from './components/quiz-steps/thankyou/thankyou.component';
 import { SubscriptionsLearnMoreComponent } from './components/subscriptions-learn-more/subscriptions-learn-more.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { OnboardingResultsStep13Component } from './components/quiz-steps/results-step13/results-step13.component';
+import { ChoosePlanStep14Component } from './components/quiz-steps/choose-plan-step14/choose-plan-step14.component';
+import { MembershipComponent } from './components/membership/membership.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { BillingComponent } from './components/billing/billing.component';
+import { CancelMembershipComponent } from './components/cancel-membership/cancel-membership.component';
+import { AdjustFrequencyComponent } from './components/adjust-frequency/adjust-frequency.component';
+import { CancelReasonComponent } from './components/cancel-reason/cancel-reason.component';
 
 
 const routes: Routes = [
@@ -17,12 +25,21 @@ const routes: Routes = [
   { path: 'login', component: SignInComponent },
   { path: 'register', component: SignUpComponent },
   { path: 'take-quiz/:step', component: QuizComponent },
+  { path: 'take-quiz/:step/:quizId', component: QuizComponent },
+  { path: 'result/:quizId', component: OnboardingResultsStep13Component, canActivate: [AuthGuard] },
+  { path: 'subscribe/:orderId', component: ChoosePlanStep14Component, canActivate: [AuthGuard] },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout/:orderId', component: CheckoutComponent },
   { path: 'verification/:code/:userId', component: EmailVerificationComponent },
   { path: 'thank-you/:orderId', component: ThankyouComponent, canActivate: [AuthGuard] },
   { path: 'subscriptions-learn-more', component: SubscriptionsLearnMoreComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'membership', component: MembershipComponent },
+  { path: 'shop', component: ShopComponent },
+  { path: 'billing', component: BillingComponent },
+  { path: 'cancel', component: CancelMembershipComponent },
+  { path: 'frequency', component: AdjustFrequencyComponent },
+  { path: 'cancel-reason', component: CancelReasonComponent }
 ];
 
 @NgModule({

@@ -1,158 +1,64 @@
-<!-- <div class="py-8 sm:py-16 px-8 bg-white">
-    <div class="flex justify-center text-center py-6">
-        <h1 class="text-[24px] font-semibold text-black sm:text-[45px]">Choose Your Fitness Plan</h1>
+<app-app-menu [hideMenu]="true"></app-app-menu>
+
+<div class="sm:px-0 px-6">
+    <div class="flex flex-col justify-center text-center pt-12 sm:pt-16">
+        <h1 class="text-[24px] font-bold text-black sm:text-[35px]">Find Your Perfect Supplement Every Time</h1>
+        <h3 class="text-[13px text-black pt-4">Cancel anytime. Only available in the U.S.</h3>
     </div>
-    <div class="bg-progress-bar-fill mx-auto rounded-xl flex flex-col lg:flex-row gap-2 lg:gap-x-16  sm:h-[319px] sm:py-0 py-6 justify-center">
-        
-        <div class=" flex flex-col lg:flex-row items-center gap-y-2 ">
-        
-            <div class=" flex flex-col items-center text-center lg:text-left gap-y-2 px-2">
-                <p class="text-[20px] font-semibold text-black sm:text-[25px]">Flex Plan</p>
-                <p class="font-medium text-black sm:text-[14px] text-center max-w-sm">
-                    10-15% off each single tub and sample new flavors with a personalized Buffbox before every delivery
-                </p>
-                <a routerLink="/subscriptions-learn-more" class="rounded-xl bg-black py-2.5 text-[25px] font-bold text-center sm:w-96 w-60 text-white shadow-sm mt-3 sm:mb-0 mb-6">
-                    Learn More
-                </a>
-            </div>
-        
-            <div class=" flex justify-center">
-                <div class="flex flex-row justify-center items-center gap-x-2">
-                    <img src="../../../../assets/flex-plan.png" alt="Image 2" class="object-cover rounded-lg">
+
+    <div class="flex items-center justify-center pb-4">
+        <section class="flex flex-col md:flex-row items-center justify-center pt-10 bg-white rounded-lg gap-x-12">
+            <div class="mt-2 sm:mt-8">
+                <p class="bg-max-border font-bold text-[14px] w-[352px] mb-4"><span class="ml-3">$14 Discover Plan</span></p>
+    
+                <div class="flex flex-col w-full mt-4">
+                    <div class="flex items-center mb-2">
+                        <!-- Icon -->
+                        <img src="../../../../assets/favicon.png" alt="Icon" class="w-4 h-4 mr-2">
+                    
+                        <!-- Text -->
+                        <p class="text-[20px] font-bold">Never Guess Again</p>
+                    </div>
+                    
+                    <p class="text-[13px] text-black w-full"><b>Curated sample packs</b> each designed around your <b>unique preferences</b></p>
                 </div>
-            </div>
-        </div>
+    
+                <div class="flex flex-col w-full mt-4">
+                    <div class="flex items-center mb-2">
+                        <!-- Icon -->
+                        <img src="../../../../assets/favicon.png" alt="Icon" class="w-4 h-4 mr-2">
+                    
+                        <!-- Text -->
+                        <p class="text-[20px] font-bold">Exclusive Discounts</p>
 
-     
-        <div class=" flex flex-col lg:flex-row items-center gap-y-2">
-            <div class="flex flex-col items-center text-center lg:text-left gap-y-2 px-2">
-                <p class="text-[20px] font-semibold text-black sm:text-[25px]">Max Plan</p>
-                <p class="font-medium text-black sm:text-[14px] text-center max-w-sm">
-                    Buy 4 get 1 free, save 30-35% each tub, and enjoy curated Buffox samples before each delivery
-                </p>
-                <a routerLink="/subscriptions-learn-more" class="rounded-xl bg-black py-2.5 text-[25px] font-bold text-center sm:w-96 w-60 text-white shadow-sm mt-3 sm:mb-0 mb-6">
-                    Learn More
-                </a>
-            </div>
-        
-            <div class=" flex justify-center">
-                <div class="flex flex-row justify-center items-center gap-x-2">
-                    <img src="../../../../assets/max-plan.png" alt="Image 2" class="object-cover rounded-lg">
+                    </div>
+                    <p class="text-[13px] text-black w-full"><b>Unlock 25-35% off tubs</b> from the best brands in our
+                        <b>member’s exclusive shop</b></p>
                 </div>
+    
+                <div class="flex flex-col w-full mt-4 mb-2">
+                    <div class="flex items-center mb-2">
+                        <!-- Icon -->
+                        <img src="../../../../assets/favicon.png" alt="Icon" class="w-4 h-4 mr-2">
+                    
+                        <!-- Text -->
+                        <p class="text-[20px] font-bold">Customize Anytime</p>
+
+                    </div>
+                    <p class="text-[13px] text-black mt-1 w-full"><b>Adjust preferences</b> whenever your <b>goals or tastes change</b></p>
+                </div>
+    
+                <button [routerLink]="'/checkout/' + orderId"
+                    class="bg-max-orange font-bold py-4 rounded-xl mt-6 text-[25px] w-[352px]">
+                    Next
+                </button>
             </div>
-        </div>
-    </div>
-
-    <div class="flex flex-col justify-center items-center py-12 gap-6">
-        <div class="flex items-center gap-x-2">
-            <div class="relative">
-                <input 
-                    type="radio" 
-                    id="buffboxOption" 
-                    name="buffbox" 
-                    class="peer absolute opacity-0 cursor-pointer"
-                    (click)="selectTheBuffbox()"
-                />
-                <div class="w-5 h-5 border-2 border-orange-500 rounded-full peer-checked:bg-black"></div>
+    
+            <div class="flex justify-center items-center text-center md:w-1/2 ">
+                <img src="../../../../assets/sample-box.png" alt="Sample Image"
+                    class="rounded-lg object-cover w-full h-full sm:pt-0 pt-6">
             </div>
-            <label for="buffboxOption" class="text-black text-[20px] sm:text-[25px]">No thanks, just the Buffbox</label>
-        </div>
-        <a [routerLink]="'/checkout/' + quiz.orderId" *ngIf="isSelected" class="rounded-xl bg-black py-2.5 text-[25px] 
-        font-bold text-center w-64 text-white shadow-sm mt-3 cursor-pointer">
-           Next
-        </a>
+        </section>
     </div>
-</div> -->
-
-<div class="flex justify-center text-center py-10">
-    <h1 class="text-[24px] font-semibold text-black sm:text-[45px]">Choose Your Fitness Plan</h1>
-</div>
-
-<div class="flex items-center justify-center  pb-2 sm:pb-10">
-
-
-    <section class="flex flex-col md:flex-row items-center justify-center pt-10 bg-white rounded-lg">
-        <div class="flex justify-center items-center text-center md:w-1/2">
-            <img src="../../../assets/learn-more-fuel-flex.png" alt="Sample Image"
-                class="rounded-lg object-cover w-full h-full pl-10 sm:pl-0">
-        </div>
-
-        <div class="w-full md:w-1/2 mt-6 md:mt-0 px-6">
-            <p class="border-4 bg-flex-border text-black rounded-2xl px-2 font-bold text-[14px]  py-0.5">Flex Plan</p>
-            <h2 class="text-[30px] font-bold mb-4 pb-2 pt-6 sm:pl-2">Stay Flexible</h2>
-            <ul class="list-disc pl-6 space-y-2 text-[13px]">
-                <li>
-                    Pay for <b>1 tub</b> and <b>Enjoy 10-15% off</b>
-                </li>
-                <li>
-                    <b>Receive free curated samples</b> before next tub
-                </li>
-                <li>
-                    <b>Adjust your preferences</b> if anything changes!
-                </li>
-                <li>
-                    <b>Flexible Delivery dates</b> that can be edited
-                </li>
-            </ul>
-            <button class="bg-flex-orange font-bold py-4 w-full rounded-xl mt-6 text-[25px]">
-                Get Flex Plan
-            </button>
-        </div>
-    </section>
-</div>
-
-<div class="flex items-center justify-center pb-4">
-    <section class="flex flex-col md:flex-row items-center justify-center pt-10 bg-white rounded-lg">
-        <div class="max-w-xl mt-8 sm:px-0 px-6 sm:pl-32">
-            <p class="bg-max-border border-4 text-black rounded-2xl px-2 font-bold text-[14px] ">Max Plan</p>
-            <h2 class="text-[30px] font-bold mb-4 pb-1 mt-8 ">Maximize Your Value</h2>
-            <ul class="list-disc pl-7 space-y-3 text-[13px]">
-                <li>
-                    Prepay for <b>4 Tubs</b> and Save <b>30-35% each tub </b>
-                </li>
-                <li>
-                    <b>Sample your favorite flavors & brands</b> before next tub
-                </li>
-                <li>
-                    <b>Buy 4-Get-1 Free</b>, you save 30-35% each time!
-                </li>
-                <li>
-                    <b> Adjust your preferences</b> anytime
-                </li>
-                <li>
-                    <b>Set and Forget</b> with flexible scheduling dates
-                </li>
-            </ul>
-      
-            <button class="bg-max-orange font-bold py-4 w-full rounded-xl mt-10 text-[25px]">
-                Get Max Plan
-            </button>
-        </div>
-
-        <div class="flex justify-center items-center text-center md:w-1/2 mb-8">
-            <img src="../../../assets/max-learn-more-fuel.png" alt="Sample Image"
-                class="rounded-lg object-cover w-full h-full sm:pt-0 pt-6">
-        </div>
-
-    </section>
-</div>
-
-<div class="flex flex-col justify-center items-center gap-6 py-8 sm:py-20">
-    <div class="flex items-center gap-x-2">
-        <div class="relative">
-            <input 
-                type="radio" 
-                id="buffboxOption" 
-                name="buffbox" 
-                class="peer absolute opacity-0 cursor-pointer"
-                (click)="selectTheBuffbox()"
-            />
-            <div class="w-5 h-5 border-2 border-orange-500 rounded-full peer-checked:bg-black"></div>
-        </div>
-        <label for="buffboxOption" class="text-black text-[20px] sm:text-[25px]">No thanks, just the Buffbox</label>
-    </div>
-    <a [routerLink]="'/checkout/' + quiz.orderId" *ngIf="isSelected" class="rounded-xl bg-black py-2.5 text-[25px] 
-    font-bold text-center w-64 text-white shadow-sm mt-3 cursor-pointer">
-       Next
-    </a>
+    
 </div>

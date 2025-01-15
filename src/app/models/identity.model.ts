@@ -9,8 +9,10 @@ export class Identity extends Base   {
     profilePicture: Image;
     about: string;
     age: number;
-    phoneNumber: number;
+    phoneNumber: string;
     address: Address;
     permissions: any;
     shippingAddress: Address;
+    quizId: number;
+    orderId: number;
 }

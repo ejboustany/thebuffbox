@@ -8,9 +8,32 @@
 
 
 .bg-max-orange {
-    background-color: #F05E23;
+    background: linear-gradient(to bottom, #F9A438 13%, #F05E23 100%);
 }
 
 .bg-max-border {
-    border-color: #F05E23;
+    position: relative;
+    border-radius: 10px; /* Rounded corners for the border */
+    padding: 8px; /* Adjust padding to create space inside */
+    background: #fff; /* White background for the inner content */
+    color: #000; /* Black text color */
+    z-index: 0; /* Ensure the content stays above the border */
+}
+
+.bg-max-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px; /* Match the parent border radius */
+    padding: 4px; /* Border thickness */
+    background: linear-gradient(to bottom, #F9A438, #F05E23); /* Gradient border */
+    z-index: -1; /* Place behind the content */
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0) border-box;
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
 }

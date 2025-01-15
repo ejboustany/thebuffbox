@@ -1,0 +1,193 @@
+<app-inside-menu></app-inside-menu>
+
+<div class="flex justify-center items-center">
+    <div class="py-6 w-full max-w-2xl sm:px-0 px-4">
+        <p class="gradient-bg py-2 w-full rounded-xl text-center font-bold text-[23px]">Discover Plan</p>
+   
+
+        <div class="flex flex-col items-center w-full mt-4 sm:mt-8 px-4">
+            <p class="font-bold text-[20px] text-center mb-2">
+                Your Cycle Begins!
+            </p>
+            <p class="text-[14px] text-gray-700 max-w-xs text-center mb-6 sm:mb-12">
+                We received your payment and started preparing your Buffbox journey. Stay tuned for your curated samples. 
+            </p>
+
+        </div>
+
+        <div class="flex flex-col items-center w-full">
+            <app-subscription-tracker></app-subscription-tracker>
+        </div>
+
+        <div class="pb-6 flex items-center justify-center pt-12">
+            <p class="text-[20px] font-bold">Your {{ subscription.billingCycleStartDate
+            | date: 'MMMM' }} Buffbox</p>
+        </div>
+        
+        <div class="flex justify-center gap-4 items-center text-center pb-10">
+            <div *ngFor="let orderItem of order.items" class="flex flex-col items-center gap-2">
+                <!-- Image container with background -->
+                <div class="order-item-bg flex justify-center items-center rounded-lg h-[210px]">
+                  <img [src]="orderItem.image.originalPath">
+                </div>
+                
+                <!-- Text below the background -->
+                <p class="text-[14px] font-semibold">{{ orderItem.brandName }}</p>
+                <p class="text-[12px]">{{ orderItem.productTitle }}</p>
+              </div>
+              
+        </div>
+        
+             <p class="py-3 w-full rounded-lg font-bold text-[14px] mt-4 px-2 header">Buffbox Membership</p>
+
+        <div class="mt-4 space-y-2">
+            <p class="text-[14px]"><b>Plan:</b> {{subscription.susbcriptionName}}, ${{subscription.price}} (Plus $1.99
+                handling)</p>
+            <p class="text-[14px]"><b>Delivery:</b> Buffbox w/ 4 samples Every {{subscription.deliveryScheduleDuration}} days</p>
+            <p class="text-[14px]"><b>Status:</b> {{subscription.statusName}}</p>
+            <p class="text-[14px]"><b>Next Renewal:</b> {{ subscription.isoutcNextBillingDate | date: 'MMM-yyyy' }}
+            </p>
+        </div>
+
+        <p class="text-[14px] mt-4">
+            You were successfully billed for {{ subscription.billingCycleStartDate
+            | date: 'MMMM' }} If you don’t want your Buffbox Subscription for {{ subscription.isoutcNextBillingDate | date:
+            'MMMM' }},
+            please update your membership before {{ subscription.isoutcNextBillingDate | date: 'hh:mm a' }} on {{
+            subscription.isoutcNextBillingDate | date: 'MMM-yyyy' }}.
+        </p>
+
+        <!-- <p class="py-3 w-full rounded-lg font-bold text-[14px] mt-8 px-2 header">Upcoming Events</p> -->
+
+        <div class="w-full h-[2px] mb-4 gradient-bg overflow-hidden mt-6">
+            <div class="bg-progress-bar-fill shadow-tunnel-inner h-full " [ngStyle]="{ 'width': 100 }"></div>
+        </div>
+
+        <div class="bg-white">
+            <a href="your-link-here" class="block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex-1">
+                        <p class="font-semibold text-[14px] text-start mb-2">
+                            Buy Tubs
+                        </p>
+                        <p class="text-[12px]  text-start mb-0">
+                            Ready to buy your next protein powder? Order from our store and enjoy exclusive discounts
+                        </p>
+                    </div>
+                    <svg class="w-16 h-16 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+            <div class="w-full h-[2px] mb-4 gradient-bg overflow-hidden ">
+                <div class="bg-progress-bar-fill shadow-tunnel-inner h-full " [ngStyle]="{ 'width': 100 }"></div>
+            </div>
+
+            <a [routerLink]="'/take-quiz/1/' + user.quizId" class="block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex-1">
+                        <p class="font-semibold text-[14px] text-start mb-2">
+                            Change Preferences
+                        </p>
+                        <p class="text-[12px] text-start mb-0">
+                            Buffbox samples are based on these preferences. Change flavor, diet, allergens, etc!
+                        </p>
+                    </div>
+                    <svg class="w-16 h-16 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+
+            <div class="w-full h-[2px] mb-4 gradient-bg overflow-hidden ">
+                <div class="bg-progress-bar-fill shadow-tunnel-inner h-full " [ngStyle]="{ 'width': 100 }"></div>
+            </div>
+
+            <a href="your-link-here" class="block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex-1">
+                        <p class="font-semibold text-[14px] text-start mb-2">
+                            Adjust Frequency
+                        </p>
+                        <p class="text-[12px]  text-start mb-0">
+                            Getting too many boxes?
+                        </p>
+                    </div>
+                    <svg class="w-16 h-16 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+            <div class="w-full h-[2px] mb-4 gradient-bg overflow-hidden ">
+                <div class="bg-progress-bar-fill shadow-tunnel-inner h-full " [ngStyle]="{ 'width': 100 }"></div>
+            </div>
+
+            <a href="your-link-here" class="block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex-1">
+                        <p class="font-semibold text-[14px] text-start mb-2">
+                            Cancel Membership
+                        </p>
+                        <p class="text-[12px]  text-start mb-0">
+                            Is this really goodbye?
+                        </p>
+                    </div>
+                    <svg class="w-16 h-16 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+            <div class="w-full h-[2px] mb-4 gradient-bg overflow-hidden ">
+                <div class="bg-progress-bar-fill shadow-tunnel-inner h-full " [ngStyle]="{ 'width': 100 }"></div>
+            </div>
+
+            <a href="your-link-here" class="block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex-1">
+                        <p class="font-semibold text-[14px] text-start mb-2">
+                            Contact Buffbox Support
+                        </p>
+                        <p class="text-[12px]  text-start mb-0">
+                            We’re here to help!
+                        </p>
+                    </div>
+                    <svg class="w-16 h-16 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+            <div>
+                <p class="py-3 w-full rounded-lg font-bold 
+                   text-[14px] mt-4 px-2 header">Buffbox Shipping Address</p>
+                <div class="px-2 text-[12px] pt-6">
+                    <div class="pb-2">
+                        <span>{{user.firstName}} </span>
+                        <span>{{user.lastName}}</span>
+                    </div>
+                    <div class="pb-2">{{user.shippingAddress.street}}</div>
+                    <div class="pb-2">Address #2</div>
+                    <div class="pb-2">{{user.shippingAddress.city}}, {{user.shippingAddress.state}} {{user.shippingAddress.postalCode}}</div>
+
+                    <a routerLink="/profile" class="font-bold cursor-pointer">Edit Shipping Address</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col pb-12">
+                <p class="py-3 w-full rounded-lg font-bold 
+                text-[14px] mt-6 px-2 header">More</p>
+                <a class="font-bold cursor-pointer mt-6">Order History</a>
+                <a class="font-bold cursor-pointer mt-6">Contact Buffbox Care</a>
+                <a class="font-bold cursor-pointer mt-6">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>

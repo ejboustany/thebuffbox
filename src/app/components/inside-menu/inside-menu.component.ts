@@ -13,6 +13,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class InsideMenuComponent  implements OnInit {
   isDropdownOpen = false;
+  @Input() showBottomMenu: boolean = true;
   @Input() allowClosing: boolean = false;
 
   toggleDropdown() {

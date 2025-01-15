@@ -59,4 +59,27 @@
       </div>
     </div> -->
   </nav>
+
+  <nav *ngIf="showBottomMenu" class="flex justify-between items-center px-3 lg:px-56 py-6 border-b-2 shadown-lg">
+    <a routerLink="/profile" routerLinkActive="active px-1 !text-black"
+        class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
+        Profile
+    </a>
+
+    <a routerLink="/membership" routerLinkActive="active px-1 !text-black"
+        class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
+        Membership
+    </a>
+
+<!-- 
+    <a routerLink="/shop" routerLinkActive="active px-1 !text-black"
+        class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
+        Shop
+    </a> -->
+
+    <a routerLink="/billing" routerLinkActive="active px-1 !text-black"
+        class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
+        Billing
+    </a>
+</nav>
   

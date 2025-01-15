@@ -1,4 +1,4 @@
-<app-app-menu></app-app-menu>
+<app-app-menu [hideMenu]="true" ></app-app-menu>
 
 
 <!-- Main Content Section -->
@@ -30,9 +30,9 @@
                 [progress]="'78%'"></app-brands-dislike-step11>
             <app-register-step12 [quiz]="quiz" *ngIf="currentStep === 12"
                 [progress]="'88%'"></app-register-step12>
-            <app-results-step13 [quiz]="quiz" *ngIf="currentStep === 13"
-                [progress]="'95%'"></app-results-step13>
-            <app-choose-plan-step14 [quiz]="quiz" *ngIf="currentStep === 14"></app-choose-plan-step14>
+            <!-- <app-results-step13 [quiz]="quiz" *ngIf="currentStep === 13"
+                [progress]="'95%'"></app-results-step13> -->
+            <!-- <app-choose-plan-step14 [quiz]="quiz" *ngIf="currentStep === 14"></app-choose-plan-step14> -->
         </div>
     </div>
 
@@ -42,7 +42,8 @@
             class="sm:text-[26px] text-[20px] flex items-center justify-center px-8 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-black">
             Back
         </button>
-        <button (click)="nextStep()" [disabled]="(currentStep == 12 && (!quiz.profileInfo.emailAddress || quiz.profileInfo.emailAddress == '' || !quiz.password || quiz.password == '' || quiz.confirmPassword == '')) || 
+        <button  *ngIf="!(quizId && currentStep == 11)"  (click)="nextStep()" 
+        [disabled]="(currentStep == 12 && (!quiz.profileInfo.emailAddress || quiz.profileInfo.emailAddress == '' || !quiz.password || quiz.password == '' || quiz.confirmPassword == '')) || 
                     (currentStep == 6 && (!quiz.flavors || quiz.flavors.length == 0))" [ngClass]="{
           'bg-primary-color text-white cursor-pointer': !((currentStep == 12 && (!quiz.profileInfo.emailAddress || quiz.profileInfo.emailAddress == '' || !quiz.password || quiz.password == '' || quiz.confirmPassword == '')) || 
           (currentStep == 6 && (!quiz.flavors || quiz.flavors.length == 0))),
@@ -53,17 +54,21 @@
             Next
         </button>
 
+        <button *ngIf="quizId && currentStep == 11" (click)="nextStep()" 
+            class="bg-primary-color text-white cursor-pointer sm:text-[26px] text-[20px] items-center px-12 border-2 py-1 sm:min-w-[279px] min-w-[160px] sm:min-h-[73px] min-h-[45px] border-none">
+            Done
+        </button>
        
      
     </div>
 
-    <div *ngIf="currentStep === 13"  class="sticky-footer flex flex-col justify-center items-center py-6 shadow-top-custom space-x-4 bg-white gap-y-2">
+    <!-- <div *ngIf="currentStep === 13"  class="sticky-footer flex flex-col justify-center items-center py-6 shadow-top-custom space-x-4 bg-white gap-y-2">
         <a (click)="nextStep()"
             class="cursor-pointer bg-gradient-to-r from-[#F9A438] to-[#F05E23] rounded-md px-6 h-[50px] sm:h-[60px] text-[18px]
                  sm:text-[20px] font-semibold text-center flex items-center justify-center w-64 text-white shadow-sm">
             Continue
         </a>
         <p class="text-sm flex text-center justify-center w-80"> Please note: this purchase is for sample packets, not full-size tubs.</p>
-    </div>
+    </div> -->
   
 </div>

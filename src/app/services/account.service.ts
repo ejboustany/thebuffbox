@@ -102,6 +102,7 @@ export class AccountService {
         return this.apiCallService.get(url).pipe(map(res => {
             this.authSubject.next(res);
             this.userSubject.next(res.Identity);
+            return res;
         }));
     }
     save(user: Identity) {
@@ -123,5 +124,10 @@ export class AccountService {
     sendContact(contact: any) {
         const url = environment.api + "/contact/SendContactEmail";
         return this.apiCallService.post(url, contact);
+    }
+
+    getBillingInfoByIdentityId(identityId: any) {
+        const url = environment.api + "/identity/GetBillingInfoByIdentityId?identityId=" + identityId;
+        return this.apiCallService.get(url);
     }
 }

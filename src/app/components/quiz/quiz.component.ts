@@ -12,6 +12,7 @@ import { QuizService } from 'src/app/services/quiz.service';
 })
 export class QuizComponent {
   currentStep = 1;
+  quizId= 0;
   code: string = "";
   userId: string = "";
   verificationSuccessfull: boolean = false;
@@ -40,22 +41,44 @@ export class QuizComponent {
   constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService, private quizService: QuizService) {
     this.route.params.subscribe(params => {
       this.currentStep = +params['step'] || 1;
+      this.quizId = +params['quizId'];
+      if(this.quizId){
+        this.getQuizById(this.quizId)
+      }
     });
   }
 
+  getQuizById(quizId: number){
+      return this.quizService.getById(quizId).subscribe((res: any) => {
+        this.quiz = res.item;
+      });
+  }
+
   nextStep() {
-    console.log(this.quiz);
     return this.quizService.submitQuiz(this.quiz, this.currentStep == 12).subscribe((res: any) => {
       this.quiz.id = res.id;
       this.quiz.profileInfo = res.profileInfo;
+
+      if(this.quizId && this.currentStep == 11){
+        this.router.navigate(['/profile']);
+        return;
+      }
+
+      if(this.currentStep == 12){
+        this.router.navigate(['/result/' + this.quiz.id]);
+        return;
+      }
+
       if (this.currentStep < 14) {
         this.currentStep++;
         this.navigateToStep(this.currentStep);
+
       } else if (this.currentStep == 14) {
         this.router.navigate(['/checkout/' + this.quiz.orderId]);
       }
     });
   }
+
 
   prevStep() {
     if (this.currentStep > 1) {
@@ -65,6 +88,10 @@ export class QuizComponent {
   }
 
   private navigateToStep(step: number) {
-    this.router.navigate(['/take-quiz', step]);
+    if (this.quizId) {
+      this.router.navigate(['/take-quiz', step, this.quizId]);
+    }else{
+      this.router.navigate(['/take-quiz', step]);
+    }
   }
 }

@@ -39,6 +39,13 @@ import { ChoosePlanStep14Component } from './components/quiz-steps/choose-plan-s
 import { SubscriptionsLearnMoreComponent } from './components/subscriptions-learn-more/subscriptions-learn-more.component';
 import { DeliveryTrackerComponent } from './components/elements/delivery-tracker/delivery-tracker.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MembershipComponent } from './components/membership/membership.component';
+import { SubscriptionTrackerComponent } from './components/elements/subscription-tracker/subscription-tracker.component';
+import { BillingComponent } from './components/billing/billing.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { AdjustFrequencyComponent } from './components/adjust-frequency/adjust-frequency.component';
+import { CancelReasonComponent } from './components/cancel-reason/cancel-reason.component';
+import { CancelMembershipComponent } from './components/cancel-membership/cancel-membership.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +80,14 @@ import { ProfileComponent } from './components/profile/profile.component';
     ChoosePlanStep14Component,
     SubscriptionsLearnMoreComponent,
     DeliveryTrackerComponent,
-    ProfileComponent
+    ProfileComponent,
+    MembershipComponent,
+    SubscriptionTrackerComponent,
+    BillingComponent,
+    ShopComponent,
+    AdjustFrequencyComponent,
+    CancelReasonComponent,
+    CancelMembershipComponent
   ],
   exports: [LastCharactersPipe],
   imports: [

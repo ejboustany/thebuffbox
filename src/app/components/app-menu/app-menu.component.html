@@ -10,7 +10,7 @@
       </div>
       <div class="flex items-center">
         <!-- Mobile Menu Toggle Button -->
-        <div class="shrink-0 text-white md:hidden">
+        <div *ngIf="!hideMenu" class="shrink-0 text-white md:hidden">
           <button type="button" (click)="toggleDropdown()" class="relative inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-black">
             <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -19,7 +19,7 @@
         </div>
 
         <!-- Desktop Menu -->
-        <div class="hidden md:ml-4 md:flex md:shrink-0 md:items-center">
+        <div *ngIf="!hideMenu" class="hidden md:ml-4 md:flex md:shrink-0 md:items-center">
           <div class="relative hidden md:ml-6 md:flex md:items-center md:space-x-12">
             <a routerLink="/take-quiz/1" class="text-[22px] px-3 py-2 font-bold text-black" [ngClass]="{'gradient-border': !isHowItWorksActive}" >Get Started</a>
             <a href="#how-it-works"   [ngClass]="{'gradient-border': isHowItWorksActive}" 
@@ -32,7 +32,7 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state -->
-  <div class="md:hidden" [ngClass]="{'hidden': !isDropdownOpen}">
+  <div *ngIf="!hideMenu" class="md:hidden" [ngClass]="{'hidden': !isDropdownOpen}">
     <div class="space-y-4 px-6 pb-3 pt-4 sm:px-3">
       <a routerLink="/take-quiz/1" class="block text-xl font-bold text-black" [ngClass]="{'gradient-border': !isHowItWorksActive}" >Get Started</a>
       <a href="#how-it-works"   [ngClass]="{'gradient-border': isHowItWorksActive}" 
