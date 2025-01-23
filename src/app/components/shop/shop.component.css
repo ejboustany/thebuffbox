@@ -1,0 +1,35 @@
+.radial-gradient {
+    background: linear-gradient(to right, #F05E23 5.49%, #ECA741 28.04%, #F05E23 67.03%, #ECA741 100%);
+}
+
+.card-bg{
+    background-color: #F0F0F0;
+}
+
+.locked-card-bg {
+    background-color: #B6B6B6;
+}
+
+.discount-bg-lock {
+    background-color: #c5c1c1;
+}
+
+.text-gradient {
+    background: linear-gradient(to bottom, #ECA741 0%, #F05E23 100%);
+
+}
+
+.orange{
+    color: #F05E23;
+}
+
+.sa-bg {
+    background: rgba(194, 192, 192, 0.7);
+}
+
+.sa-bg:hover {
+    background: rgba(0, 0, 0, 0.767);
+    backdrop-filter: blur(0px); /* Adjust blur if needed */
+}
+
+

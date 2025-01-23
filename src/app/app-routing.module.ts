@@ -18,6 +18,7 @@ import { BillingComponent } from './components/billing/billing.component';
 import { CancelMembershipComponent } from './components/cancel-membership/cancel-membership.component';
 import { AdjustFrequencyComponent } from './components/adjust-frequency/adjust-frequency.component';
 import { CancelReasonComponent } from './components/cancel-reason/cancel-reason.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'billing', component: BillingComponent },
   { path: 'cancel', component: CancelMembershipComponent },
   { path: 'frequency', component: AdjustFrequencyComponent },
-  { path: 'cancel-reason', component: CancelReasonComponent }
+  { path: 'cancel-reason', component: CancelReasonComponent },
+  { path: 'product-detail/:productId', component: ProductDetailComponent }
 ];
 
 @NgModule({

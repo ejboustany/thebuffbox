@@ -17,4 +17,14 @@ export class ProductService {
         const url = environment.api + "/product/GetQuizProducts?quizId=" + quizId;
         return this.apiCallService.get(url);
     }
+
+    getProductById(productId: any) {
+        const url = environment.api + "/product/GetItem?id=" + productId;
+        return this.apiCallService.get(url);
+    }
+
+    getShopProducts() {
+        const url = environment.api + "/product/GetShopProducts";
+        return this.apiCallService.get(url);
+    }
 }

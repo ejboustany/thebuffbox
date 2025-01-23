@@ -7,6 +7,14 @@
     color: #878787 ;
 }
 
+.split-border {
+    border-right: 1px solid #EAEAEA;
+}
+
+.orange-text {
+    color: #F05E23;
+}
+
 .order-item-bg {
     background-color: #F0F0F0;
 }

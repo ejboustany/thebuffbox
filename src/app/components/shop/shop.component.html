@@ -1,1 +1,141 @@
-<app-inside-menu></app-inside-menu>
+<app-inside-menu [showBottomMenu]="false"></app-inside-menu>
+
+<nav class="flex justify-between items-center px-3 lg:px-56 py-8 border-b-2 shadow-lg">
+    <div class="flex items-center w-full space-x-4">
+
+        <div class="flex-grow relative">
+            <div class="grid grid-cols-1 w-full">
+                <input type="email" name="email" id="email" class="col-start-1 row-start-1 block w-full rounded-md bg-white py-3 pl-10 pr-3 text-[21px] 
+           placeholder:text-gray-300 placeholder:font-bold placeholder:text-[21px] sm:pl-12" placeholder="Search">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="pointer-events-none col-start-1
+           row-start-1 ml-3 size-8 self-center text-gray-300 ">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+
+            </div>
+        </div>
+
+
+        <!-- Button -->
+        <button class="bg-black text-white px-4 py-3 rounded-lg font-bold text-[12px] sm:text-[21px]">
+            Your Preferences
+        </button>
+
+
+    </div>
+</nav>
+
+<div class="px-3 lg:px-56">
+    <div
+        class="rounded-md sm:h-[226px] radial-gradient font-bold sm:text-[94px] text-center text-white flex items-center justify-center">
+        TUBS
+    </div>
+
+    <div class="space-y-2 pt-2 sm:pt-6">
+        <p class="text-[25px] font-bold">READY TO BUY?</p>
+        <p class="text-[10px] sm:text-[14px]">Grab the full-size tub of the flavors you’ve tried & loved.<b> Unlock new
+                tubs after each Buffbox!</b></p>
+    </div>
+
+    <div  *ngIf="shop?.subscribedToProducts"  class="grid grid-cols-2 md:grid-cols-4 gap-2 gap-y-3 py-6">
+
+        <div *ngFor="let product of shop.subscribedToProducts" class="flex flex-col pb-6 cursor-pointer">
+            <!-- Existing Card -->
+            <div class="card card-bg p-4 rounded-lg relative sm:h-[437px] group">
+                <!-- Discount Banner with logo on the right -->
+                <div [routerLink]="'/product-detail/' + product.id" class="absolute sm:top-10 left-0 flex items-center justify-between w-full text-black text-[12px] sm:text-[20px] lg:text-[25px]
+                ] italic font-bold">
+                    <div class="flex items-center">
+                        <span class="bg-white flex items-center h-full h-[36px] sm:h-[46px]">
+                            <p class="bg-white  group-hover:bg-gradient-to-b group-hover:from-[#ECA741] group-hover:to-[#F05E23] 
+                                group-hover:bg-clip-text group-hover:text-transparent sm:px-2 sm:pr-2 px-1">25% OFF</p>
+                        </span>
+
+
+                    </div>
+                    <div class="flex items-center h-[36px]">
+                        <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage" alt="Logo"
+                            class="h-[16px] sm:h-[36px] pr-2">
+                    </div>
+                </div>
+                <!-- Image and Text -->
+                <div class="flex flex-col items-center justify-center space-y-4 h-full">
+                    <img [routerLink]="'/product-detail/' + product.id"  [src]="product.image.originalPath" alt="Card 1 Image"
+                        class="w-full h-auto rounded-md pt-10 sm:pt-0">
+                    <a (click)="addToCart()" class="text-center text-[12px] font-bold italic bg-black text-white p-2 rounded-lg px-2.5 absolute right-4 bottom-4 opacity-0 
+                        group-hover:opacity-100 transition-opacity duration-300 cursor-pointer  ">
+                        Add To Cart
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product Information Section -->
+            <div [routerLink]="'/product-detail/' + product.id" class="mt-4 px-2 cursor-pointer">
+                <!-- Title -->
+                <h3 class="font-bold text-[12px]">{{product.title}}</h3>
+                <!-- Description -->
+                <p class="text-[12px] font-bold mt-1">{{product.brandText}}</p>
+                <!-- Pricing -->
+                <div class="flex items-center gap-3 mt-2">
+                    <span class="font-bold orange text-[15px]">${{(product.price - 21) | number: '1.2-2'}}</span>
+                    <span class="text-[12px] line-through">${{product.price | number: '1.2-2'}} </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-2">
+            <img src="../../../assets/shop-separator.png" alt="Featured Image" class=" rounded-lg h-[594px]">
+        </div>
+
+        <div  *ngFor="let product of shop.productsToUnlock" class="flex flex-col">
+            <!-- Existing Card -->
+         
+            <div class="card sa-bg p-4 rounded-lg relative sm:h-[437px] group">
+                <!-- Lock Icon -->
+                <div class="absolute top-1 sm:-right-2 -right-1 z-10 ">
+                    <img src="../../../assets/lock.png" class="sm:h-full h-5">
+                </div>
+        
+                <!-- Discount Banner with logo on the right -->
+                <div class="absolute sm:top-10 left-0 flex items-center justify-between w-full text-black text-[12px] sm:text-[20px] lg:text-[25px]
+                italic font-bold">
+                    <div class="flex items-center group-hover:opacity-20">
+                        <span class="discount-bg-lock flex items-center h-full h-[36px] sm:h-[46px]">
+                                <p class="discount-bg-lock sm:px-2 sm:pr-2 px-1">25% OFF</p>
+                        </span>
+                    </div>
+                    <div class="flex items-center h-[36px]">
+                        <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage" alt="Logo" class="h-[16px] sm:h-[36px] pr-2">
+                    </div>
+                </div>
+        
+                <!-- Image and Text -->
+                <div class="flex flex-col items-center justify-center space-y-4 h-full z-0"> <!-- Set z-index to 0 here -->
+                    <img [src]="product.image.originalPath"  alt="Card 1 Image" class=" rounded-md group-hover:opacity-20 pt-10 sm:pt-0">
+                </div>
+        
+                <!-- Hover Button - Positioned absolutely at bottom -->
+                <div class="absolute bottom-0 left-0 w-full h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                    bg-black text-white flex items-center justify-center  py-6 sm:py-9 rounded-t-md z-10"> <!-- Set z-index to 10 here -->
+                    <span class="text-white text-[10px] sm:text-[16px] font-bold px-4 text-center ">GET FEBRUARY’S BUFFBOX TO UNLOCK</span>
+                </div>
+            </div>
+        
+            <!-- Product Information Section -->
+            <div class="mt-4 px-2">
+                <!-- Title -->
+                <h3 class="font-bold text-[12px]">Black Magic Birthday Cake Protein</h3>
+                <!-- Description -->
+                <p class="text-[12px] font-bold mt-1">Premium whey protein</p>
+                <!-- Pricing -->
+                <div class="flex items-center gap-3 mt-2">
+                    <span class="font-bold orange text-[15px]">$39.99</span>
+                    <span class="text-[12px] line-through">$59.99</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

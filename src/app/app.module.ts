@@ -46,6 +46,7 @@ import { ShopComponent } from './components/shop/shop.component';
 import { AdjustFrequencyComponent } from './components/adjust-frequency/adjust-frequency.component';
 import { CancelReasonComponent } from './components/cancel-reason/cancel-reason.component';
 import { CancelMembershipComponent } from './components/cancel-membership/cancel-membership.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { CancelMembershipComponent } from './components/cancel-membership/cancel
     ShopComponent,
     AdjustFrequencyComponent,
     CancelReasonComponent,
-    CancelMembershipComponent
+    CancelMembershipComponent,
+    ProductDetailComponent
   ],
   exports: [LastCharactersPipe],
   imports: [

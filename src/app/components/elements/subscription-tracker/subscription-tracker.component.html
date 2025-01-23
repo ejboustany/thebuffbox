@@ -7,7 +7,7 @@
           'tracking-bg': selectedDay === 1,
           'dash': selectedDay !== 1
         }"
-        (click)="selectDay(1)"
+       
       >
       </div>
   
@@ -23,7 +23,6 @@
           'tracking-bg': selectedDay === 2,
           'dash': selectedDay !== 2
         }"
-        (click)="selectDay(2)"
       >
       </div>
   
@@ -39,7 +38,6 @@
          'tracking-bg': selectedDay === 3,
           'dash': selectedDay !== 3
         }"
-        (click)="selectDay(3)"
       >
       </div>
 
@@ -55,7 +53,6 @@
          'tracking-bg': selectedDay === 4,
           'dash': selectedDay !== 4
         }"
-        (click)="selectDay(4)"
       >
       </div>
 
@@ -71,7 +68,6 @@
          'tracking-bg': selectedDay === 5,
           'dash': selectedDay !== 5
         }"
-        (click)="selectDay(5)"
       >
       </div>
 
@@ -87,7 +83,6 @@
          'tracking-bg': selectedDay === 6,
           'dash': selectedDay !== 6
         }"
-        (click)="selectDay(6)"
       >
       </div>
 
@@ -103,7 +98,6 @@
          'tracking-bg': selectedDay === 7,
           'dash': selectedDay !== 7
         }"
-        (click)="selectDay(7)"
       >
       </div>
     </div>
@@ -112,7 +106,7 @@
       <div     [ngClass]="{
         'text-black font-bold': selectedDay === 1,
          'step  font-medium': selectedDay !== 1
-       }" class="flex  cursor-pointer text-[12px]  w-20" (click)="selectDay(30)">
+       }" class="flex  cursor-pointer text-[12px]  w-20">
         <span class="mx-2">12/01
         Billing</span>
       </div>
@@ -120,51 +114,51 @@
       <div  [ngClass]="{
         'text-black font-bold': selectedDay === 2,
          'step  font-medium': selectedDay !== 2
-       }" class="flex  cursor-pointer text-[12px] w-20" (click)="selectDay(45)">
- 12/05-12/10
- Buffbox Assembly
+       }" class="flex  cursor-pointer text-[12px] w-20">
+TBD
+Buffbox Assembly
       </div>
       <div class="w-[26px] h-2 bg-white"></div>
       <div  [ngClass]="{
         'text-black font-bold': selectedDay === 3,
          'step  font-medium': selectedDay !== 3
-       }" class="flex  cursor-pointer text-[12px]  w-20" (click)="selectDay(60)">
-12/06-12/17
+       }" class="flex  cursor-pointer text-[12px]  w-20">
+TBD
 Buffbox Shipping
       </div>
       <div class="w-[26px] h-2 bg-white"></div>
       <div  [ngClass]="{
         'text-black font-bold': selectedDay === 4,
          'step  font-medium': selectedDay !== 4
-       }" class="flex  cursor-pointer text-[12px]  w-20" (click)="selectDay(60)">
-12/17
-Taste & Review
+       }" class="flex  cursor-pointer text-[12px]  w-20">
+TBD
+Taste & Pick
       </div>
       <div class="w-[26px] h-2 bg-white"></div>
       <div  [ngClass]="{
         'text-black font-bold': selectedDay === 5,
          'step  font-medium': selectedDay !== 5
-       }" class="flex  cursor-pointer text-[12px]  w-20" (click)="selectDay(60)">
-TBD
-Chose Tub
+       }" class="flex  cursor-pointer text-[12px]  w-20">
+
+<span class="mx-3">TBD
+  Review</span>
       </div>
       <div class="w-[26px] h-2 bg-white"></div>
       <div  [ngClass]="{
         'text-black font-bold': selectedDay === 6,
          'step  font-medium': selectedDay !== 6
-       }" class="flex cursor-pointer text-[12px] w-20" (click)="selectDay(60)">
-TBD
-Tub 
-Shipping
+       }" class="flex cursor-pointer text-[12px] w-20">
+<span class="mx-3">TBD
+Choice</span>
       </div>
       <div class="w-[26px] h-2 bg-white"></div>
       <div  [ngClass]="{
         'text-black font-bold': selectedDay === 7,
          'step  font-medium': selectedDay !== 7
-       }" class="flex  cursor-pointer text-[12px]  w-20" (click)="selectDay(60)">
+       }" class="flex  cursor-pointer text-[12px]  w-20">
 
 <span class="mx-3">TBD
-  Enjoy & Repeat</span>
+  Stay Tuned</span>
       </div>
     </div>
   </div>

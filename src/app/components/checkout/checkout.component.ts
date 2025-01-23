@@ -59,6 +59,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   async handlePayment() {
+    console.log(this.deliveryDuration);
     if (Stripe && this.cardElement) {
       const { paymentMethod, error } = await Stripe.createPaymentMethod({
         type: 'card',
@@ -73,7 +74,7 @@ export class CheckoutComponent implements OnInit {
 
         this.paymentService.verifyPayment(this.clientSecret, paymentMethodId, this.deliveryDuration, this.orderId).subscribe(
               res => {
-                this.router.navigate(["profile"]);
+                this.router.navigate(["membership"]);
               },
               error => {
                 // Handle API error here

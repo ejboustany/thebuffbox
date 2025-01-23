@@ -1,0 +1,99 @@
+<app-inside-menu [showBottomMenu]="false"></app-inside-menu>
+
+<div class="bg-white">
+    <div>
+        <div class="lg:grid lg:grid-cols-2">
+
+            <div
+                class="flex flex-col-reverse items-center justify-center h-full w-full image-bg image-center text-center relative">
+                <div class="absolute top-12 left-0 bg-white px-3 py-1">
+                    <p
+                        class="text-transparent bg-gradient-to-b from-[#ECA741] to-[#F05E23] font-bold italic text-[25px] bg-clip-text">
+                        35% OFF
+                    </p>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <!-- Tab panel, show/hide based on tab state. -->
+                    <div id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
+                        <img [src]="product.image.originalPath"
+                            class="aspect-square object-contain sm:rounded-lg mx-auto h-96">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+                <div class="sm:p-16">
+                    <div class="flex flex-col sm:flex-row justify-between sm:justify-between gap-4">
+                        <!-- Left Section: Image and Title -->
+                        <div class="flex flex-col items-start gap-3"> 
+                            <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage"
+                                class="aspect-square object-contain sm:rounded-lg h-16">
+                            <div>
+                                <h2 class="sr-only">Product information</h2>
+                                <p class="text-[24px] sm:text-[30px] tracking-wider font-bold uppercase">
+                                    {{ product.title }}
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <!-- Right Section: Price -->
+                        <div class="flex flex-col sm:flex-row py-6 sm:py-0 sm:text-right">
+                            <span class="font-bold orange text-[20px] mr-6">${{ (product.price - 21) | number: '1.2-2' }}</span>
+                            <span class="text-[20px] line-through">${{ product.price | number: '1.2-2' }}</span>
+                        </div>
+                    </div>
+                    
+
+                    <div class="sm:py-12 uppercase text-[14px]">
+
+                        <p><span class="font-bold">FLAVOR </span> {{product.flavorSubCategoryText}}</p>
+
+                    </div>
+
+                    <form class="mt-6">
+
+
+                        <div class="mt-10 flex">
+                            <button type="submit" class="flex flex-1 items-center justify-center bg-black px-8 py-4
+                            text-[14px] font-bold text-white">ADD TO CART</button>
+
+
+                        </div>
+                    </form>
+
+                    <section aria-labelledby="details-heading" class="mt-12">
+                        <h2 id="details-heading" class="sr-only">Additional details</h2>
+                        <div class="space-y-6">
+                            <!-- Suggested Use -->
+                            <div class="flex justify-between border-b border-gray-300  cursor-pointer">
+                                <span class="text-[14px] font-bold pb-5 uppercase">Suggested Use</span>
+                                <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        
+                            <!-- Nutrition Facts -->
+                            <div class="flex justify-between  border-b border-gray-300 cursor-pointer">
+                                <span class="text-[14px] font-bold pb-5">Nutrition Facts</span>
+                                <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        
+                            <!-- Size -->
+                            <div class="flex justify-between border-b border-gray-300 cursor-pointer">
+                                <span class="text-[14px] font-bold pb-5">SIZE: 2LBS, FULL SIZE</span>
+                                <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                        
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

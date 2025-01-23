@@ -1,1 +1,19 @@
-<p>adjust-frequency works!</p>
+<app-inside-menu [allowClosing]="true" [showBottomMenu]="false"></app-inside-menu>
+
+
+<div class="sm:px-0 px-6 py-6 sm:py-12">
+    <div class="flex flex-col items-center justify-center gap-y-2 text-center">
+        <img src="../../../../assets/sample-box.png" alt="Sample Image"
+        class="w-72	 object-contain">
+        <h1 class="text-[24px] font-bold text-black sm:text-[35px]">Delivery Schedule</h1>
+        <p class="text-[18px] text-black sm:text-[20px]">Getting tubs too often? Adjust how often a new tub is delivered</p>
+
+        <app-delivery-tracker class="pt-10" [(selectedDay)]="deliveryDuration"></app-delivery-tracker>
+
+        <div class="py-6">
+            <button (click)="save()" type="submit"
+              class="rounded-xl bg-black px-12 py-1.5 text-[16px] sm:text-[25px] font-bold text-white px-16">Update Delivery Schedule</button>
+          </div>
+    </div>
+
+</div>

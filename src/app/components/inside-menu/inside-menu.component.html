@@ -27,24 +27,28 @@
               </button>
           </div>
   
-          <!-- Desktop Menu -->
-          <div class="hidden md:ml-4 md:flex md:shrink-0 md:items-center">
+          <div class="hidden md:ml-4 md:flex md:shrink-0 md:items-center space-x-12">
+            <a routerLink="/profile" routerLinkActive="text-black" class="text-[21px] font-semibold" [class.text-gray-500]="!isActive('/profile') && !isActive('/membership') && !isActive('/billing')">Account</a>
+            <a routerLink="/shop" routerLinkActive="text-black" class="text-[21px] font-semibold" [class.text-gray-500]="!isActive('/shop')">SHOP</a>
+               <!-- Cart Icon -->
+      <img class="h-10 cursor-pointer" src="../../../assets/shopping-cart.png">
+          
             <button *ngIf="!allowClosing" type="button" (click)="toggleDropdown()" class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
-                <svg class="block w-12 h-10" fill="none" viewBox="0 0 28 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.75 6.75h22.5M2.75 12h22.5M2.75 17.25h22.5" />
-                </svg>
-              </button>
-
-              <button *ngIf="allowClosing" type="button" routerLink="/profile" class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
-                <svg class="block w-12 h-10" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                  <!-- First diagonal line -->
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6L18 18" />
-                  <!-- Second diagonal line -->
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6" />
-                </svg>
-              </button>
-              
+              <svg class="block w-12 h-10" fill="none" viewBox="0 0 28 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.75 6.75h22.5M2.75 12h22.5M2.75 17.25h22.5" />
+              </svg>
+            </button>
+          
+            <button *ngIf="allowClosing" type="button" routerLink="/profile" class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
+              <svg class="block w-12 h-10" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <!-- First diagonal line -->
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6L18 18" />
+                <!-- Second diagonal line -->
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6" />
+              </svg>
+            </button>
           </div>
+          
         </div>
       </div>
     </div>

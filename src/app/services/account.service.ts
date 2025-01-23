@@ -130,4 +130,14 @@ export class AccountService {
         const url = environment.api + "/identity/GetBillingInfoByIdentityId?identityId=" + identityId;
         return this.apiCallService.get(url);
     }
+
+    updateDeliveryDuration(deliveryDuration: number){
+        const url = environment.api + "/user/UpdateDeliverySchedule?deliveryDuration=" + deliveryDuration;
+        return this.apiCallService.post(url);
+    }
+
+    cancelMembership(cancelReason: number){
+        const url = environment.api + "/user/CancelSubscription?cancelReason=" + cancelReason;
+        return this.apiCallService.post(url);
+    }
 }

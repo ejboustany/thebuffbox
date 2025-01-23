@@ -1,1 +1,45 @@
-<p>cancel-reason works!</p>
+<app-inside-menu [allowClosing]="true" [showBottomMenu]="false"></app-inside-menu>
+
+
+<div class="flex min-h-screen items-center justify-center px-4">
+    <div class="flex flex-col items-center justify-center gap-y-2 text-center">
+        <h1 class="text-[24px] font-bold text-black sm:text-[35px]">You have successfully unsubscribed! Sad to see you go!</h1>
+        <p class="text-[16px] text-black sm:text-[20px] py-6">Real quick, why did you leave? </p>
+        <div class="flex flex-col gap-4">
+           
+            <label *ngFor="let option of reasons" class="flex items-center space-x-2 cursor-pointer">
+                <div class="relative w-6 h-6 flex items-center justify-center">
+                  <input 
+                    type="radio" 
+                    name="reason" 
+                    [value]="option.id" 
+                    [(ngModel)]="selectedReason.id"
+                    class="w-6 h-6 appearance-none bg-white rounded-full focus:ring-0 border-none relative"
+                  />
+                  <!-- Always has the gradient border -->
+                  <div 
+                    class="absolute w-full h-full rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 p-[2px] 
+                          pointer-events-none flex items-center justify-center"
+                  >
+                    <!-- When selected, fills the inner circle with orange -->
+                    <div class="w-full h-full bg-white rounded-full transition-colors duration-200" 
+                         [class.bg-orange-500]="selectedReason.id === option.id"></div>
+                  </div>
+                </div>
+                <span class="text-[20px] font-bold">{{ option.label }}</span>
+              </label>
+              
+
+          </div>
+          
+
+        <div class="py-6 w-full">
+            <button (click)="submit()" type="submit"
+                class="rounded-xl bg-black px-12 py-1.5 text-[16px] sm:text-[25px] font-bold text-white w-full max-w-sm">Submit</button>
+        </div>
+
+        <div>
+            <a routerLink="/membership" class="font-bold text-[25px] underline">Thank You :)</a>
+        </div>
+    </div>
+</div>

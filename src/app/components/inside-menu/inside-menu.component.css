@@ -11,3 +11,11 @@
   .inactive {
     color: #CACACA;
   }
+
+  .active-link {
+    color: #000000; /* Tailwind blue-700 */
+  }
+
+  .inactive-link{
+    color: #767676;
+  }
