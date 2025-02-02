@@ -37,6 +37,7 @@ export class AccountService {
         };
         return this.apiCallService.post(`${this.apiUrl}/User/Login` + bodyParams, null, config).pipe(
             map(data => {
+                localStorage.clear();
                 localStorage.setItem("auth", data.token);
                 localStorage.setItem("authRefreshToken", data.refresh_token);
                 this.getUserInfo().subscribe();

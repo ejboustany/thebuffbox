@@ -16,26 +16,34 @@
 
         </div>
 
-        <div class="flex flex-col items-center w-full">
-            <app-subscription-tracker [selectedDay]="subscription?.cycleStatus + 1"></app-subscription-tracker>
-        </div>
+        <div class="w-full overflow-x-auto md:overflow-visible hide-scrollbar">
+            <div class="flex flex-row space-x-4 min-w-full justify-start">
+              <app-subscription-tracker [selectedDay]="subscription?.cycleStatus + 1"></app-subscription-tracker>
+            </div>
+          </div>
+          
+          
 
         <div class="pb-6 flex items-center justify-center pt-12">
             <p class="text-[20px] font-bold">Your {{ subscription.billingCycleStartDate
                 | date: 'MMMM' }} Buffbox</p>
         </div>
 
-        <div *ngIf="order?.items" class="flex justify-center gap-4 items-center text-center pb-4">
-            <div *ngFor="let orderItem of order.items" class="flex flex-col items-center gap-2">
+        <div *ngIf="order?.items" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center pb-4">
+            <div *ngFor="let orderItem of order.items" class="flex flex-col items-center gap-2 py-2 borderb">
                 <!-- Image container with background -->
-                <div class="order-item-bg flex justify-center items-center rounded-lg h-[210px]">
+                <div class=" flex justify-center items-center rounded-lg order-item-bg">
                     <img [src]="orderItem.image.originalPath">
                 </div>
-
+        
                 <!-- Text below the background -->
-                <p class="text-[14px] font-semibold">{{ orderItem.brandName }}</p>
-                <p class="text-[10px]">{{ orderItem.productTitle }}</p>
-
+                <p class="text-[16px] font-semibold flex items-center">
+                    {{ orderItem.brandName }} 
+                    <span class="font-normal md:hidden text-[12px] ml-1"> (SAMPLE) </span>
+                  </p>
+                  
+                <p class="text-[12px]">{{ orderItem.productTitle }}</p>
+        
                 <div class="flex items-center">
                     <button routerLink="/shop" class="orange-text font-bold text-[14px] px-4 split-border">SHOP</button>
                     <button [routerLink]="'/review-tub/' + orderItem.productId"
@@ -43,6 +51,7 @@
                 </div>
             </div>
         </div>
+        
 
         <p class="py-3 w-full rounded-lg font-bold text-[14px] mt-4 px-2 header">Buffbox Membership</p>
 

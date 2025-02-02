@@ -40,6 +40,7 @@ export class QuizService {
         else{
             return this.apiCallService.post(url, quiz).pipe(
                 map(data => {
+                    localStorage.clear();
                     localStorage.setItem("auth", data.authenticationResult.token);
                     localStorage.setItem("authRefreshToken", data.authenticationResult.refresh_token);
                     this.accountService.getUserInfo().subscribe();

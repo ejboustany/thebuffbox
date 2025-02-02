@@ -47,6 +47,8 @@ import { AdjustFrequencyComponent } from './components/adjust-frequency/adjust-f
 import { CancelReasonComponent } from './components/cancel-reason/cancel-reason.component';
 import { CancelMembershipComponent } from './components/cancel-membership/cancel-membership.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { CartComponent } from './components/cart/cart.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -89,10 +91,13 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     AdjustFrequencyComponent,
     CancelReasonComponent,
     CancelMembershipComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent,
+
   ],
   exports: [LastCharactersPipe],
   imports: [
+    MatDialogModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -101,8 +106,12 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     MatProgressSpinnerModule,
     HttpClientModule,
     MatMenuModule,
+  
 ],
-  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },{
+    provide: MatDialogRef,
+    useValue: {}
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

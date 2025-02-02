@@ -11,3 +11,8 @@
 .orange{
     color: #F05E23;
 }
+
+.locked-bg {
+    background-color: rgba(0, 0, 0, 0.24);
+  }
+  

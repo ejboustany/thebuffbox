@@ -27,4 +27,9 @@ export class ProductService {
         const url = environment.api + "/product/GetShopProducts";
         return this.apiCallService.get(url);
     }
+
+    getPersonalizedOptions() {
+        const url = environment.api + "/product/GetPersonalizedOptions";
+        return this.apiCallService.get(url);
+    }
 }

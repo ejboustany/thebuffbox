@@ -37,15 +37,13 @@ export class SignInComponent {
 
   }
 
-
-
   login() {
     if (this.signinForm.valid) {
       this.isLoading = true;
       this.accountService.login(this.user.EmailAddress, this.user.Password).subscribe(
         res => {
           this.isLoading = false;
-          this.router.navigate(["apps"]).then(() => {
+          this.router.navigate(["profile"]).then(() => {
             window.location.reload();
           });
         },

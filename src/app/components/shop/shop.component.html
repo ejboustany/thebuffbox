@@ -6,7 +6,7 @@
         <div class="flex-grow relative">
             <div class="grid grid-cols-1 w-full">
                 <input type="email" name="email" id="email" class="col-start-1 row-start-1 block w-full rounded-md bg-white py-3 pl-10 pr-3 text-[21px] 
-           placeholder:text-gray-300 placeholder:font-bold placeholder:text-[21px] sm:pl-12" placeholder="Search">
+           placeholder:text-gray-300 placeholder:font-bold placeholder:text-[21px] sm:pl-12" placeholder="Search" [(ngModel)]="searchQuery">
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="pointer-events-none col-start-1
@@ -20,7 +20,7 @@
 
 
         <!-- Button -->
-        <button class="bg-black text-white px-4 py-3 rounded-lg font-bold text-[12px] sm:text-[21px]">
+        <button [routerLink]="'/take-quiz/1/' + user.quizId" class="bg-black text-white px-4 py-3 rounded-lg font-bold text-[12px] sm:text-[21px]">
             Your Preferences
         </button>
 
@@ -42,7 +42,7 @@
 
     <div  *ngIf="shop?.subscribedToProducts"  class="grid grid-cols-2 md:grid-cols-4 gap-2 gap-y-3 py-6">
 
-        <div *ngFor="let product of shop.subscribedToProducts" class="flex flex-col pb-6 cursor-pointer">
+        <div *ngFor="let product of filteredSubscribedProducts" class="flex flex-col pb-6 cursor-pointer">
             <!-- Existing Card -->
             <div class="card card-bg p-4 rounded-lg relative sm:h-[437px] group">
                 <!-- Discount Banner with logo on the right -->
@@ -65,7 +65,7 @@
                 <div class="flex flex-col items-center justify-center space-y-4 h-full">
                     <img [routerLink]="'/product-detail/' + product.id"  [src]="product.image.originalPath" alt="Card 1 Image"
                         class="w-full h-auto rounded-md pt-10 sm:pt-0">
-                    <a (click)="addToCart()" class="text-center text-[12px] font-bold italic bg-black text-white p-2 rounded-lg px-2.5 absolute right-4 bottom-4 opacity-0 
+                    <a (click)="addToCart(product.id)" class="text-center text-[12px] font-bold italic bg-black text-white p-2 rounded-lg px-2.5 absolute right-4 bottom-4 opacity-0 
                         group-hover:opacity-100 transition-opacity duration-300 cursor-pointer  ">
                         Add To Cart
                     </a>
@@ -86,14 +86,20 @@
             </div>
         </div>
 
-        <div class="col-span-2">
-            <img src="../../../assets/shop-separator.png" alt="Featured Image" class=" rounded-lg h-[594px]">
+        <div *ngIf="searchQuery == '' || searchQuery == null" class="col-span-2">
+            <!-- Image for big screens -->
+            <img src="../../../assets/shop-separator.png" alt="Featured Image" 
+                 class="rounded-lg h-[594px] hidden md:block">
+        
+            <!-- Image for mobile -->
+            <img src="../../../assets/shop-separator-mobile.png" alt="Featured Image" 
+                 class="rounded-lg  block md:hidden">
         </div>
-
-        <div  *ngFor="let product of shop.productsToUnlock" class="flex flex-col">
+        
+        <div   *ngFor="let product of shop.productsToUnlock"  class="flex flex-col">
             <!-- Existing Card -->
          
-            <div class="card sa-bg p-4 rounded-lg relative sm:h-[437px] group">
+            <div *ngIf="searchQuery == '' || searchQuery == null" class="card sa-bg p-4 rounded-lg relative sm:h-[437px] group">
                 <!-- Lock Icon -->
                 <div class="absolute top-1 sm:-right-2 -right-1 z-10 ">
                     <img src="../../../assets/lock.png" class="sm:h-full h-5">
@@ -125,7 +131,7 @@
             </div>
         
             <!-- Product Information Section -->
-            <div class="mt-4 px-2">
+            <div *ngIf="searchQuery == '' || searchQuery == null" class="mt-4 px-2">
                 <!-- Title -->
                 <h3 class="font-bold text-[12px]">Black Magic Birthday Cake Protein</h3>
                 <!-- Description -->
@@ -137,5 +143,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>

@@ -1,60 +1,77 @@
 <nav class="sticky top-0 bg-white z-50 shadow-md">
-    <div class="mx-auto px-6 lg:px-56">
-      <div class="flex h-[80px] justify-between">
-        <div class="flex">
-          <div class="flex shrink-0 items-center">
-            <a href="/">
-              <img class="sm:h-7 h-6 w-auto" src="../../../assets/Buffbox_Wordmark.svg" alt="Your Company">
-            </a>
-          </div>
-        </div>
-        <div class="flex items-center">
-          <!-- Mobile Menu Toggle Button -->
-          <div class="shrink-0 text-white md:hidden">
-            <button *ngIf="!allowClosing" type="button" (click)="toggleDropdown()" class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
-                <svg class="block w-12 h-10" fill="none" viewBox="0 0 28 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.75 6.75h22.5M2.75 12h22.5M2.75 17.25h22.5" />
-                </svg>
-              </button>
-
-              <button *ngIf="allowClosing" type="button" routerLink="/profile" class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
-                <svg class="block w-12 h-10" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                  <!-- First diagonal line -->
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6L18 18" />
-                  <!-- Second diagonal line -->
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6" />
-                </svg>
-              </button>
-          </div>
-  
-          <div class="hidden md:ml-4 md:flex md:shrink-0 md:items-center space-x-12">
-            <a routerLink="/profile" routerLinkActive="text-black" class="text-[21px] font-semibold" [class.text-gray-500]="!isActive('/profile') && !isActive('/membership') && !isActive('/billing')">Account</a>
-            <a routerLink="/shop" routerLinkActive="text-black" class="text-[21px] font-semibold" [class.text-gray-500]="!isActive('/shop')">SHOP</a>
-               <!-- Cart Icon -->
-      <img class="h-10 cursor-pointer" src="../../../assets/shopping-cart.png">
-          
-            <button *ngIf="!allowClosing" type="button" (click)="toggleDropdown()" class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
-              <svg class="block w-12 h-10" fill="none" viewBox="0 0 28 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.75 6.75h22.5M2.75 12h22.5M2.75 17.25h22.5" />
-              </svg>
-            </button>
-          
-            <button *ngIf="allowClosing" type="button" routerLink="/profile" class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
-              <svg class="block w-12 h-10" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <!-- First diagonal line -->
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6L18 18" />
-                <!-- Second diagonal line -->
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6" />
-              </svg>
-            </button>
-          </div>
-          
+  <div class="mx-auto px-6 lg:px-56">
+    <div class="flex h-[80px] justify-between">
+      <div class="flex">
+        <div class="flex shrink-0 items-center">
+          <a href="/">
+            <img class="sm:h-7 h-6 w-auto" src="../../../assets/Buffbox_Wordmark.svg" alt="Your Company">
+          </a>
         </div>
       </div>
+      <div class="flex items-center">
+        <!-- Mobile Menu Toggle Button -->
+        <div class="shrink-0 text-white md:hidden">
+          <button *ngIf="!allowClosing" type="button" (click)="toggleDropdown()"
+            class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
+            <svg class="block w-12 h-10" fill="none" viewBox="0 0 28 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true" data-slot="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.75 6.75h22.5M2.75 12h22.5M2.75 17.25h22.5" />
+            </svg>
+          </button>
+
+          <button *ngIf="allowClosing" type="button" routerLink="/profile"
+            class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
+            <svg class="block w-12 h-10" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true" data-slot="icon">
+              <!-- First diagonal line -->
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 6L18 18" />
+              <!-- Second diagonal line -->
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="hidden md:ml-4 md:flex md:shrink-0 md:items-center space-x-12">
+          <a routerLink="/profile" routerLinkActive="text-black" class="text-[21px] font-semibold"
+            [class.text-gray-500]="!isActive('/profile') && !isActive('/membership') && !isActive('/billing')">Account</a>
+          <a routerLink="/shop" routerLinkActive="text-black" class="text-[21px] font-semibold"
+            [class.text-gray-500]="!isActive('/shop')">SHOP</a>
+
+            <div class="relative inline-block">
+              <img (click)="openCart()" class="h-10 cursor-pointer" src="../../../assets/shopping-cart.png">
+              <span (click)="openCart()" *ngIf="cartItemCount > 0"
+                class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center cursor-pointer">
+                {{cartItemCount}}
+              </span>
+            </div>
+          
+
+          <button *ngIf="!allowClosing" type="button" (click)="toggleDropdown()"
+            class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
+            <svg class="block w-12 h-10" fill="none" viewBox="0 0 28 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.75 6.75h22.5M2.75 12h22.5M2.75 17.25h22.5" />
+            </svg>
+          </button>
+
+          <button *ngIf="allowClosing" type="button" routerLink="/profile"
+            class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
+            <svg class="block w-12 h-10" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <!-- First diagonal line -->
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 6L18 18" />
+              <!-- Second diagonal line -->
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
     </div>
-  
-    <!-- Mobile menu, show/hide based on menu state -->
-    <!-- <div class="md:hidden" [ngClass]="{'hidden': !isDropdownOpen}">
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state -->
+  <!-- <div class="md:hidden" [ngClass]="{'hidden': !isDropdownOpen}">
       <div class="space-y-4 px-6 pb-3 pt-4 sm:px-3">
         <a routerLink="/take-quiz/1" class="block text-xl font-bold text-black" [ngClass]="{'gradient-border': !isHowItWorksActive}" >Get Started</a>
         <a href="#how-it-works"   [ngClass]="{'gradient-border': isHowItWorksActive}" 
@@ -62,28 +79,27 @@
         <a routerLink="/login" class="block text-xl font-bold text-black">Log In</a>
       </div>
     </div> -->
-  </nav>
+</nav>
 
-  <nav *ngIf="showBottomMenu" class="flex justify-between items-center px-3 lg:px-56 py-6 border-b-2 shadown-lg">
-    <a routerLink="/profile" routerLinkActive="active px-1 !text-black"
-        class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
-        Profile
-    </a>
+<nav *ngIf="showBottomMenu" class="flex justify-between items-center px-3 lg:px-56 py-6 border-b-2 shadown-lg">
+  <a routerLink="/profile" routerLinkActive="active px-1 !text-black"
+    class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
+    Profile
+  </a>
 
-    <a routerLink="/membership" routerLinkActive="active px-1 !text-black"
-        class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
-        Membership
-    </a>
+  <a routerLink="/membership" routerLinkActive="active px-1 !text-black"
+    class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
+    Membership
+  </a>
 
-<!-- 
+  <!-- 
     <a routerLink="/shop" routerLinkActive="active px-1 !text-black"
         class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
         Shop
     </a> -->
 
-    <a routerLink="/billing" routerLinkActive="active px-1 !text-black"
-        class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
-        Billing
-    </a>
+  <a routerLink="/billing" routerLinkActive="active px-1 !text-black"
+    class="inline-block text-center py-0.5 inactive font-bold relative sm:text-[21px] text-[18px]">
+    Billing
+  </a>
 </nav>
-  
