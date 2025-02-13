@@ -17,4 +17,14 @@ export class OrderService {
         const url = environment.api + "/order/GetItem?id=" + orderId;
         return this.apiCallService.get(url);
     }
+
+    save(order: any) {
+        const url = environment.api + "/order/Save";
+        return this.apiCallService.post(url, order);
+    }
+
+    confirm(order: any) {
+        const url = environment.api + "/order/ConfirmNewOrder";
+        return this.apiCallService.post(url, order);
+    }
 }

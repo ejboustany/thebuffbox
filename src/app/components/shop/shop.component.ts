@@ -47,7 +47,6 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  
 
   getCartById(cartId: number) {
     return this.cartService.getById(cartId).subscribe((res: any) => {

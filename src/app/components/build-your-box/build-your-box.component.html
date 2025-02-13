@@ -1,0 +1,44 @@
+<app-inside-menu [showBottomMenu]="false"></app-inside-menu>
+
+
+<div class="px-6 lg:px-56 mx-auto justify-center items-center">
+    <div class="bg-black h-[177px] w-full text-center rounded-b-md py-6">
+        <p class="text-white font-bold text-[16px] sm:text-[25px]">Build Your Personalized Buffbox</p>
+        <div class="flex flex-col items-center py-6">
+            <p class="text-white text-[12px] sm:text-[15px] px-6 sm:max-w-xl text-center mx-auto">
+                We personalized 2 Buffbox Prime Picks, then you can choose 2 of the 4 personalized products to finalize
+                your next Buffbox.
+            </p>
+        </div>
+    </div>
+
+    <div class="w-full text-center rounded-md py-6">
+        <p class="font-bold text-[20px]">Your Prime Picks</p>
+        <div class="flex flex-col items-center py-6">
+            <div *ngIf="order?.items" class="grid grid-cols-2 gap-4 text-center pb-4 max-w-lg w-full">
+                <div *ngFor="let orderItem of order.items" class="flex flex-col items-center gap-2 py-2">
+                    <!-- Image container with background -->
+                    <div class="flex justify-center items-center rounded-lg order-item-bg">
+                        <img [src]="orderItem.image.originalPath">
+                    </div>
+        
+                    <!-- Text below the background -->
+                    <p class="text-[14px] font-semibold flex items-center">
+                        {{ orderItem.brandName }}
+                        <span class="font-normal md:hidden text-[12px] ml-1"> (SAMPLE) </span>
+                    </p>
+        
+                    <p class="text-[12px]">{{ orderItem.flavorSubCategoryText }}</p>
+                </div>
+            </div>
+        
+            <!-- Button Section -->
+            <div class="flex flex-col items-center justify-center py-6 w-full max-w-lg">
+                <button [routerLink]="'/choose-samples/' + orderId" class="bg-black text-white py-4 px-6 rounded-md text-center font-bold text-[15px] w-full">
+                    NEXT: CHOOSE 2 SAMPLES
+                </button>
+            </div>
+        </div>
+        
+    </div>
+</div>

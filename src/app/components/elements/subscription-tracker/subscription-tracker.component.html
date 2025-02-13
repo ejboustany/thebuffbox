@@ -1,97 +1,135 @@
+<div *ngIf="selectedDay == 1" class="flex flex-col items-center w-full mt-4 sm:mt-8 px-4">
+  <p class="font-bold text-[20px] text-center mb-2">
+      Your Cycle Begins!
+  </p>
+  <p class="text-[14px] text-gray-700 max-w-xs text-center mb-6 sm:mb-10">
+      We received your payment and started preparing your Buffbox journey. Stay tuned for your curated
+      samples.
+  </p>
+
+</div>
+
+<div *ngIf="selectedDay == 2" class="flex flex-col items-center w-full mt-4 sm:mt-8 px-4">
+  <p class="font-bold text-[20px] text-center mb-2">
+    Build Your Buffbox 
+  </p>
+  <p class="text-[14px] text-gray-700 max-w-xs text-center mb-4">
+    Pick 2 of your 4 samples for your Buffbox before time runs out!
+  </p>
+  <button [routerLink]="'/build-your-box/' + orderId" class="bg-black text-[15px] px-6 text-white font-bold mb-6 sm:mb-10 py-3 rounded-md">Choose Samples </button>
+</div>
+
+<div *ngIf="selectedDay == 3" class="flex flex-col items-center w-full mt-4 sm:mt-8 px-4">
+  <p class="font-bold text-[20px] text-center mb-2">
+    Assembling Your Buffbox
+  </p>
+  <p class="text-[14px] text-gray-700 max-w-xs text-center  mb-6 sm:mb-10">
+    We’re putting together your curated protein powder samples! Your personalized Buffbox will soon be ready to ship
+  </p>
+</div>
+
+<div *ngIf="selectedDay == 4" class="flex flex-col items-center w-full mt-4 sm:mt-8 px-4">
+  <p class="font-bold text-[20px] text-center mb-2">
+    Your Samples Are On The Way
+  </p>
+  <p class="text-[14px] text-gray-700 max-w-xs text-center  mb-4">
+    Your Buffbox is en route. Soon you’ll try your personalized protein powder samples!  </p>
+    <button class="bg-black text-[15px] px-6 text-white font-bold mb-6 sm:mb-10 py-3 rounded-md">Report Issue</button>
+</div>
+
+
+<div *ngIf="selectedDay == 5" class="flex flex-col items-center w-full mt-4 sm:mt-8 px-4">
+  <p class="font-bold text-[20px] text-center mb-2">
+    Time to Try Your Samples
+  </p>
+  <p class="text-[14px] text-gray-700 max-w-xs text-center  mb-4">
+    Try each sample and discover what works! When you’re ready, pick your next full size tub.   </p>
+    <button class="bg-black text-[15px] px-6 text-white font-bold mb-6 sm:mb-10 py-3 rounded-md">Pick Full- size tub</button>
+</div>
+
+<div *ngIf="selectedDay == 6" class="flex flex-col items-center w-full mt-4 sm:mt-8 px-4">
+  <p class="font-bold text-[20px] text-center mb-2">
+    Select Your Perfect Tub
+  </p>
+  <p class="text-[14px] text-gray-700 max-w-xs text-center  mb-4">
+    Based on your reviews, pick the full-size tub that suits you best. This choice guides your next delivery </p>
+    <button class="bg-black text-[15px] px-6 text-white font-bold mb-6 sm:mb-10 py-3 rounded-md">Shop</button>
+</div>
+
 <div class="pt-6">
-    <div class="flex items-center text-center justify-center mb-2">
-      <!-- 30 Days Circle -->
-      <div
-        class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer"
-        [ngClass]="{
+  <div class="flex items-center text-center justify-center mb-2">
+    <!-- 30 Days Circle -->
+    <div class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer" [ngClass]="{
           'tracking-bg': selectedDay === 1,
           'dash': selectedDay !== 1
-        }"
-       
-      >
-      </div>
-  
-      <div [ngClass]="{
+        }">
+    </div>
+
+    <div [ngClass]="{
         'tracking-bg': selectedDay === 2,
         'dash': selectedDay !== 2
       }" class="w-8 h-0.5 bg-black mx-8"></div>
-  
-      <!-- 45 Days Circle -->
-      <div
-        class="flex items-center justify-center  w-2.5 h-2.5 rounded-full  cursor-pointer"
-        [ngClass]="{
+
+    <!-- 45 Days Circle -->
+    <div class="flex items-center justify-center  w-2.5 h-2.5 rounded-full  cursor-pointer" [ngClass]="{
           'tracking-bg': selectedDay === 2,
           'dash': selectedDay !== 2
-        }"
-      >
-      </div>
-  
-      <div [ngClass]="{
+        }">
+    </div>
+
+    <div [ngClass]="{
         'tracking-bg': selectedDay === 3,
         'dash': selectedDay !== 3
       }" class="w-8 h-0.5 bg-black mx-8"></div>
-  
-      <!-- 60 Days Circle -->
-      <div
-        class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer"
-        [ngClass]="{
+
+    <!-- 60 Days Circle -->
+    <div class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer" [ngClass]="{
          'tracking-bg': selectedDay === 3,
           'dash': selectedDay !== 3
-        }"
-      >
-      </div>
+        }">
+    </div>
 
-      <div [ngClass]="{
+    <div [ngClass]="{
         'tracking-bg': selectedDay === 4,
         'dash': selectedDay !== 4
       }" class="w-8 h-0.5 bg-black mx-8"></div>
-  
-      <!-- 60 Days Circle -->
-      <div
-        class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer"
-        [ngClass]="{
+
+    <!-- 60 Days Circle -->
+    <div class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer" [ngClass]="{
          'tracking-bg': selectedDay === 4,
           'dash': selectedDay !== 4
-        }"
-      >
-      </div>
+        }">
+    </div>
 
-      <div [ngClass]="{
+    <div [ngClass]="{
         'tracking-bg': selectedDay === 5,
         'dash': selectedDay !== 5
       }" class="w-8 h-0.5 bg-black mx-8"></div>
-  
-      <!-- 60 Days Circle -->
-      <div
-        class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer"
-        [ngClass]="{
+
+    <!-- 60 Days Circle -->
+    <div class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer" [ngClass]="{
          'tracking-bg': selectedDay === 5,
           'dash': selectedDay !== 5
-        }"
-      >
-      </div>
+        }">
+    </div>
 
-      <div [ngClass]="{
+    <div [ngClass]="{
         'tracking-bg': selectedDay === 6,
         'dash': selectedDay !== 6
       }" class="w-8 h-0.5 bg-black mx-8"></div>
-  
-      <!-- 60 Days Circle -->
-      <div
-        class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer"
-        [ngClass]="{
+
+    <!-- 60 Days Circle -->
+    <div class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer" [ngClass]="{
          'tracking-bg': selectedDay === 6,
           'dash': selectedDay !== 6
-        }"
-      >
-      </div>
+        }">
+    </div>
 
-      <div [ngClass]="{
+    <!-- <div [ngClass]="{
         'tracking-bg': selectedDay === 7,
         'dash': selectedDay !== 7
       }" class="w-8 h-0.5 bg-black mx-8"></div>
   
-      <!-- 60 Days Circle -->
       <div
         class="flex items-center justify-center w-2.5 h-2.5 rounded-full cursor-pointer"
         [ngClass]="{
@@ -99,59 +137,59 @@
           'dash': selectedDay !== 7
         }"
       >
-      </div>
-    </div>
+      </div> -->
+  </div>
 
-    <div class="flex  text-center  mt-3">
-      <div     [ngClass]="{
+  <div class="flex  text-center  mt-3">
+    <div [ngClass]="{
         'text-black font-bold': selectedDay === 1,
          'step  font-medium': selectedDay !== 1
        }" class="flex  cursor-pointer text-[12px]  w-20">
-        <span class="mx-2">12/01
+      <span class="mx-2"> {{billingDate != null && billingDate != '' ? (billingDate | date:"MM/dd") : "TBD"}}
         Billing</span>
-      </div>
-      <div class="w-[26px] h-2 bg-white"></div>
-      <div  [ngClass]="{
+    </div>
+    <div class="w-[26px] h-2 bg-white"></div>
+    <div [ngClass]="{
         'text-black font-bold': selectedDay === 2,
          'step  font-medium': selectedDay !== 2
        }" class="flex  cursor-pointer text-[12px] w-20">
-TBD
-Buffbox Assembly
-      </div>
-      <div class="w-[26px] h-2 bg-white"></div>
-      <div  [ngClass]="{
+      {{billingDate != null && billingDate != '' ? (billingDate | date:"MM/dd") : "TBD"}}
+      Build Your Box
+    </div>
+    <div class="w-[26px] h-2 bg-white"></div>
+    <div [ngClass]="{
         'text-black font-bold': selectedDay === 3,
          'step  font-medium': selectedDay !== 3
-       }" class="flex  cursor-pointer text-[12px]  w-20">
-TBD
-Buffbox Shipping
-      </div>
-      <div class="w-[26px] h-2 bg-white"></div>
-      <div  [ngClass]="{
+       }" class="flex  cursor-pointer text-[11px]  w-20">
+      {{assemblyDate != null && assemblyDate != '' ? (assemblyDate | date:"MM/dd") : "TBD"}} - {{assemblyDate != null && assemblyDate != '' ? (getAdjustedDate(assemblyDate) | date:"MM/dd") : "TBD"}}
+      Buffbox Assembly
+    </div>
+    <div class="w-[26px] h-2 bg-white"></div>
+    <div [ngClass]="{
         'text-black font-bold': selectedDay === 4,
          'step  font-medium': selectedDay !== 4
        }" class="flex  cursor-pointer text-[12px]  w-20">
-TBD
-Taste & Pick
-      </div>
-      <div class="w-[26px] h-2 bg-white"></div>
-      <div  [ngClass]="{
+      {{shippingDate != null && shippingDate != '' ? (shippingDate | date:"MM/dd") : "TBD"}}
+      Buffbox Shipping
+    </div>
+    <div class="w-[26px] h-2 bg-white"></div>
+    <div [ngClass]="{
         'text-black font-bold': selectedDay === 5,
          'step  font-medium': selectedDay !== 5
        }" class="flex  cursor-pointer text-[12px]  w-20">
 
-<span class="mx-3">TBD
-  Review</span>
-      </div>
-      <div class="w-[26px] h-2 bg-white"></div>
-      <div  [ngClass]="{
+      <span class="mx-3"> {{reviewDate != null && reviewDate != '' ? (reviewDate | date:"MM/dd") : "TBD"}}
+        Taste & Review</span>
+    </div>
+    <div class="w-[26px] h-2 bg-white"></div>
+    <div [ngClass]="{
         'text-black font-bold': selectedDay === 6,
          'step  font-medium': selectedDay !== 6
        }" class="flex cursor-pointer text-[12px] w-20">
-<span class="mx-3">TBD
-Choice</span>
-      </div>
-      <div class="w-[26px] h-2 bg-white"></div>
+      <span class="mx-3"> {{pickTubDate != null && pickTubDate != '' ? (pickTubDate | date:"MM/dd") : "TBD"}}
+        Pick Tub</span>
+    </div>
+    <!-- <div class="w-[26px] h-2 bg-white"></div>
       <div  [ngClass]="{
         'text-black font-bold': selectedDay === 7,
          'step  font-medium': selectedDay !== 7
@@ -159,7 +197,6 @@ Choice</span>
 
 <span class="mx-3">TBD
   Stay Tuned</span>
-      </div>
-    </div>
+      </div> -->
   </div>
-  
+</div>

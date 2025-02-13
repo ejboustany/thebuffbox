@@ -1,0 +1,103 @@
+<app-inside-menu [showBottomMenu]="false"></app-inside-menu>
+
+<div class="px-6 lg:px-56 mx-auto justify-center items-center">
+    <div class="bg-black h-[177px] w-full text-center rounded-b-md py-10">
+        <p class="text-white font-bold text-[16px] sm:text-[30px]">Choose a Sample to Start Your February Buffbox</p>
+        <div class="flex flex-col items-center py-6">
+            <p class="text-white text-[12px] sm:text-[20px] px-6 text-center mx-auto">
+                Pick two samples for your Buffbox, then we’ll personalize the rest
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="order?.items" class="px-0 order-item-bg sm:h-[350px] rounded-b-md">
+        <div class="flex items-center justify-center p-4">
+            <div *ngIf="order" class="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
+                <!-- Card 1 -->
+                <div *ngFor="let orderItem of order.items" class="bg-white shadow-md rounded-md overflow-hidden">
+                    <img [src]="orderItem.image.originalPath" alt="Image" class="w-full h-36 sm:h-60 object-contain p-6">
+                </div>
+
+                <ng-container *ngIf="order.items.length < 4">
+                    <div *ngFor="let i of [].constructor(4 - order.items.length); let idx = index"
+                        class="bg-white shadow-md rounded-md flex justify-center items-center h-36 sm:h-60 border border-gray-300">
+                        <button
+                            class="bg-gradient-to-b from-[#ECA741] to-[#F05E23]  text-white text-4xl rounded-md w-12 h-12 flex items-center justify-center">
+                            +
+                        </button>
+                    </div>
+                </ng-container>
+
+
+       <!-- Button centered in flex container -->
+   
+            </div>
+         
+            
+         
+        </div>
+
+        <div *ngIf="order.items.length == 4" class="flex flex-col justify-center items-center  max-w-xl text-center mx-auto">
+            <button (click)="confirm()" type="submit" class="bg-black sm:w-full w-60 px-8 sm:py-4 py-1 sm:mb-0 mb-2 rounded-md text-[20px] font-bold text-white">
+                CONFIRM
+            </button>
+        </div>
+        
+    </div>
+</div>
+
+<div class="flex items-center justify-center bg-white pt-6 sm:pt-12">
+    <div class="flex items-center w-full">
+        <div class="flex-grow h-0.5 bg-black min-w-[50px]"></div>
+        <span class="px-4 sm:px-20 text-[20px] sm:text-[30px] font-bold text-center">Choose Your <span>{{ sample1 != null && sample1 > 0 ? 'Last' : 'First'}}</span> Sample
+         </span>
+        <div class="flex-grow h-0.5 bg-black min-w-[50px]"></div>
+    </div>
+</div>
+
+<div class="px-6 lg:px-56 mx-auto justify-center items-center">
+    <div *ngIf="lockedProducts" class="grid grid-cols-2 md:grid-cols-4 gap-2 gap-y-3 py-6">
+        <div *ngFor="let product of lockedProducts" class="flex flex-col pb-6 cursor-pointer">
+            <!-- Existing Card -->
+            <div class="card card-bg p-4 rounded-lg relative sm:h-[437px] group "
+                [ngClass]="{'selcted-border': product.id == sample1 || product.id == sample2}">
+                <!-- Discount Banner with logo on the right -->
+                <div [routerLink]="'/sample-detail/' + order.id + '/' + product.id" class="absolute sm:top-10 left-0 flex items-center 
+                justify-between w-full text-black text-[12px] sm:text-[20px] lg:text-[25px] italic font-bold">
+
+                    <div class="flex items-center h-[36px] px-4">
+                        <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage" alt="Logo"
+                            class="h-[16px] sm:h-[36px] pr-2">
+                    </div>
+                </div>
+                <!-- Image and Text -->
+                <div class="flex flex-col items-center justify-center space-y-4 h-full">
+                    <img [routerLink]="'/sample-detail/' + order.id + '/' + product.id"
+                        [src]="product.image.originalPath" alt="Card 1 Image"
+                        class="w-full h-auto rounded-md pt-10 sm:pt-0">
+
+                    <!-- Button to show + if not selected -->
+                    <button [routerLink]="'/sample-detail/' + order.id + '/' + product.id"
+                        *ngIf="product.id != sample1 && product.id != sample2"
+                        class="bg-gradient-to-b from-[#ECA741] to-[#F05E23] text-white sm:text-4xl rounded-md sm:w-12 sm:h-12 h-8 w-8 flex items-center justify-center px-2.5 absolute right-2 sm:right-6 bottom-4">
+                        +
+                    </button>
+                    <button *ngIf="product.id == sample1 || product.id == sample2"
+                        class="check-bg sm:text-4xl rounded-md sm:w-12 sm:h-12 h-8 w-8 flex items-center justify-center px-2.5 absolute right-2 bottom-2">
+                        ✔
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Information Section -->
+            <div [routerLink]="'/sample-detail/' + order.id + '/' + product.id" class="mt-4 px-2 cursor-pointer">
+                <!-- Title -->
+                <h3 class="font-bold text-[12px]">{{product.brandText}} {{product.title}}</h3>
+                <!-- Description -->
+                <p class="text-[12px] font-bold mt-1">{{product.flavorSubCategoryText}}</p>
+
+            </div>
+        </div>
+
+    </div>
+</div>

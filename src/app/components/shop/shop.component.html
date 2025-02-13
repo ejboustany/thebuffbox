@@ -6,7 +6,8 @@
         <div class="flex-grow relative">
             <div class="grid grid-cols-1 w-full">
                 <input type="email" name="email" id="email" class="col-start-1 row-start-1 block w-full rounded-md bg-white py-3 pl-10 pr-3 text-[21px] 
-           placeholder:text-gray-300 placeholder:font-bold placeholder:text-[21px] sm:pl-12" placeholder="Search" [(ngModel)]="searchQuery">
+           placeholder:text-gray-300 placeholder:font-bold placeholder:text-[21px] sm:pl-12" placeholder="Search"
+                    [(ngModel)]="searchQuery">
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="pointer-events-none col-start-1
@@ -20,7 +21,8 @@
 
 
         <!-- Button -->
-        <button [routerLink]="'/take-quiz/1/' + user.quizId" class="bg-black text-white px-4 py-3 rounded-lg font-bold text-[12px] sm:text-[21px]">
+        <button [routerLink]="'/take-quiz/1/' + user.quizId"
+            class="bg-black text-white px-4 py-3 rounded-lg font-bold text-[12px] sm:text-[21px]">
             Your Preferences
         </button>
 
@@ -40,7 +42,7 @@
                 tubs after each Buffbox!</b></p>
     </div>
 
-    <div  *ngIf="shop?.subscribedToProducts"  class="grid grid-cols-2 md:grid-cols-4 gap-2 gap-y-3 py-6">
+    <div *ngIf="shop?.subscribedToProducts" class="grid grid-cols-2 md:grid-cols-4 gap-2 gap-y-3 py-6">
 
         <div *ngFor="let product of filteredSubscribedProducts" class="flex flex-col pb-6 cursor-pointer">
             <!-- Existing Card -->
@@ -63,8 +65,8 @@
                 </div>
                 <!-- Image and Text -->
                 <div class="flex flex-col items-center justify-center space-y-4 h-full">
-                    <img [routerLink]="'/product-detail/' + product.id"  [src]="product.image.originalPath" alt="Card 1 Image"
-                        class="w-full h-auto rounded-md pt-10 sm:pt-0">
+                    <img [routerLink]="'/product-detail/' + product.id" [src]="product.image.originalPath"
+                        alt="Card 1 Image" class="w-full h-auto rounded-md pt-10 sm:pt-0">
                     <a (click)="addToCart(product.id)" class="text-center text-[12px] font-bold italic bg-black text-white p-2 rounded-lg px-2.5 absolute right-4 bottom-4 opacity-0 
                         group-hover:opacity-100 transition-opacity duration-300 cursor-pointer  ">
                         Add To Cart
@@ -88,48 +90,54 @@
 
         <div *ngIf="searchQuery == '' || searchQuery == null" class="col-span-2">
             <!-- Image for big screens -->
-            <img src="../../../assets/shop-separator.png" alt="Featured Image" 
-                 class="rounded-lg h-[594px] hidden md:block">
-        
+            <img src="../../../assets/shop-separator.png" alt="Featured Image"
+                class="rounded-lg h-[594px] hidden md:block">
+
             <!-- Image for mobile -->
-            <img src="../../../assets/shop-separator-mobile.png" alt="Featured Image" 
-                 class="rounded-lg  block md:hidden">
+            <img src="../../../assets/shop-separator-mobile.png" alt="Featured Image"
+                class="rounded-lg  block md:hidden">
         </div>
-        
-        <div   *ngFor="let product of shop.productsToUnlock"  class="flex flex-col">
+
+        <div *ngFor="let product of shop.productsToUnlock" class="flex flex-col">
             <!-- Existing Card -->
-         
-            <div *ngIf="searchQuery == '' || searchQuery == null" class="card sa-bg p-4 rounded-lg relative sm:h-[437px] group">
+
+            <div *ngIf="searchQuery == '' || searchQuery == null"
+                class="card sa-bg p-4 rounded-lg relative sm:h-[437px] group">
                 <!-- Lock Icon -->
                 <div class="absolute top-1 sm:-right-2 -right-1 z-10 ">
                     <img src="../../../assets/lock.png" class="sm:h-full h-5">
                 </div>
-        
+
                 <!-- Discount Banner with logo on the right -->
                 <div class="absolute sm:top-10 left-0 flex items-center justify-between w-full text-black text-[12px] sm:text-[20px] lg:text-[25px]
                 italic font-bold">
                     <div class="flex items-center group-hover:opacity-20">
                         <span class="discount-bg-lock flex items-center h-full h-[36px] sm:h-[46px]">
-                                <p class="discount-bg-lock sm:px-2 sm:pr-2 px-1">25% OFF</p>
+                            <p class="discount-bg-lock sm:px-2 sm:pr-2 px-1">25% OFF</p>
                         </span>
                     </div>
                     <div class="flex items-center h-[36px]">
-                        <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage" alt="Logo" class="h-[16px] sm:h-[36px] pr-2">
+                        <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage" alt="Logo"
+                            class="h-[16px] sm:h-[36px] pr-2">
                     </div>
                 </div>
-        
+
                 <!-- Image and Text -->
-                <div class="flex flex-col items-center justify-center space-y-4 h-full z-0"> <!-- Set z-index to 0 here -->
-                    <img [src]="product.image.originalPath"  alt="Card 1 Image" class=" rounded-md group-hover:opacity-20 pt-10 sm:pt-0">
+                <div class="flex flex-col items-center justify-center space-y-4 h-full z-0">
+                    <!-- Set z-index to 0 here -->
+                    <img [src]="product.image.originalPath" alt="Card 1 Image"
+                        class=" rounded-md group-hover:opacity-20 pt-10 sm:pt-0">
                 </div>
-        
+
                 <!-- Hover Button - Positioned absolutely at bottom -->
                 <div class="absolute bottom-0 left-0 w-full h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                    bg-black text-white flex items-center justify-center  py-6 sm:py-9 rounded-t-md z-10"> <!-- Set z-index to 10 here -->
-                    <span class="text-white text-[10px] sm:text-[16px] font-bold px-4 text-center ">GET FEBRUARY’S BUFFBOX TO UNLOCK</span>
+                    bg-black text-white flex items-center justify-center  py-6 sm:py-9 rounded-t-md z-10">
+                    <!-- Set z-index to 10 here -->
+                    <span class="text-white text-[10px] sm:text-[16px] font-bold px-4 text-center ">GET FEBRUARY’S
+                        BUFFBOX TO UNLOCK</span>
                 </div>
             </div>
-        
+
             <!-- Product Information Section -->
             <div *ngIf="searchQuery == '' || searchQuery == null" class="mt-4 px-2">
                 <!-- Title -->

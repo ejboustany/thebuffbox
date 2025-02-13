@@ -2,27 +2,17 @@
 
 <div *ngIf="subscription" class="flex justify-center items-center">
     <div class="py-6 w-full max-w-2xl sm:px-0 px-4">
-        <p class="gradient-bg py-2 w-full rounded-xl text-center font-bold text-[23px]">Discover Plan</p>
-
-
-        <div class="flex flex-col items-center w-full mt-4 sm:mt-8 px-4">
-            <p class="font-bold text-[20px] text-center mb-2">
-                Your Cycle Begins!
-            </p>
-            <p class="text-[14px] text-gray-700 max-w-xs text-center mb-6 sm:mb-12">
-                We received your payment and started preparing your Buffbox journey. Stay tuned for your curated
-                samples.
-            </p>
-
-        </div>
+        <p class="bg-black text-white py-2 w-full rounded-xl text-center font-bold text-[23px]">Discover Plan</p>
 
         <div class="w-full overflow-x-auto md:overflow-visible hide-scrollbar">
-            <div class="flex flex-row space-x-4 min-w-full justify-start">
-              <app-subscription-tracker [selectedDay]="subscription?.cycleStatus + 1"></app-subscription-tracker>
+            <div class="flex flex-row space-x-4 min-w-full justify-center">
+                <app-subscription-tracker [billingDate]="subscription.billingCycleStartDate"
+                    [assemblyDate]="order.dateCreated" [assemblyDate]="order.lastModified" [orderId]="order.id"
+                    [selectedDay]="subscription?.cycleStatus + 1"></app-subscription-tracker>
             </div>
-          </div>
-          
-          
+        </div>
+
+
 
         <div class="pb-6 flex items-center justify-center pt-12">
             <p class="text-[20px] font-bold">Your {{ subscription.billingCycleStartDate
@@ -30,20 +20,32 @@
         </div>
 
         <div *ngIf="order?.items" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center pb-4">
+            <ng-container *ngIf="order.items.length < 4">
+                <div *ngFor="let i of [].constructor(4 - order.items.length); let idx = index"
+                    class="order-item-bg rounded-md flex justify-center items-center h-36 sm:h-60">
+                    <button [routerLink]="'/choose-samples/' + order.id"
+                        class="bg-gradient-to-b from-[#ECA741] to-[#F05E23]  text-white text-4xl rounded-md w-12 h-12 flex items-center justify-center">
+                        +
+                    </button>
+                </div>
+            </ng-container>
+
+
             <div *ngFor="let orderItem of order.items" class="flex flex-col items-center gap-2 py-2 borderb">
                 <!-- Image container with background -->
-                <div class=" flex justify-center items-center rounded-lg order-item-bg">
-                    <img [src]="orderItem.image.originalPath">
+                <div class="flex justify-center items-center rounded-lg order-item-bg w-full">
+                    <img [src]="orderItem.image.originalPath" class="max-h-60 w-auto object-contain">
                 </div>
-        
+                
+                
                 <!-- Text below the background -->
                 <p class="text-[16px] font-semibold flex items-center">
-                    {{ orderItem.brandName }} 
+                    {{ orderItem.brandName }}
                     <span class="font-normal md:hidden text-[12px] ml-1"> (SAMPLE) </span>
-                  </p>
-                  
+                </p>
+
                 <p class="text-[12px]">{{ orderItem.productTitle }}</p>
-        
+
                 <div class="flex items-center">
                     <button routerLink="/shop" class="orange-text font-bold text-[14px] px-4 split-border">SHOP</button>
                     <button [routerLink]="'/review-tub/' + orderItem.productId"
@@ -51,7 +53,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <p class="py-3 w-full rounded-lg font-bold text-[14px] mt-4 px-2 header">Buffbox Membership</p>
 
@@ -182,7 +184,7 @@
                     </svg>
                 </div>
             </a>
-            
+
 
             <div>
                 <p class="py-3 w-full rounded-lg font-bold 

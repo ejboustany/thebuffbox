@@ -49,6 +49,9 @@ import { CancelMembershipComponent } from './components/cancel-membership/cancel
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { BuildYourBoxComponent } from './components/build-your-box/build-your-box.component';
+import { ChooseSamplesComponent } from './components/choose-samples/choose-samples.component';
+import { SampleDetailComponent } from './components/sample-detail/sample-detail.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +96,9 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     CancelMembershipComponent,
     ProductDetailComponent,
     CartComponent,
-
+    BuildYourBoxComponent,
+    ChooseSamplesComponent,
+    SampleDetailComponent
   ],
   exports: [LastCharactersPipe],
   imports: [

@@ -1,0 +1,114 @@
+<app-inside-menu [showBottomMenu]="false"></app-inside-menu>
+
+<div class="bg-white">
+    <div *ngIf="product">
+        <div class="lg:grid lg:grid-cols-2">
+            <div
+                class="flex flex-col-reverse items-center justify-center h-full w-full image-bg image-center text-center relative">
+                <div class="absolute top-12 left-0 bg-white px-3 py-1">
+                    <p
+                        class="text-transparent bg-gradient-to-b from-[#ECA741] to-[#F05E23] font-bold italic text-[25px] bg-clip-text">
+                        SAMPLE
+                    </p>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <!-- Tab panel, show/hide based on tab state. -->
+                    <div  id="tabs-1-panel-1" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
+                        <img [src]="product.image.originalPath"
+                            class="aspect-square object-contain sm:rounded-lg mx-auto h-36 sm:h-96">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+                <div class="sm:p-16">
+                    <div class="flex flex-col sm:flex-row justify-between sm:justify-between gap-4">
+                        <!-- Left Section: Image and Title -->
+                        <div class="flex flex-col items-start gap-3">
+                            <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage"
+                                class="aspect-square object-contain sm:rounded-lg h-16">
+                            <div>
+                                <h2 class="sr-only">Product information</h2>
+                                <p class="text-[24px] sm:text-[30px] tracking-wider font-bold uppercase">
+                                    {{ product.title }}
+                                    <span class="text-[12px] sm:text-[14px] align-baseline"> (SAMPLE)</span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-6 flex flex-col ">
+                        <!-- Left side: Flavor and Size on separate rows, aligned properly -->
+                        <div class="flex flex-col text-[14px]">
+                            <div class="flex uppercase">
+                                <p class="font-bold w-[120px]">FLAVOR</p>
+                                <p class="font-semibold">{{product.flavorSubCategoryText}}</p>
+                            </div>
+                            <div class="flex mt-6 text-[14px]">
+                                <p class="font-bold w-[120px] ]  uppercase">SIZE</p>
+                                <p class="font-semibold">{{product.gramsProteinContent}} lbs, FULL SIZE</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mt-6 flex">
+                        <button (click)="choose()" type="submit" 
+                        class="flex flex-1 items-center justify-center bg-black px-8 py-4
+                            text-[14px] font-bold text-white">CHOOSE</button>
+                    </div>
+
+                    <section aria-labelledby="details-heading" class="mt-12">
+                        <h2 id="details-heading" class="sr-only">Additional details</h2>
+                        <div class="space-y-6">
+                            <!-- Description Section -->
+                            <div (click)="toggleSection('description')"
+                                class="flex justify-between border-b border-gray-300 cursor-pointer">
+                                <span class="text-[14px] font-bold pb-5 uppercase">Description</span>
+                                <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                            <div *ngIf="activeSection === 'description'">
+                                <p>{{product.description}}</p>
+                            </div>
+
+                            <!-- Suggested Use Section -->
+                            <div (click)="toggleSection('suggestedUse')"
+                                class="flex justify-between border-b border-gray-300 cursor-pointer">
+                                <span class="text-[14px] font-bold pb-5 uppercase">Suggested Use</span>
+                                <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                            <div *ngIf="activeSection === 'suggestedUse'">
+                                <p>Your suggested use content goes here.</p>
+                            </div>
+
+                            <!-- Nutrition Facts Section -->
+                            <div (click)="toggleSection('nutritionFacts')"
+                                class="flex justify-between border-b border-gray-300 cursor-pointer">
+                                <span class="text-[14px] font-bold pb-5 uppercase">Nutrition Facts</span>
+                                <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                            <div *ngIf="activeSection === 'nutritionFacts'">
+                                <p>Your nutrition facts content goes here.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

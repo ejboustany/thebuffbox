@@ -19,6 +19,9 @@ import { CancelMembershipComponent } from './components/cancel-membership/cancel
 import { AdjustFrequencyComponent } from './components/adjust-frequency/adjust-frequency.component';
 import { CancelReasonComponent } from './components/cancel-reason/cancel-reason.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { BuildYourBoxComponent } from './components/build-your-box/build-your-box.component';
+import { ChooseSamplesComponent } from './components/choose-samples/choose-samples.component';
+import { SampleDetailComponent } from './components/sample-detail/sample-detail.component';
 
 
 const routes: Routes = [
@@ -41,7 +44,10 @@ const routes: Routes = [
   { path: 'cancel', component: CancelMembershipComponent },
   { path: 'frequency', component: AdjustFrequencyComponent },
   { path: 'cancel-reason', component: CancelReasonComponent },
-  { path: 'product-detail/:productId', component: ProductDetailComponent }
+  { path: 'product-detail/:productId', component: ProductDetailComponent },
+  { path: 'build-your-box/:orderId', component: BuildYourBoxComponent },
+  { path: 'choose-samples/:orderId', component: ChooseSamplesComponent },
+  { path: 'sample-detail/:orderId/:productId', component: SampleDetailComponent },
 ];
 
 @NgModule({
