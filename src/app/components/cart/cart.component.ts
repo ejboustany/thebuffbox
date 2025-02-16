@@ -85,4 +85,9 @@ export class CartComponent implements OnInit {
       });
     }
   }
+
+  checkout() {
+    this.dialogRef.close(); // Close the dialog
+    this.router.navigate(['/cart-checkout']); // Navigate to checkout
+  }
 }

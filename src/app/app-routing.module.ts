@@ -22,6 +22,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { BuildYourBoxComponent } from './components/build-your-box/build-your-box.component';
 import { ChooseSamplesComponent } from './components/choose-samples/choose-samples.component';
 import { SampleDetailComponent } from './components/sample-detail/sample-detail.component';
+import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'subscribe/:orderId', component: ChoosePlanStep14Component, canActivate: [AuthGuard] },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout/:orderId', component: CheckoutComponent },
+  { path: 'cart-checkout', component: CartCheckoutComponent },
   { path: 'verification/:code/:userId', component: EmailVerificationComponent },
   { path: 'thank-you/:orderId', component: ThankyouComponent, canActivate: [AuthGuard] },
   { path: 'subscriptions-learn-more', component: SubscriptionsLearnMoreComponent },

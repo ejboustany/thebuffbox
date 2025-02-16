@@ -32,6 +32,12 @@ export class CartService {
         );
     }
 
+    update(item:any){
+        const url = environment.api + "/cart/save";
+        return this.apiCallService.post(url, item);
+    }
+
+
     
     deleteItem(id:any){
         const url = environment.api + "/cartItem/Delete?id=" + id;

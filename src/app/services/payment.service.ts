@@ -23,6 +23,12 @@ export class PaymentService {
         return this.apiCallService.post(url, identity);
     }
 
+    getDefaultPaymentMethod() {
+        const url = environment.api + "/PaymentMethod/GetDefaultPaymentMethod";
+        return this.apiCallService.get(url);
+    }
+
+
     verifyPayment(paymentId: string, paymentMethodId: string, deliverySchedule: number, orderId: number) {
         const url = environment.api + "/Payment/Subscribe?paymentIntent=" + paymentId 
         + "&paymentMethodId="+paymentMethodId + "&deliverySchedule=" + deliverySchedule + "&orderId=" + orderId;
@@ -33,5 +39,10 @@ export class PaymentService {
                 this.accountService.getUserInfo().subscribe();
             })
         );
+    }
+
+    createCheckoutPayment(cartId: number, paymentMethodId: string, identity: any) {
+        const url = environment.api + "/Payment/CreateCheckoutPayment?cartId=" + cartId + "&paymentMethodId=" + paymentMethodId;
+        return this.apiCallService.post(url, identity);
     }
 }

@@ -58,9 +58,11 @@ export class CheckoutComponent implements OnInit {
     };
   }
 
+  isProcessing = false;
   async handlePayment() {
-    console.log(this.deliveryDuration);
     if (Stripe && this.cardElement) {
+      this.isProcessing = true;
+      
       const { paymentMethod, error } = await Stripe.createPaymentMethod({
         type: 'card',
         card: this.cardElement,
@@ -86,10 +88,14 @@ export class CheckoutComponent implements OnInit {
       error => {
         // Handle API error here
         console.error("API error:", error);
+        this.isProcessing = false;
+
       }
     );
     } else {
       alert('Stripe not initialized correctly.');
+      this.isProcessing = false;
+
     }
   }
 }

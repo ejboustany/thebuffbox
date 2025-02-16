@@ -52,6 +52,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BuildYourBoxComponent } from './components/build-your-box/build-your-box.component';
 import { ChooseSamplesComponent } from './components/choose-samples/choose-samples.component';
 import { SampleDetailComponent } from './components/sample-detail/sample-detail.component';
+import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { SampleDetailComponent } from './components/sample-detail/sample-detail.
     CartComponent,
     BuildYourBoxComponent,
     ChooseSamplesComponent,
-    SampleDetailComponent
+    SampleDetailComponent,
+    CartCheckoutComponent
   ],
   exports: [LastCharactersPipe],
   imports: [
