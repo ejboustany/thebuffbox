@@ -168,10 +168,9 @@ export class CartCheckoutComponent implements OnInit {
     }
     await this.paymentService.createCheckoutPayment(this.cart.id, paymentMethodUsed, this.user).subscribe(
       res => {
-        this.router.navigate(['/shop']).then(() => {
+        this.router.navigate(['/checkout-completed']).then(() => {
           localStorage.removeItem("cartId");
        
-          window.location.reload();
           this.snackBar.open("Order placed!", "dismiss", {
             panelClass: "success",
             politeness: "polite",

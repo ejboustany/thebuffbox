@@ -53,6 +53,7 @@ import { BuildYourBoxComponent } from './components/build-your-box/build-your-bo
 import { ChooseSamplesComponent } from './components/choose-samples/choose-samples.component';
 import { SampleDetailComponent } from './components/sample-detail/sample-detail.component';
 import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
+import { CartCheckoutConfirmationComponent } from './components/cart-checkout-confirmation/cart-checkout-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.
     BuildYourBoxComponent,
     ChooseSamplesComponent,
     SampleDetailComponent,
-    CartCheckoutComponent
+    CartCheckoutComponent,
+    CartCheckoutConfirmationComponent
   ],
   exports: [LastCharactersPipe],
   imports: [
