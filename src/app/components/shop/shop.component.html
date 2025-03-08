@@ -53,7 +53,7 @@
                     <div class="flex items-center">
                         <span class="bg-white flex items-center h-full h-[36px] sm:h-[46px]">
                             <p class="bg-white  group-hover:bg-gradient-to-b group-hover:from-[#ECA741] group-hover:to-[#F05E23] 
-                                group-hover:bg-clip-text group-hover:text-transparent sm:px-2 sm:pr-2 px-1">25% OFF</p>
+                                group-hover:bg-clip-text group-hover:text-transparent sm:px-2 sm:pr-2 px-1">{{product.discount}}% OFF</p>
                         </span>
 
 
@@ -101,40 +101,35 @@
         <div *ngFor="let product of shop.productsToUnlock" class="flex flex-col">
             <!-- Existing Card -->
 
-            <div *ngIf="searchQuery == '' || searchQuery == null"
-                class="card sa-bg p-4 rounded-lg relative sm:h-[437px] group">
+            <div *ngIf="searchQuery == '' || searchQuery == null" class="card-container relative sm:h-[437px] group rounded-lg">
+                <!-- Main background overlay that should appear above everything -->
+                <div class="bg-crad-lock absolute top-0 left-0 w-full h-full rounded-lg z-10"></div>
+                
                 <!-- Lock Icon -->
-                <div class="absolute top-1 sm:-right-2 -right-1 z-10 ">
-                    <img src="../../../assets/lock.png" class="sm:h-full h-5">
+                <div class="absolute sm:-top-5 sm:-right-9 -right-4 -top-2.5 z-20">
+                    <img src="../../../assets/Group 816.png" class="sm:h-full h-10">
                 </div>
-
+                
                 <!-- Discount Banner with logo on the right -->
-                <div class="absolute sm:top-10 left-0 flex items-center justify-between w-full text-black text-[12px] sm:text-[20px] lg:text-[25px]
-                italic font-bold">
+                <div class="absolute sm:top-10 left-0 flex items-center justify-between w-full text-black text-[12px] sm:text-[20px] lg:text-[25px] italic font-bold z-1">
                     <div class="flex items-center group-hover:opacity-20">
-                        <span class="discount-bg-lock flex items-center h-full h-[36px] sm:h-[46px]">
-                            <p class="discount-bg-lock sm:px-2 sm:pr-2 px-1">25% OFF</p>
+                        <span class="discount-bg-lock flex items-center h-[36px] sm:h-[46px]">
+                            <p class="discount-bg-lock sm:px-2 sm:pr-2 px-1">{{product.discount}}% OFF</p>
                         </span>
                     </div>
                     <div class="flex items-center h-[36px]">
-                        <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage" alt="Logo"
-                            class="h-[16px] sm:h-[36px] pr-2">
+                        <img [src]="'../../../assets/Protein Powder Comanies/' + product.brandImage" alt="Logo" class="h-[16px] sm:h-[36px] pr-2">
                     </div>
                 </div>
-
+                
                 <!-- Image and Text -->
-                <div class="flex flex-col items-center justify-center space-y-4 h-full z-0">
-                    <!-- Set z-index to 0 here -->
-                    <img [src]="product.image.originalPath" alt="Card 1 Image"
-                        class=" rounded-md group-hover:opacity-20 pt-10 sm:pt-0">
+                <div class="flex flex-col items-center justify-center space-y-4 h-full p-4">
+                    <img [src]="product.image.originalPath" alt="Card 1 Image" class="rounded-md group-hover:opacity-20 pt-10 sm:pt-0">
                 </div>
-
+                
                 <!-- Hover Button - Positioned absolutely at bottom -->
-                <div class="absolute bottom-0 left-0 w-full h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                    bg-black text-white flex items-center justify-center  py-6 sm:py-9 rounded-t-md z-10">
-                    <!-- Set z-index to 10 here -->
-                    <span class="text-white text-[10px] sm:text-[16px] font-bold px-4 text-center ">GET FEBRUARY’S
-                        BUFFBOX TO UNLOCK</span>
+                <div class="absolute bottom-0 left-0 w-full h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black text-white flex items-center justify-center py-6 sm:py-9 rounded-t-md z-20">
+                    <span class="text-white text-[10px] sm:text-[16px] font-bold px-4 text-center">GET FEBRUARY'S BUFFBOX TO UNLOCK</span>
                 </div>
             </div>
 

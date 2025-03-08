@@ -16,13 +16,19 @@ export class ProductDetailComponent {
   productId: number;
   personalizedOptions: any;
   activeSection: string | null = null;
-
+  backToResults: number = 0;
   
 constructor(private route: ActivatedRoute, 
     private productService: ProductService, private router: Router,  private cartService: CartService, public dialog: MatDialog) {
+
     this.route.params.subscribe(params => {
       this.productId = params['productId'];
     });
+
+    this.route.queryParams.subscribe(params => {
+      this.backToResults = params['viewResult'];
+    });
+
     this.getProductById(this.productId);
   }
 

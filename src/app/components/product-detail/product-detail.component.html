@@ -9,7 +9,7 @@
                 <div class="absolute top-12 left-0 bg-white px-3 py-1">
                     <p
                         class="text-transparent bg-gradient-to-b from-[#ECA741] to-[#F05E23] font-bold italic text-[25px] bg-clip-text">
-                        35% OFF
+                        {{product.discount}}% OFF
                     </p>
                 </div>
 
@@ -67,9 +67,12 @@
 
 
                         <div class="mt-10 flex">
-                            <button (click)="addToCart(product.id)" type="submit" class="flex flex-1 items-center justify-center bg-black px-8 py-4
+                            <button *ngIf="!backToResults" (click)="addToCart(product.id)" type="submit" class="flex flex-1 items-center justify-center bg-black px-8 py-4
                             text-[14px] font-bold text-white">ADD TO CART</button>
 
+                            <button *ngIf="backToResults > 0" [routerLink]="'/result/' + backToResults" type="submit" 
+                            class="flex flex-1 items-center justify-center bg-black px-8 py-4
+                            text-[14px] font-bold text-white">BACK</button>
 
                         </div>
                     </form>
@@ -100,7 +103,7 @@
                                 </svg>
                             </div>
                             <div *ngIf="activeSection === 'suggestedUse'">
-                                <p>Your suggested use content goes here.</p>
+                                <p>{{product.suggestedUSe}}</p>
                             </div>
                     
                             <!-- Nutrition Facts Section -->
@@ -112,9 +115,10 @@
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <div *ngIf="activeSection === 'nutritionFacts'">
-                                <p>Your nutrition facts content goes here.</p>
+                            <div *ngIf="activeSection === 'nutritionFacts'"> 
+                                <img *ngIf="product.nutritionInfo != null" [src]="product.nutritionInfo.originalPath" alt="Nutrition Facts" class="w-96 h-auto">
                             </div>
+                            
                         </div>
                     </section>
                     

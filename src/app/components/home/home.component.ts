@@ -15,6 +15,16 @@ export class HomeComponent {
 
   }
 
+  isOpen: { [key: number]: boolean } = {
+    1: false,
+    2: false,
+    3: false
+  };
+
+  toggleAnswer(questionId: number): void {
+    this.isOpen[questionId] = !this.isOpen[questionId];
+  }
+
   loading = false;
   contactMessage() {
     if (this.contact.Name != null && this.contact.Name != '' &&

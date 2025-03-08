@@ -43,7 +43,7 @@ export class SignInComponent {
       this.accountService.login(this.user.EmailAddress, this.user.Password).subscribe(
         res => {
           this.isLoading = false;
-          this.router.navigate(["profile"]).then(() => {
+          this.router.navigate(["membership"]).then(() => {
             window.location.reload();
           });
         },

@@ -2,34 +2,34 @@
     background: linear-gradient(to right, #F05E23 5.49%, #ECA741 28.04%, #F05E23 67.03%, #ECA741 100%);
 }
 
-.card-bg{
+.card-bg {
     background-color: #F0F0F0;
 }
 
 .locked-card-bg {
-    background-color: #B6B6B6;
+    background: rgba(0, 0, 0, 0.24);
 }
 
 .discount-bg-lock {
-    background-color: #c5c1c1;
+    background-color: #f0f0f0;
 }
 
 .text-gradient {
     background: linear-gradient(to bottom, #ECA741 0%, #F05E23 100%);
-
 }
 
-.orange{
+.orange {
     color: #F05E23;
 }
 
-.sa-bg {
-    background: rgba(194, 192, 192, 0.7);
+.bg-crad-lock {
+    background: rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(0px);
+    z-index: 10;
+    pointer-events: none; /* This allows clicks to pass through to elements below */
 }
 
-.sa-bg:hover {
-    background: rgba(0, 0, 0, 0.767);
-    backdrop-filter: blur(0px); /* Adjust blur if needed */
+.card-container:hover .bg-crad-lock {
+    background: rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(0px);
 }
-
-

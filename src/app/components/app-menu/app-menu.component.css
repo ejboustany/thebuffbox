@@ -3,3 +3,7 @@
     border-image: linear-gradient(90deg, #ECA741, #F05D23) 1;
     display: inline-block; /* Ensure the element respects the padding */
   }
+  
+.orange-text {
+  color: #F05E23;
+}

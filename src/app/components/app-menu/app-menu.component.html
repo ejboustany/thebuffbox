@@ -1,22 +1,28 @@
 <nav class="sticky top-0 bg-white z-50 shadow-md">
-  <div class="mx-auto px-6 lg:px-56">
+  <div class="mx-auto px-0 lg:px-56">
     <div class="flex h-[80px] justify-between">
-      <div class="flex">
+      <div class="flex px-4">
         <div class="flex shrink-0 items-center">
           <a href="/">
-            <img class="sm:h-7 h-6 w-auto" src="../../../assets/Buffbox_Wordmark.svg" alt="Your Company">
+            <img class="sm:h-7 h-4 w-auto" src="../../../assets/Buffbox_Wordmark.svg" alt="Your Company">
           </a>
         </div>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center  ">
         <!-- Mobile Menu Toggle Button -->
-        <div *ngIf="!hideMenu" class="shrink-0 text-white md:hidden">
-          <button type="button" (click)="toggleDropdown()" class="relative inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-black">
-            <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
+        <div class="md:hidden bg-black flex justify-center">
+          <button routerLink="/login" class="bg-white text-black px-4 py-2 md:text-white text-[14px] font-bold orange-text w-auto whitespace-nowrap">
+            LOG IN
           </button>
         </div>
+        
+        
+        <div *ngIf="!hideMenu" class="text-white md:hidden bg-black h-full w-full flex justify-center items-center px-2">
+          <button type="button" (click)="toggleDropdown()" class="bg-black flex justify-center items-center p-3">
+            <img src="../../../assets/mobile-burger-menu.svg" alt="Menu Icon" class="size-10">
+          </button>
+        </div>
+        
 
         <!-- Desktop Menu -->
         <div *ngIf="!hideMenu" class="hidden md:ml-4 md:flex md:shrink-0 md:items-center">
@@ -37,7 +43,7 @@
       <a routerLink="/take-quiz/1" class="block text-xl font-bold text-black" [ngClass]="{'gradient-border': !isHowItWorksActive}" >Get Started</a>
       <a href="#how-it-works"   [ngClass]="{'gradient-border': isHowItWorksActive}" 
       (click)="scrollToSection('how-it-works')" class="block text-xl font-bold text-black">How It Works</a>
-      <a routerLink="/login" class="block text-xl font-bold text-black">Log In</a>
+      <!-- <a routerLink="/login" class="block text-xl font-bold text-black">Log In</a> -->
     </div>
   </div>
 </nav>

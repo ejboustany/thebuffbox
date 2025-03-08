@@ -11,29 +11,21 @@
     background: linear-gradient(to bottom, #F9A438 13%, #F05E23 100%);
 }
 
-.bg-max-border {
-    position: relative;
-    border-radius: 10px; /* Rounded corners for the border */
-    padding: 8px; /* Adjust padding to create space inside */
-    background: #fff; /* White background for the inner content */
-    color: #000; /* Black text color */
-    z-index: 0; /* Ensure the content stays above the border */
-}
 
-.bg-max-border::before {
-    content: '';
+
+.element {
+    position: relative;
+    padding-bottom: 5px; /* Adjust as needed */
+  }
+  
+  .element::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
-    border-radius: 10px; /* Match the parent border radius */
-    padding: 4px; /* Border thickness */
-    background: linear-gradient(to bottom, #F9A438, #F05E23); /* Gradient border */
-    z-index: -1; /* Place behind the content */
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0) border-box;
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-}
+    border-radius: 10px;
+    left: 0;
+    width: 100%;
+    height: 6px; /* Border thickness */
+    background: linear-gradient(to right, #F05E23 13%, #F9A438 100%);
+  }
+  
