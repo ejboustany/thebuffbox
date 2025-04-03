@@ -31,8 +31,8 @@ export class QuizService {
     // }
 
     
-    submitQuiz(quiz: any, registration: boolean) {
-        const url = environment.api + "/theQuiz/TakeQuiz?registration=" + registration;
+    submitQuiz(quiz: any, registration: boolean, referralCode= "") {
+        const url = environment.api + "/theQuiz/TakeQuiz?registration=" + registration + "&referralCode=" + referralCode;
 
         if(!registration){
             return this.apiCallService.post(url, quiz);

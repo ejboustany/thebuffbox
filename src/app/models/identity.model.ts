@@ -15,4 +15,5 @@ export class Identity extends Base   {
     shippingAddress: Address;
     quizId: number;
     orderId: number;
+    isEmailSubscribed: boolean;
 }

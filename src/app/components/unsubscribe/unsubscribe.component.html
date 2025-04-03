@@ -1,0 +1,51 @@
+<div class="max-w-md mx-auto sm:px-0 px-4 pb-16 pt-6">
+    <div class="flex justify-center pt-8">
+      <h1 class="font-bold text-[30px]">Email Preferences</h1>
+    </div>
+  
+    <div *ngIf="!loaded" class="flex justify-center items-center py-10">
+      <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black"></div>
+    </div>
+  
+    <div *ngIf="loaded && unsubscribeSuccessful" class="flex flex-col gap-6">
+      <div class="flex flex-col justify-center items-center text-center">
+        <div class="mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h2 class="font-bold text-[24px]">Successfully Unsubscribed</h2>
+        <p class="text-[16px] py-4">
+          You have successfully unsubscribed from our email communications. 
+          If you'd like to change your preferences in the future, please log in to your account.
+        </p>
+      </div>
+  
+      <button 
+        class="w-full py-2 rounded-xl font-bold text-white text-[25px] bg-black"
+        (click)="goToLogin()">
+        Log In to Your Account
+      </button>
+    </div>
+  
+    <div *ngIf="loaded && !unsubscribeSuccessful" class="flex flex-col gap-6">
+      <div class="flex flex-col justify-center items-center text-center">
+        <div class="mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <h2 class="font-bold text-[24px]">Unsubscribe Error</h2>
+        <p class="text-[16px] py-4">{{ errorMessage }}</p>
+      </div>
+  
+      <button 
+        class="w-full py-2 rounded-xl font-bold text-white text-[25px] bg-black"
+        (click)="goToLogin()">
+        Log In to Your Account
+      </button>
+    </div>
+  </div>

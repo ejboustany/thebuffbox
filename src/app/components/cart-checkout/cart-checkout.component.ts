@@ -95,6 +95,7 @@ export class CartCheckoutComponent implements OnInit {
     quizId: 0,
     orderId: 0,
     id: 0,
+    isEmailSubscribed: false,
     isoutcCreatedDate: ''
   };
 

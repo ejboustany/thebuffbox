@@ -96,6 +96,24 @@
         </div>
     </div>
     
+    <div class="flex-1 mt-4">
+        <div class="flex items-center">
+          <input 
+            type="checkbox" 
+            id="isSubscribed" 
+            name="isSubscribed"
+            class="w-5 h-5 rounded border-gray-300 text-black focus:ring-0 focus:ring-offset-0" 
+            [(ngModel)]="user.isEmailSubscribed"
+            (ngModelChange)="onFieldChange()" />
+          <label for="isSubscribed" class="ml-2 text-gray-700 text-[16px]">
+            Receive email updates and promotions
+          </label>
+        </div>
+        <p class="text-xs text-gray-500 mt-1 ml-7">
+          You can unsubscribe at any time by clicking the link in our emails
+        </p>
+      </div>
+      
     <button
     class="w-full py-2 my-4 rounded-xl font-bold text-[25px]"
     [ngClass]="{

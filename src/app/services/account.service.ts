@@ -141,4 +141,9 @@ export class AccountService {
         const url = environment.api + "/user/CancelSubscription?cancelReason=" + cancelReason;
         return this.apiCallService.post(url);
     }
+
+    unsubscribeUserEmail(token : string){
+        const url = this.apiUrl + "/User/Unsubscribe?token=" + encodeURIComponent(token);
+        return this.apiCallService.post(url);
+    }
 }
