@@ -25,6 +25,8 @@ import { SampleDetailComponent } from './components/sample-detail/sample-detail.
 import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
 import { CartCheckoutConfirmationComponent } from './components/cart-checkout-confirmation/cart-checkout-confirmation.component';
 import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 
 
 const routes: Routes = [
@@ -54,6 +56,8 @@ const routes: Routes = [
   { path: 'sample-detail/:orderId/:productId', component: SampleDetailComponent },
   { path: 'checkout-completed', component: CartCheckoutConfirmationComponent },
   { path: 'unsubscribe/:token', component: UnsubscribeComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'order-detail/:orderId', component: OrderDetailComponent },
 ];
 
 @NgModule({

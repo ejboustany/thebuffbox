@@ -1,0 +1,91 @@
+<app-inside-menu [showBottomMenu]="false"></app-inside-menu>
+
+<div class="min-h-screen bg-white">
+    <div class="mx-auto  px-6 lg:px-56 ">
+      <!-- Order confirmation section -->
+      <div class="flex flex-col md:flex-row">
+        <!-- Left column -->
+        <div class="flex-1 mb-2 md:mb-0 md:w-1/2 md:pr-16 sm:py-24 py-6">
+          <h1 class="text-[20px] font-bold mb-4">Thank you for your pre-order!</h1>
+          
+          <p class="mb-4 text-[14px] pr-24">
+            We're quickly working to a 2-3 month launch and we'll keep you updated with company progress to keep you in the loop.
+          </p>
+          
+          <p class="mb-6 text-[14px]">
+            If you have any questions please reach out at <a href="mailto:info@thebuffbox.com" class="text-blue-600 hover:underline">info&#64;thebuffbox.com</a>
+          </p>
+          
+          <p class="mb-8 text-[20px] font-semibold">Order #: <span>{{order.orderNumberLast4}}</span></p>
+          
+          <!-- Order details card -->
+          <div class="bg-[#F1F1F1] rounded-lg p-6">
+            <h2 class="text-[18px] font-bold mb-6">Order details</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Contact information -->
+              <div>
+                <h3 class="font-bold text-[14px] mb-2">Contact information</h3>
+                <p class="text-[12px]">{{order.identity.emailAddress}}</p>
+                
+                <h3 class="font-bold text-[14px] mt-6 mb-2">Shipping address</h3>
+                <div class="text-[12px]">
+                  <p>{{order.identity.displayName}}</p>
+                  <p>{{order.identity.shippingAddress.street}}</p>
+                  <p>{{order.identity.shippingAddress.city}}, {{order.identity.shippingAddress.state}} {{order.identity.shippingAddress.postalCode}}</p>
+                  <p>{{order.identity.shippingAddress.countryText}}</p>
+                </div>
+              </div>
+              
+              <!-- Payment method -->
+              <div>
+                <h3 class="font-bold text-[14px] mb-2">Payment method</h3>
+                <div class="flex items-center mb-1 text-[12px]">
+                  <span class="font-medium mr-2">{{order.cardTypeText}}</span>
+                  <span>ending with {{order.last4Digits}}</span>
+                </div>
+                
+                <h3 class="font-bold text-[14px] mt-6 mb-2">Billing address</h3>
+                <div class="text-[12px]">
+                  <p>{{order.identity.displayName}}</p>
+                  <p>{{order.identity.shippingAddress.street}}</p>
+                  <p>{{order.identity.shippingAddress.city}}, {{order.identity.shippingAddress.state}} {{order.identity.shippingAddress.postalCode}}</p>
+                  <p>{{order.identity.shippingAddress.countryText}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right column with full background color -->
+        <div class="w-full md:w-1/2 bg-[#F1F1F1] p-6 sm:p-16 md:min-h-full py-16 text-[14px]">
+          <div class="flex items-center mb-6">
+            <div class="h-16 w-16 bg-white rounded flex items-center justify-center mr-4">
+              <img src="../../../assets/pre-order-icon.png" alt="Buffbox" />
+            </div>
+            <div class="flex justify-between items-center w-full">
+                <p class="font-medium">Buffbox Pre-Order x1</p>
+                <p class="font-bold ml-8">${{order.price}}</p>
+              </div>
+          </div>
+          
+          <div class="border-t border-gray-300 pt-4">
+            <div class="flex justify-between mb-2">
+              <span>Subtotal</span>
+              <span class="font-medium">${{order.price}}</span>
+            </div>
+            
+            <div class="flex justify-between mb-2">
+              <span>Handling Fee</span>
+              <span class="font-medium">${{order.handlingFee}}</span>
+            </div>
+            
+            <div class="flex justify-between border-t border-gray-300 pt-4 mt-4">
+              <span class="font-semibold">Total (USD)</span>
+              <span class="font-bold">${{order.total}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

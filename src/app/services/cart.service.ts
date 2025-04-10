@@ -37,8 +37,16 @@ export class CartService {
         return this.apiCallService.post(url, item);
     }
 
-
+    applyCoupon(cartId:any, code: string){
+        const url = environment.api + "/cart/ApplyCoupon?cartId=" + cartId + "&code=" + code;
+        return this.apiCallService.post(url);
+    }
     
+    removeCoupon(cartId:any){
+        const url = environment.api + "/cart/RemoveCoupon?cartId=" + cartId;
+        return this.apiCallService.post(url);
+    }
+
     deleteItem(id:any){
         const url = environment.api + "/cartItem/Delete?id=" + id;
         return this.apiCallService.delete(url);

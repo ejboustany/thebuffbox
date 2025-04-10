@@ -11,8 +11,6 @@
           <p class="text-[25px] font-bold text-gray-900 text-center pb-6">Checkout</p>
         </div>
 
-
-        <!-- Nutrition Facts Section -->
         <div (click)="toggleSection('cart')"
           class="flex justify-between items-center  border-t border-gray-300 cursor-pointer">
           <span class="text-[18px] font-bold py-5 uppercase">Order Summary</span>
@@ -22,10 +20,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </div>
-
-
-
-
 
         <div *ngIf="activeSection === 'cart'" class="space-y-4 pt-2 pb-6">
 
@@ -49,7 +43,8 @@
 
                 <div class="flex justify-between items-center w-full mt-4">
                   <div class="text-[13px] sm:text-[20px] font-semibold orange" id="price">
-                    ${{item.unitPrice}} <span class="ml-2 sm:ml-6 line-through discount-text">${{item.discount}}</span>
+                    ${{item.totalPrice}} <span
+                    class="ml-2 sm:ml-6 line-through discount-text">${{item.undiscountedTotalPrice}}</span>
                   </div>
                   <div
                     class="flex items-center justify-between border  py-1 w-[67px] sm:w-[157px] text-[14px] sm:text-[20px] font-semibold">
@@ -62,6 +57,47 @@
             </div>
           </div>
         </div>
+
+        <div class="border-t border-gray-300 py-12">
+          <h2 class="text-[23px] font-bold text-gray-900 text-center pb-12">Coupon</h2>
+          <div class="flex gap-2">
+            <div class="flex-1">
+              <div class="relative">
+                <input type="text" id="coupon" name="coupon"
+                  class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
+                  placeholder=" " [(ngModel)]="couponCode" />
+                <label for="coupon" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px]
+                       peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
+                  Coupon
+                </label>
+              </div>
+            </div>
+            <button
+              class="rounded-xl bg-progress-bar-fill px-4 py-1 text-[22px] font-medium text-white"
+              (click)="applyCoupon()">
+              Apply
+            </button>
+          </div>
+          
+          <!-- Coupon activation confirmation with remove option -->
+          <div *ngIf="cart.couponId" class="mt-2 p-2 bg-green-50 border border-green-200 rounded-md flex justify-between items-center">
+            <p class="text-green-600 text-sm flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Coupon activated!
+            </p>
+            <button 
+              class="text-gray-500 hover:text-gray-700 focus:outline-none"
+              (click)="removeCoupon()"
+              aria-label="Remove coupon">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
 
         <div class="border-t border-gray-300 py-12">
           <h2 class="text-[23px] font-bold text-gray-900 text-center pb-12">Shipping Info</h2>
@@ -185,7 +221,6 @@
 
             <a class="cursor-pointer mt-4 flex items-center space-x-2 text-blue-600 hover:text-blue-800"
               (click)="showCard()">
-              <!-- Plus Icon -->
               <span class="w-6 h-6 flex items-center justify-center text-gradient text-white rounded-md text-[24px]">
                 +
               </span>
@@ -198,7 +233,7 @@
         <div class="py-12 border-t border-gray-200">
           <h2 class="text-[23px] font-bold text-gray-900 text-center pb-6">Order Summary</h2>
           <div class="mt-4 rounded-lg bg-white">
-        
+
             <dl class="space-y-2 pb-6">
               <div class="flex items-center justify-between border-b border-gray-200 pb-6">
                 <dt class="text-[16px]">Subtotal</dt>

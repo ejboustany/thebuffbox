@@ -55,6 +55,9 @@ import { SampleDetailComponent } from './components/sample-detail/sample-detail.
 import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
 import { CartCheckoutConfirmationComponent } from './components/cart-checkout-confirmation/cart-checkout-confirmation.component';
 import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +107,10 @@ import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.compo
     SampleDetailComponent,
     CartCheckoutComponent,
     CartCheckoutConfirmationComponent,
-    UnsubscribeComponent
+    UnsubscribeComponent,
+    OrderDetailComponent,
+    PrivacyPolicyComponent,
+    FooterComponent
   ],
   exports: [LastCharactersPipe],
   imports: [

@@ -79,7 +79,21 @@ export class CartCheckoutComponent implements OnInit {
     }
   }
 
+  applyCoupon(){
+    if(this.couponCode != ''){
+      this.cartService.applyCoupon(this.cart.id, this.couponCode).subscribe((res: any) => {
+        this.updateCart();
+      });
+    }
+  }
 
+  removeCoupon() {
+    this.cartService.removeCoupon(this.cart.id).subscribe((res: any) => {
+      this.updateCart();
+    });
+}
+
+  couponCode: string = '';
   inputValue: string = '';
   user: Identity = {
     firstName: '',
@@ -151,7 +165,6 @@ export class CartCheckoutComponent implements OnInit {
   isProcessing = false;
   async handlePayment() {
     this.isProcessing = true;
-    console.log(this.cart);
     var paymentMethodUsed = this.paymentMethod.stripeMethodId;
     if (this.showCardInput) {
       if (Stripe && this.cardElement) {

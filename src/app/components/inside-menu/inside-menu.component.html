@@ -46,13 +46,13 @@
             </div>
           
 
-          <button *ngIf="!allowClosing" type="button" (click)="toggleDropdown()"
+          <!-- <button *ngIf="!allowClosing" type="button" (click)="toggleDropdown()"
             class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
             <svg class="block w-12 h-10" fill="none" viewBox="0 0 28 24" stroke-width="1.5" stroke="currentColor"
               aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.75 6.75h22.5M2.75 12h22.5M2.75 17.25h22.5" />
             </svg>
-          </button>
+          </button> -->
 
           <button *ngIf="allowClosing" type="button" routerLink="/profile"
             class="relative inline-flex items-center gap-x-1.5 py-2 text-sm font-semibold text-black">
@@ -71,14 +71,36 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state -->
-  <!-- <div class="md:hidden" [ngClass]="{'hidden': !isDropdownOpen}">
-      <div class="space-y-4 px-6 pb-3 pt-4 sm:px-3">
-        <a routerLink="/take-quiz/1" class="block text-xl font-bold text-black" [ngClass]="{'gradient-border': !isHowItWorksActive}" >Get Started</a>
-        <a href="#how-it-works"   [ngClass]="{'gradient-border': isHowItWorksActive}" 
-        (click)="scrollToSection('how-it-works')" class="block text-xl font-bold text-black">How It Works</a>
-        <a routerLink="/login" class="block text-xl font-bold text-black">Log In</a>
+  <div class="md:hidden" [ngClass]="{'hidden': !isDropdownOpen}">
+    <div class="space-y-4 px-6 pb-3 pt-4 sm:px-3">
+      <!-- Account Link -->
+      <div class="block">
+        <a routerLink="/profile" routerLinkActive="text-black" class="text-[21px] font-semibold uppercase block"
+          [class.text-gray-500]="!isActive('/profile') && !isActive('/membership') && !isActive('/billing')">
+          Account
+        </a>
       </div>
-    </div> -->
+      
+      <!-- Shop Link -->
+      <div class="block">
+        <a routerLink="/shop" routerLinkActive="text-black" class="text-[21px] font-semibold block"
+          [class.text-gray-500]="!isActive('/shop')">
+          SHOP
+        </a>
+      </div>
+      
+      <!-- Cart Icon -->
+      <div class="block">
+        <div class="relative inline-block">
+          <img (click)="openCart()" class="h-10 cursor-pointer" src="../../../assets/shopping-cart.png">
+          <span (click)="openCart()" *ngIf="cartItemCount > 0"
+            class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center cursor-pointer">
+            {{cartItemCount}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <nav *ngIf="showBottomMenu" class="flex justify-between items-center px-3 lg:px-56 py-6 border-b-2 shadown-lg">

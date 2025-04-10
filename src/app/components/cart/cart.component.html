@@ -19,10 +19,8 @@
                                         d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
-
                         </div>
 
-                        <!-- Product List -->
                         <div class="px-6 sm:px-14  space-y-4">
 
                             <div *ngFor="let item of cart.items" class="flex items-center justify-between">
@@ -46,8 +44,8 @@
 
                                         <div class="flex justify-between items-center w-full mt-4">
                                             <div class="text-[13px] sm:text-[20px] font-semibold orange" id="price">
-                                                ${{item.unitPrice}} <span
-                                                    class="ml-2 sm:ml-6 line-through discount-text">${{item.discount}}</span>
+                                                ${{item.totalPrice}} <span
+                                                    class="ml-2 sm:ml-6 line-through discount-text">${{item.undiscountedTotalPrice}}</span>
                                             </div>
                                             <div
                                                 class="flex items-center justify-between border py-1 w-[67px] sm:w-[157px] text-[14px] sm:text-[20px] font-semibold">
@@ -62,88 +60,34 @@
                                 </div>
                             </div>
 
-
                             <div class="flex items-center justify-end gap-2">
                                 <img src="../../../assets/orange-fav.png" alt="Discount Icon" class="h-6 w-7" />
                                 <p
                                     class="bg-gradient-to-b from-[#ECA741] to-[#F05E23] bg-clip-text text-transparent font-semibold text-[16px] sm:text-[20px]">
-                                    You Save $00.00
+                                    You Save ${{cart.youSaved}}
                                 </p>
                             </div>
-
                         </div>
 
                         <div class="py-8 w-full border-t border-b mt-6">
                             <div class="flex flex-col justify-center px-6 sm:px-14 ">
                                 <div class="flex justify-between items-center mb-4">
                                     <p class="sm:text-[20px] text-[16px] font-bold">Subtotal ({{cart.items.length}})</p>
-                                    <p class="sm:text-[20px] text-[16px]  font-bold">${{cart.totalPrice}}</p>
-                                    <!-- Adjust the price as needed -->
+                                    <p class="sm:text-[20px] text-[16px]  font-bold">${{cart.totalItems}}</p>
                                 </div>
 
-                                <p class="mb-6 sm:text-[20px] text-[16px]  product-info font-bold">Shipping and taxes will be calculated
+                                <p class="mb-6 sm:text-[20px] text-[16px]  product-info font-bold">Shipping and taxes
+                                    will be calculated
                                     at checkout
                                 </p>
-                                <button (click)="checkout()" class="bg-black text-white font-bold py-2 sm:py-6 px-4 rounded-md w-full">
+                                <button (click)="checkout()"
+                                    class="bg-black text-white font-bold py-2 sm:py-6 px-4 rounded-md w-full">
                                     CHECKOUT
                                 </button>
                             </div>
                         </div>
-
-                        <!-- <div class="flex flex-col justify-center px-6 sm:px-14   py-12 hidden lg:block">
-                            <div class="flex items-center justify-between w-full">
-                                <p class="font-bold sm:text-[20px] text-[16px] ">OTHER PERSONALIZED RECOMMENDATIONS</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" (click)="prevSlide()" width="32" height="24"
-                                    class="cursor-pointer mr-2" viewBox="0 0 32 24" fill="none">
-                                    <path
-                                        d="M30 10.5C30.8284 10.5 31.5 11.1716 31.5 12C31.5 12.8284 30.8284 13.5 30 13.5V10.5ZM0.93934 13.0607C0.353553 12.4749 0.353553 11.5251 0.93934 10.9393L10.4853 1.3934C11.0711 0.807612 12.0208 0.807612 12.6066 1.3934C13.1924 1.97918 13.1924 2.92893 12.6066 3.51472L4.12132 12L12.6066 20.4853C13.1924 21.0711 13.1924 22.0208 12.6066 22.6066C12.0208 23.1924 11.0711 23.1924 10.4853 22.6066L0.93934 13.0607ZM30 13.5H2V10.5H30V13.5Z"
-                                        fill="black" />
-                                    <path
-                                        d="M30 10.5C30.8284 10.5 31.5 11.1716 31.5 12C31.5 12.8284 30.8284 13.5 30 13.5V10.5ZM0.93934 13.0607C0.353553 12.4749 0.353553 11.5251 0.93934 10.9393L10.4853 1.3934C11.0711 0.807612 12.0208 0.807612 12.6066 1.3934C13.1924 1.97918 13.1924 2.92893 12.6066 3.51472L4.12132 12L12.6066 20.4853C13.1924 21.0711 13.1924 22.0208 12.6066 22.6066C12.0208 23.1924 11.0711 23.1924 10.4853 22.6066L0.93934 13.0607ZM30 13.5H2V10.5H30V13.5Z"
-                                        fill="black" />
-                                </svg>
-
-
-                                <svg xmlns="http://www.w3.org/2000/svg" (click)="nextSlide()" width="32" height="24"
-                                    class="cursor-pointer" viewBox="0 0 32 24" fill="none">
-                                    <path
-                                        d="M2 10.5C1.17157 10.5 0.5 11.1716 0.5 12C0.5 12.8284 1.17157 13.5 2 13.5V10.5ZM31.0607 13.0607C31.6464 12.4749 31.6464 11.5251 31.0607 10.9393L21.5147 1.3934C20.9289 0.807611 19.9792 0.807611 19.3934 1.3934C18.8076 1.97919 18.8076 2.92893 19.3934 3.51472L27.8787 12L19.3934 20.4853C18.8076 21.0711 18.8076 22.0208 19.3934 22.6066C19.9792 23.1924 20.9289 23.1924 21.5147 22.6066L31.0607 13.0607ZM2 13.5H30V10.5H2V13.5Z"
-                                        fill="black" />
-                                    <path
-                                        d="M2 10.5C1.17157 10.5 0.5 11.1716 0.5 12C0.5 12.8284 1.17157 13.5 2 13.5V10.5ZM31.0607 13.0607C31.6464 12.4749 31.6464 11.5251 31.0607 10.9393L21.5147 1.3934C20.9289 0.807611 19.9792 0.807611 19.3934 1.3934C18.8076 1.97919 18.8076 2.92893 19.3934 3.51472L27.8787 12L19.3934 20.4853C18.8076 21.0711 18.8076 22.0208 19.3934 22.6066C19.9792 23.1924 20.9289 23.1924 21.5147 22.6066L31.0607 13.0607ZM2 13.5H30V10.5H2V13.5Z"
-                                        fill="black" />
-                                </svg>
-                            </div>
-
-                            <div class="relative overflow-hidden w-full mt-8">
-                                <div class="flex transition-transform duration-300 ease-in-out"
-                                    [ngStyle]="{'transform': 'translateX(' + slidePosition + '%)'}">
-                                    
-                                    <div *ngFor="let orderItem of cart.items" class="flex flex-col items-center gap-2 flex-shrink-0 w-[80%] mr-4">
-                                        <div class="object-cover flex-shrink-0 w-full tub-bg py-12">
-                                            <img [src]="orderItem.imageModel.originalPath">
-                                        </div>
-                            
-                                        <p class="text-[14px] font-semibold">{{ orderItem.brandText }}</p>
-                                        <p class="text-[20px]">{{ orderItem.title }}</p>
-                            
-                                        <div class="flex items-center">
-                                            <button routerLink="/shop" class="orange-text font-bold text-[20px] px-4 split-border">SHOP</button>
-                                            <button [routerLink]="'/review-tub/' + orderItem.productId"
-                                                class="orange-text font-bold text-[20px] px-4 py-2">REVIEW</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                        </div>
-
-                    </div> -->
-
-
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

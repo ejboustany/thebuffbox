@@ -82,7 +82,7 @@
                 <p class="text-[12px] font-bold mt-1">{{product.brandText}}</p>
                 <!-- Pricing -->
                 <div class="flex items-center gap-3 mt-2">
-                    <span class="font-bold orange text-[15px]">${{(product.price - 21) | number: '1.2-2'}}</span>
+                    <span class="font-bold orange text-[15px]">${{(product.discountedPrice) | number: '1.2-2'}}</span>
                     <span class="text-[12px] line-through">${{product.price | number: '1.2-2'}} </span>
                 </div>
             </div>

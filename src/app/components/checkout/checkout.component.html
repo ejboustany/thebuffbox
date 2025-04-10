@@ -147,7 +147,7 @@
             <dl class="space-y-2 pb-6">
               <div class="flex items-center justify-between border-b border-gray-200 pb-6">
                 <dt class="text-[16px]">BuffBox</dt>
-                <dd class="text-[16px] ">$14.00</dd>
+                <dd class="text-[16px] ">${{order.price}}</dd>
               </div>
               <div class="flex items-center justify-between py-4">
                 <dt class="text-[16px]">Shipping</dt>
@@ -155,7 +155,7 @@
               </div>
               <div class="flex items-center justify-between ">
                 <dt class="text-[16px]">Handling Fee</dt>
-                <dd class="text-[16px]">$1.99</dd>
+                <dd class="text-[16px]">${{order.handlingFee}}</dd>
               </div>
               <!-- <div class="flex items-center justify-between py-2">
                 <dt class="text-[16px]">Estimated Tax</dt>
@@ -166,7 +166,7 @@
             <dl class="space-y-6  pb-6">
               <div class="flex items-center justify-between border-t border-gray-200 pt-6">
                 <dt class="text-[16px] font-medium">Total (USD)</dt>
-                <dd class="text-[16px] font-bold">$15.99</dd>
+                <dd class="text-[16px] font-bold">${{order.total}}</dd>
               </div>
             </dl>
 
