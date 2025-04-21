@@ -27,6 +27,7 @@ import { CartCheckoutConfirmationComponent } from './components/cart-checkout-co
 import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { PartnerApplicationComponent } from './components/partner-application/partner-application.component';
 
 
 const routes: Routes = [
@@ -37,27 +38,28 @@ const routes: Routes = [
   { path: 'take-quiz/:step/:quizId', component: QuizComponent },
   { path: 'result/:quizId', component: OnboardingResultsStep13Component, canActivate: [AuthGuard] },
   { path: 'subscribe/:orderId', component: ChoosePlanStep14Component, canActivate: [AuthGuard] },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'checkout/:orderId', component: CheckoutComponent },
-  { path: 'cart-checkout', component: CartCheckoutComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]},
+  { path: 'checkout/:orderId', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'cart-checkout', component: CartCheckoutComponent, canActivate: [AuthGuard] },
   { path: 'verification/:code/:userId', component: EmailVerificationComponent },
   { path: 'thank-you/:orderId', component: ThankyouComponent, canActivate: [AuthGuard] },
   { path: 'subscriptions-learn-more', component: SubscriptionsLearnMoreComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'membership', component: MembershipComponent },
-  { path: 'shop', component: ShopComponent },
-  { path: 'billing', component: BillingComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'membership', component: MembershipComponent, canActivate: [AuthGuard] },
+  { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
+  { path: 'billing', component: BillingComponent, canActivate: [AuthGuard] },
   { path: 'cancel', component: CancelMembershipComponent },
   { path: 'frequency', component: AdjustFrequencyComponent },
   { path: 'cancel-reason', component: CancelReasonComponent },
-  { path: 'product-detail/:productId', component: ProductDetailComponent },
-  { path: 'build-your-box/:orderId', component: BuildYourBoxComponent },
-  { path: 'choose-samples/:orderId', component: ChooseSamplesComponent },
-  { path: 'sample-detail/:orderId/:productId', component: SampleDetailComponent },
-  { path: 'checkout-completed', component: CartCheckoutConfirmationComponent },
+  { path: 'product-detail/:productId', component: ProductDetailComponent, canActivate: [AuthGuard] },
+  { path: 'build-your-box/:orderId', component: BuildYourBoxComponent, canActivate: [AuthGuard] },
+  { path: 'choose-samples/:orderId', component: ChooseSamplesComponent, canActivate: [AuthGuard] },
+  { path: 'sample-detail/:orderId/:productId', component: SampleDetailComponent, canActivate: [AuthGuard] },
+  { path: 'checkout-completed', component: CartCheckoutConfirmationComponent, canActivate: [AuthGuard] },
   { path: 'unsubscribe/:token', component: UnsubscribeComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  { path: 'order-detail/:orderId', component: OrderDetailComponent },
+  { path: 'influencer', component: PartnerApplicationComponent },
+  { path: 'order-detail/:orderId', component: OrderDetailComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

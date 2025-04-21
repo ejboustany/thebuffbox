@@ -58,6 +58,8 @@ import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.compo
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PartnerApplicationComponent } from './components/partner-application/partner-application.component';
+import { ReferralPopUpComponent } from './components/referral-pop-up/referral-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +112,9 @@ import { FooterComponent } from './components/footer/footer.component';
     UnsubscribeComponent,
     OrderDetailComponent,
     PrivacyPolicyComponent,
-    FooterComponent
+    FooterComponent,
+    PartnerApplicationComponent,
+    ReferralPopUpComponent
   ],
   exports: [LastCharactersPipe],
   imports: [

@@ -164,7 +164,7 @@ bg-[url('/assets/hero-mobile.png')] sm:bg-[url('/assets/hero-image.png')]">
     <div class="space-y-4 max-w-4xl mx-auto">
         <div class="border border-black rounded-lg">
           <div (click)="toggleAnswer(1)" class="flex justify-between items-center px-4 py-2 cursor-pointer">
-            <p class="text-black text-[20px] font-semibold">What is the main purpose of Buffbox?</p>
+            <p class="text-black text-[20px] font-semibold">1. How does Buffbox work?</p>
             <button  class="text-black text-xl">
                 <span *ngIf="isOpen[1]">
                   <!-- Minus SVG Icon -->
@@ -182,14 +182,14 @@ bg-[url('/assets/hero-mobile.png')] sm:bg-[url('/assets/hero-image.png')]">
               
           </div>
           <div *ngIf="isOpen[1]" class=" px-4 py-2">
-            <p class="text-black text-[20px] pb-2">Try Before You Buy and Find Your Perfect Protein Powder.
-                Curated sample packets based on a short questionnaire. Get up to 40% off your next protein tub!</p>
+            <p class="text-black text-[20px] pb-2">You’ll take a short questionnaire, and we’ll recommend products tailored to your goals. Then you can subscribe 
+                to receive a box of 4 samples and get access to exclusive member benefits.</p>
           </div>
         </div>
       
         <div class="border border-black rounded-lg">
             <div (click)="toggleAnswer(2)" class="flex justify-between items-center px-4 py-2 cursor-pointer">
-            <p class="text-black text-[20px] font-semibold">What is Lorem Ipsum?
+            <p class="text-black text-[20px] font-semibold">2. What’s in each box?
             </p>
             <button  class="text-black text-xl">
                 <span *ngIf="isOpen[2]">
@@ -207,13 +207,13 @@ bg-[url('/assets/hero-mobile.png')] sm:bg-[url('/assets/hero-image.png')]">
               </button>
           </div>
           <div *ngIf="isOpen[2]" class="px-4 py-2">
-            <p class="text-black text-[20px] pb-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <p class="text-black text-[20px] pb-2">Each box contains 4 single-serving samples—2 you select and 2 “power picks” we choose to help you explore new products.</p>
           </div>
         </div>
       
         <div class="border border-black rounded-lg">
             <div (click)="toggleAnswer(3)" class="flex justify-between items-center px-4 py-2 cursor-pointer">
-            <p class="text-black text-[20px] font-semibold">How do I manage my tasks?</p>
+            <p class="text-black text-[20px] font-semibold">3. Can I return a box?</p>
             <button  class="text-black text-xl">
                 <span *ngIf="isOpen[3]">
                   <!-- Minus SVG Icon -->
@@ -230,7 +230,30 @@ bg-[url('/assets/hero-mobile.png')] sm:bg-[url('/assets/hero-image.png')]">
               </button>
           </div>
           <div *ngIf="isOpen[3]" class="px-4 py-2">
-            <p class="text-black text-[20px] pb-2">You can manage your tasks from the task list in your project dashboard.</p>
+            <p class="text-black text-[20px] pb-2">Boxes are non-returnable. However, you can update your preferences anytime so we can tailor your future boxes more accurately.</p>
+          </div>
+        </div>
+
+        <div class="border border-black rounded-lg">
+            <div (click)="toggleAnswer(4)" class="flex justify-between items-center px-4 py-2 cursor-pointer">
+            <p class="text-black text-[20px] font-semibold">4. How do I manage or cancel my subscription?</p>
+            <button  class="text-black text-xl">
+                <span *ngIf="isOpen[4]">
+                  <!-- Minus SVG Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M19 13H5v-2h14v2z"/>
+                  </svg>
+                </span>
+                <span *ngIf="!isOpen[4]">
+                  <!-- Plus SVG Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M19 13H13V19H11V13H5V11h6V5h2v6h6v2z"/>
+                  </svg>
+                </span>
+              </button>
+          </div>
+          <div *ngIf="isOpen[4]" class="px-4 py-2">
+            <p class="text-black text-[20px] pb-2">Log in to your account to pick your delivery schedule (every 30, 45, or 60 days), make changes, or cancel at any time.</p>
           </div>
         </div>
       </div>

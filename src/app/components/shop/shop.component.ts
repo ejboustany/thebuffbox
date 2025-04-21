@@ -7,6 +7,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthenticationInfo } from 'src/app/models/authenticationInfo.model';
 import { Identity } from 'src/app/models/identity.model';
+import { ReferralPopUpComponent } from '../referral-pop-up/referral-pop-up.component';
 
 @Component({
   selector: 'app-shop',
@@ -58,6 +59,10 @@ export class ShopComponent implements OnInit {
   
   ngOnInit(): void {
     this.getShopProducts();
+
+    setTimeout(() => {
+      this.openReferralPopup();
+    }, 5000);
   }
   
 
@@ -101,5 +106,32 @@ export class ShopComponent implements OnInit {
     });
 
     
+  }
+
+  openReferralPopup() {
+    // Check if user has already seen the popup (optional)
+    if (localStorage.getItem('referralPopupShown')) {
+      return;
+    }
+
+    console.log(this.user);
+    
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.scrollStrategy = new NoopScrollStrategy();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.panelClass = 'referral-popup-panel'; // For custom styling if needed
+
+    dialogConfig.data = {
+      referralCode: this.user?.referralCode,
+    };
+
+
+    const dialogRef = this.dialog.open(ReferralPopUpComponent, dialogConfig);
+    
+    dialogRef.afterClosed().subscribe(() => {
+      // Mark popup as shown (optional - to prevent showing multiple times)
+      localStorage.setItem('referralPopupShown', 'true');
+    });
   }
 }

@@ -98,6 +98,7 @@ export class CartCheckoutComponent implements OnInit {
   user: Identity = {
     firstName: '',
     lastName: '',
+    referralCode: '',
     emailAddress: '',
     profilePicture: new Image,
     about: '',

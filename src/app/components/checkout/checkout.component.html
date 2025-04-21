@@ -26,103 +26,164 @@
 
         <div class="border-t border-gray-200 py-12">
           <h2 class="text-[23px] font-bold text-gray-900 text-center pb-12">Shipping Info</h2>
-
-          <div class="flex flex-wrap gap-4">
-            <!-- First Name -->
-            <div class="flex-1">
-              <div class="relative">
-                <input type="text" id="first-name" name="first-name"
-                  class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                  placeholder=" " [(ngModel)]="order.identity.firstName" />
-                <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+        
+          <form>
+            <div class="flex flex-wrap gap-4">
+              <!-- First Name -->
+              <div class="flex-1">
+                <div class="relative">
+                  <input type="text" id="first-name" name="first-name"
+                    class="peer w-full border-2 rounded-md p-2 pt-6 focus:outline-none focus:ring-0"
+                    [ngClass]="{
+                      'border-gray-300 focus:border-gray-500': !shouldShowError('firstName'),
+                      'border-red-500 focus:border-red-600': shouldShowError('firstName')
+                    }"
+                    placeholder=" " 
+                    [(ngModel)]="order.identity.firstName"
+                    (blur)="markAsTouched('firstName')" />
+                  <label for="first-name" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+                      peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
+                    First Name*
+                  </label>
+                  <div *ngIf="shouldShowError('firstName')" class="text-red-500 text-xs mt-1">
+                    First name is required
+                  </div>
+                </div>
+              </div>
+        
+              <!-- Last Name -->
+              <div class="flex-1">
+                <div class="relative">
+                  <input type="text" id="last-name" name="last-name"
+                    class="peer w-full border-2 rounded-md p-2 pt-6 focus:outline-none focus:ring-0"
+                    [ngClass]="{
+                      'border-gray-300 focus:border-gray-500': !shouldShowError('lastName'),
+                      'border-red-500 focus:border-red-600': shouldShowError('lastName')
+                    }"
+                    placeholder=" " 
+                    [(ngModel)]="order.identity.lastName"
+                    (blur)="markAsTouched('lastName')" />
+                  <label for="last-name" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+                      peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
+                    Last Name*
+                  </label>
+                  <div *ngIf="shouldShowError('lastName')" class="text-red-500 text-xs mt-1">
+                    Last name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="flex flex-wrap gap-4 mt-6">
+              <!-- Address Line #1 -->
+              <div class="flex-1">
+                <div class="relative">
+                  <input type="text" id="address-line-1" name="address-line-1"
+                    class="peer w-full border-2 rounded-md p-2 pt-6 focus:outline-none focus:ring-0"
+                    [ngClass]="{
+                      'border-gray-300 focus:border-gray-500': !shouldShowError('street1'),
+                      'border-red-500 focus:border-red-600': shouldShowError('street1')
+                    }"
+                    placeholder=" " 
+                    [(ngModel)]="order.identity.shippingAddress.street1"
+                    (blur)="markAsTouched('street1')" />
+                  <label for="address-line-1" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+                      peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
+                    Address line #1*
+                  </label>
+                  <div *ngIf="shouldShowError('street1')" class="text-red-500 text-xs mt-1">
+                    Address is required
+                  </div>
+                </div>
+              </div>
+        
+              <!-- Address Line #2 (not required) -->
+              <div class="flex-1">
+                <div class="relative">
+                  <input type="text" id="address-line-2" name="address-line-2"
+                    class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
+                    placeholder=" " 
+                    [(ngModel)]="order.identity.shippingAddress.street2" />
+                  <label for="address-line-2" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+                      peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
+                    Address line #2
+                  </label>
+                </div>
+              </div>
+            </div>
+        
+            <div class="flex flex-col md:flex-row gap-4 w-full pt-6">
+              <!-- City -->
+              <div class="flex-1">
+                <div class="relative">
+                  <input type="text" id="city-field" name="city"
+                    class="peer w-full border-2 rounded-md p-2 pt-6 focus:outline-none focus:ring-0"
+                    [ngClass]="{
+                      'border-gray-300 focus:border-gray-500': !shouldShowError('city'),
+                      'border-red-500 focus:border-red-600': shouldShowError('city')
+                    }"
+                    placeholder=" " 
+                    [(ngModel)]="order.identity.shippingAddress.city"
+                    (blur)="markAsTouched('city')" />
+                  <label for="city-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
                     peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                  First Name
-                </label>
+                    City*
+                  </label>
+                  <div *ngIf="shouldShowError('city')" class="text-red-500 text-xs mt-1">
+                    City is required
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <!-- Last Name -->
-            <div class="flex-1">
-              <div class="relative">
-                <input type="text" id="last-name" name="last-name"
-                  class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                  placeholder=" " [(ngModel)]="order.identity.lastName" />
-                <label for="last-name" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+        
+              <!-- State -->
+              <div class="flex-1">
+                <div class="relative">
+                  <input type="text" id="state-field" name="state"
+                    class="peer w-full border-2 rounded-md p-2 pt-6 focus:outline-none focus:ring-0"
+                    [ngClass]="{
+                      'border-gray-300 focus:border-gray-500': !shouldShowError('state'),
+                      'border-red-500 focus:border-red-600': shouldShowError('state')
+                    }"
+                    placeholder=" " 
+                    [(ngModel)]="order.identity.shippingAddress.state"
+                    (blur)="markAsTouched('state')" />
+                  <label for="state-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
                     peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                  Last Name
-                </label>
+                    State*
+                  </label>
+                  <div *ngIf="shouldShowError('state')" class="text-red-500 text-xs mt-1">
+                    State is required
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-4 mt-6">
-            <!-- Address Line #1 -->
-            <div class="flex-1">
-              <div class="relative">
-                <input type="text" id="address-line-1"  name="address-line-1"
-                  class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                  placeholder=" " [(ngModel)]="order.identity.shippingAddress.street1" />
-                <label for="address-line-1" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
+        
+              <!-- Zip Code -->
+              <div class="flex-1">
+                <div class="relative">
+                  <input type="text" id="code-field" name="zip"
+                    class="peer w-full border-2 rounded-md p-2 pt-6 focus:outline-none focus:ring-0"
+                    [ngClass]="{
+                      'border-gray-300 focus:border-gray-500': !shouldShowError('postalCode'),
+                      'border-red-500 focus:border-red-600': shouldShowError('postalCode')
+                    }"
+                    placeholder=" " 
+                    [(ngModel)]="order.identity.shippingAddress.postalCode"
+                    (blur)="markAsTouched('postalCode')" />
+                  <label for="code-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
                     peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                  Address line #1
-                </label>
+                    Zip Code*
+                  </label>
+                  <div *ngIf="shouldShowError('postalCode')" class="text-red-500 text-xs mt-1">
+                    Zip code is required
+                  </div>
+                </div>
               </div>
             </div>
-
-            <!-- Address Line #2 -->
-            <div class="flex-1">
-              <div class="relative">
-                <input type="text" id="address-line-2"  name="address-line-2"
-                  class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                  placeholder=" " [(ngModel)]="order.identity.shippingAddress.street2" />
-                <label for="address-line-2" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
-                    peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                  Address line #2
-                </label>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="flex flex-col md:flex-row gap-4 w-full pt-6">
-            <div class="flex-1">
-
-              <div class="relative">
-                <input type="text" id="city-field"  name="city"
-                  class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                  placeholder=" " [(ngModel)]="order.identity.shippingAddress.city" />
-                <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
-                  peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                  City
-                </label>
-              </div>
-            </div>
-
-            <div class="flex-1">
-
-              <div class="relative">
-                <input type="text" id="state-field"  name="state"
-                  class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                  placeholder=" " [(ngModel)]="order.identity.shippingAddress.state" />
-                <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
-                  peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                  State
-                </label>
-              </div>
-            </div>
-
-            <div class="flex-1">
-              <div class="relative">
-                <input type="text" id="code-field"  name="zip"
-                  class="peer w-full border-2 border-gray-300 rounded-md p-2 pt-6 focus:outline-none focus:ring-0 focus:border-gray-500"
-                  placeholder=" " [(ngModel)]="order.identity.shippingAddress.postalCode" />
-                <label for="input-field" class="absolute left-2 top-2 text-gray-500 text-xs transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-[16px] 
-                  peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-gray-500">
-                  Zip Code
-                </label>
-              </div>
-            </div>
-          </div>
+        
+          
+       
+     
+          </form>
         </div>
 
         <div class="border-t border-gray-200 py-12">
@@ -157,10 +218,10 @@
                 <dt class="text-[16px]">Handling Fee</dt>
                 <dd class="text-[16px]">${{order.handlingFee}}</dd>
               </div>
-              <!-- <div class="flex items-center justify-between py-2">
+              <div class="flex items-center justify-between py-2">
                 <dt class="text-[16px]">Estimated Tax</dt>
-                <dd class="text-[16px]">$x.xx</dd>
-              </div> -->
+                <dd class="text-[16px]">${{order.taxAmount}}</dd>
+              </div>
             </dl>
 
             <dl class="space-y-6  pb-6">

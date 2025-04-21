@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationInfo } from 'src/app/models/authenticationInfo.model';
 import { Identity } from 'src/app/models/identity.model';
 import { AccountService } from 'src/app/services/account.service';
@@ -13,7 +14,7 @@ export class MembershipComponent {
   user: Identity;
   subscription: any;
   order: any;
-  constructor(private accountService: AccountService, private orderService: OrderService) {
+  constructor(private accountService: AccountService, private orderService: OrderService, private _ngZone: NgZone, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -33,5 +34,12 @@ export class MembershipComponent {
     return this.orderService.getById(orderId).subscribe((res: any) => {
       this.order = res.item;
     });
+  }
+
+  public logout(){
+    this.accountService.logout();
+    this._ngZone.run(() => {
+      this.router.navigate(['/']).then(() => window.location.reload());
+    })
   }
 }

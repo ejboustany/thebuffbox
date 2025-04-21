@@ -4,6 +4,7 @@ import { loadStripe, StripeElements, StripeCardElement, StripeCardNumberElement,
 import { PaymentService } from 'src/app/services/payment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
+import { AccountService } from 'src/app/services/account.service';
 declare var Stripe: any;
 
 @Component({
@@ -16,11 +17,66 @@ export class CheckoutComponent implements OnInit {
   cardElement: StripeCardElement | null = null;
   clientSecret: string = '';
   orderId: number;
-  order: any = { identity: { shippingAddress:{} } };
+  order: any = { identity: {
+    firstName: '',
+    lastName: '',
+    shippingAddress: {
+      street1: '',
+      street2: '',
+      city: '',
+      state: '',
+      postalCode: ''
+    }
+  }, };
+
+  requiredFields = [
+    'firstName', 
+    'lastName', 
+    'street1', 
+    'city', 
+    'state', 
+    'postalCode'
+  ];
+  touchedFields: {[key: string]: boolean} = {};
+  formSubmitted = false;
+
+  // Mark a field as touched when user interacts with it
+  markAsTouched(fieldName: string): void {
+    this.touchedFields[fieldName] = true;
+  }
+
+  // Check if a field is valid (has a value if required)
+  isFieldValid(fieldName: string): boolean {
+    if (fieldName === 'firstName' || fieldName === 'lastName') {
+      return !!this.order.identity[fieldName];
+    } else if (['street1', 'city', 'state', 'postalCode'].includes(fieldName)) {
+      return !!this.order.identity.shippingAddress[fieldName];
+    }
+    return true;
+  }
+  // Check if a field should show an error
+  shouldShowError(fieldName: string): boolean {
+    return (this.touchedFields[fieldName] || this.formSubmitted) && !this.isFieldValid(fieldName);
+  }
+
+  // Validate the entire form
+  validateForm(): boolean {
+    let isValid = true;
+    
+    for (const field of this.requiredFields) {
+      if (!this.isFieldValid(field)) {
+        isValid = false;
+      }
+    }
+    
+    return isValid;
+  }
+
+
   deliveryDuration: number = 0;
 
   constructor(private http: HttpClient, private paymentService: PaymentService, private route: ActivatedRoute, 
-    private orderService: OrderService, private router: Router) {
+    private orderService: OrderService, private router: Router, private accountService: AccountService) {
     this.route.params.subscribe(params => {
       this.orderId = params['orderId'];
     });
@@ -45,6 +101,8 @@ export class CheckoutComponent implements OnInit {
         this.cardElement.mount('#card-element'); // Mount Stripe card element
       }
     }
+
+    this.addInputListeners();
   }
 
   getCardStyle() {
@@ -58,9 +116,75 @@ export class CheckoutComponent implements OnInit {
     };
   }
 
+  addInputListeners(): void {
+    setTimeout(() => {
+      const inputFields = document.querySelectorAll('input');
+      inputFields.forEach(input => {
+        input.addEventListener('blur', () => {
+          this.checkAllFieldsFilled();
+        });
+      });
+    }, 0);
+  }
+
+  checkAllFieldsFilled(): void {
+    const isFirstNameFilled = !!this.order.identity.firstName;
+    const isLastNameFilled = !!this.order.identity.lastName;
+    const isStreet1Filled = !!this.order.identity.shippingAddress.street1;
+    const isCityFilled = !!this.order.identity.shippingAddress.city;
+    const isStateFilled = !!this.order.identity.shippingAddress.state;
+    const isPostalCodeFilled = !!this.order.identity.shippingAddress.postalCode;
+
+    if (
+      isFirstNameFilled && 
+      isLastNameFilled && 
+      isStreet1Filled && 
+      isCityFilled && 
+      isStateFilled && 
+      isPostalCodeFilled
+    ) {
+      this.calculateTax();
+    }
+  }
+
+  calculateTax() {
+ 
+    return this.accountService.updateTax(this.order.identity, this.order.id).subscribe({
+      next: (res: any) => {
+        this.order = res;
+     
+      },
+      error: (error: any) => {
+        // Error handler
+        console.error('Tax calculation error:', error);
+        
+        let errorMessage = "Failed to update tax information.";
+        
+        if (error.error?.message) {
+          errorMessage = error.error.message;
+        }
+       
+      }
+    });
+  }
+
   isProcessing = false;
+
+  
   async handlePayment() {
+
+    this.formSubmitted = true;
+    
+
+
     if (Stripe && this.cardElement) {
+
+    
+      if(  !this.validateForm()){
+        this.formSubmitted = false;
+        return;
+      }
+
       this.isProcessing = true;
       
       const { paymentMethod, error } = await Stripe.createPaymentMethod({

@@ -237,7 +237,7 @@
             <dl class="space-y-2 pb-6">
               <div class="flex items-center justify-between border-b border-gray-200 pb-6">
                 <dt class="text-[16px]">Subtotal</dt>
-                <dd class="text-[16px] ">${{cart.totalPrice}}</dd>
+                <dd class="text-[16px] ">${{cart.subTotal}}</dd>
               </div>
               <div class="flex items-center justify-between py-4">
                 <dt class="text-[16px]">Shipping</dt>
@@ -246,6 +246,10 @@
               <div class="flex items-center justify-between ">
                 <dt class="text-[16px]">Handling Fee</dt>
                 <dd class="text-[16px]">$2.99</dd>
+              </div>
+              <div class="flex items-center justify-between py-2">
+                <dt class="text-[16px]">Estimated Tax</dt>
+                <dd class="text-[16px]">${{cart.taxAmount}}</dd>
               </div>
             </dl>
 

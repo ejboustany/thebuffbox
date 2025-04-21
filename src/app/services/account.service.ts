@@ -122,6 +122,18 @@ export class AccountService {
         return this.apiCallService.post(url, user);
     }
 
+
+    updateTax(identity: any, orderId: any) {
+        const url = this.apiUrl + "/Identity/UpdateTaxInfo?orderId=" + orderId;
+        return this.apiCallService.post(url, identity);
+    }
+
+    saveInfluencerForm(user: any) {
+        const url = this.apiUrl + "/User/SubmitPartnerRequest";
+        return this.apiCallService.post(url, user);
+    }
+
+
     sendContact(contact: any) {
         const url = environment.api + "/contact/SendContactEmail";
         return this.apiCallService.post(url, contact);
