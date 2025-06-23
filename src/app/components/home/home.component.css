@@ -45,3 +45,7 @@
 .bg-quiz-view{
   background-color: #181818;
 }
+
+.scrolling-sec{
+  background: linear-gradient(90deg, #F05E23 0%, #F9A638 100%);
+}

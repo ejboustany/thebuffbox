@@ -49,4 +49,45 @@ export class HomeComponent {
       );
     }
   }
+
+currentSlide = 0;
+  slideInterval: any;
+  touchStartX = 0;
+  touchEndX = 0;
+
+  ngOnInit(): void {
+    //this.startAutoSlide();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.slideInterval);
+  }
+
+  startAutoSlide() {
+    this.slideInterval = setInterval(() => {
+      this.currentSlide = (this.currentSlide + 1) % 2;
+    }, 5000); // change every 5 seconds
+  }
+
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  onTouchEnd(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleSwipe();
+  }
+
+  handleSwipe() {
+    const swipeDistance = this.touchEndX - this.touchStartX;
+    const threshold = 50; // pixels to count as a swipe
+
+    if (swipeDistance > threshold) {
+      // Swipe right
+      this.currentSlide = this.currentSlide === 0 ? 1 : 0;
+    } else if (swipeDistance < -threshold) {
+      // Swipe left
+      this.currentSlide = this.currentSlide === 1 ? 0 : 1;
+    }
+  }
 }
