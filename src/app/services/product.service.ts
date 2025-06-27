@@ -32,4 +32,9 @@ export class ProductService {
         const url = environment.api + "/product/GetPersonalizedOptions";
         return this.apiCallService.get(url);
     }
+
+    addReview(review: any) {
+        const url = environment.api + "/productReview/Save";
+        return this.apiCallService.post(url, review);
+    }
 }

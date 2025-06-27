@@ -17,6 +17,7 @@ export class MembershipComponent {
   user: Identity;
   subscription: any;
   order: any;
+  uncompletedCheckoutOrderId: any;
   constructor(private accountService: AccountService, private orderService: OrderService, private _ngZone: NgZone, private router: Router, private dialog: MatDialog) {
 
   }
@@ -28,7 +29,12 @@ export class MembershipComponent {
       if (res?.identity != null) {
         this.user = res?.identity;
         this.subscription = res?.subscription;
+        if(this.subscription){
         this.getOrder(this.subscription.currentOrderId);
+
+        }else{
+          this.uncompletedCheckoutOrderId = res.uncompletedCheckoutOrderId;
+        }
       }
     });
   }

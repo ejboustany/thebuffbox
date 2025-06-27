@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-review-item',
@@ -11,24 +12,23 @@ export class ReviewItemComponent {
   reviewText: string = '';
   privacyAccepted: boolean = false;
   selectedRating: number = 4; // Default to 4 stars as shown in image
-  
+
   // Product data from the dialog
   productData: any = {};
 
   constructor(
     public dialogRef: MatDialogRef<ReviewItemComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar, private productService: ProductService
   ) {
-    // Initialize product data from injected data
 
-    console.log(this.data);
-
+    console.log(this.data)
     this.productData = {
       name: this.data?.productTitle || 'Sweat Ethic',
       type: this.data?.brandName || '',
       flavor: this.data?.flavorSubCategoryText || 'DUTCH CHOCOLATE',
-      image: this.data?.image.originalPath || 'assets/product-image.jpg'
+      image: this.data?.sampleImage.originalPath || 'assets/product-image.jpg',
+      id: this.data?.productId
     };
   }
 
@@ -54,7 +54,7 @@ export class ReviewItemComponent {
         });
         return;
       }
-      
+
       if (!this.privacyAccepted) {
         this.snackBar.open('Please accept the privacy policy', 'Close', {
           duration: 3000,
@@ -65,23 +65,20 @@ export class ReviewItemComponent {
     }
 
     const reviewData = {
-      productName: this.productData.name,
-      rating: this.selectedRating,
-      reviewText: this.reviewText,
-      privacyAccepted: this.privacyAccepted,
-      timestamp: new Date()
+      rating: this.rating,
+      description: this.reviewText,
+      agreementConfirmation: this.privacyAccepted,
+      productId: this.productData.id
     };
 
-    // Here you would typically call a service to submit the review
-    // Example: this.reviewService.submitReview(reviewData).subscribe(...)
-    
-    this.snackBar.open('Review submitted successfully!', 'Close', {
-      duration: 3000,
-      panelClass: ['success-snackbar']
+    this.productService.addReview(reviewData).subscribe((res: any) => {
+      this.snackBar.open('Review submitted successfully!', 'Close', {
+        duration: 3000,
+        panelClass: ['success-snackbar']
+      });
+      this.dialogRef.close(reviewData);
     });
 
-    // Close dialog and return the review data
-    this.dialogRef.close(reviewData);
   }
 
   onReviewTextChange(): void {
@@ -92,7 +89,6 @@ export class ReviewItemComponent {
   }
 
   ////
-
   rating: number = 0; // Current rating (1-5)
   maxRating: number = 5; // Maximum rating
 

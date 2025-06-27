@@ -12,9 +12,10 @@
   <!-- Product Section -->
   <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-4 sm:mb-6 pt-8 sm:pt-10">
     <!-- Product Image -->
-    <div class="w-24 h-24 sm:w-36 sm:h-36 bg-[#D5D5D5] rounded-lg flex-shrink-0 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0">
-      <img [src]="productData.image" alt="Sweat Ethic Protein" class="w-full h-full object-cover rounded-lg">
-    </div>
+   <div class="w-32 h-28 sm:w-48 sm:h-40 bg-[#D5D5D5] rounded-lg flex-shrink-0 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0">
+  <img [src]="productData.image" alt="Sweat Ethic Protein" class="max-w-full max-h-full object-contain rounded-lg">
+</div>
+
        
     <!-- Product Info -->
     <div class="flex-1 text-center sm:text-left">
@@ -91,7 +92,7 @@
   <div class="text-center sm:text-left">
     <div class="inline-block p-[2px] sm:p-[3px] rounded-2xl w-40 sm:w-48"
       style="background: linear-gradient(90deg, #F05E23 0%, #ECA741 100%);">
-      <button class="bg-black text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-2xl font-semibold text-sm sm:text-base w-full flex items-center justify-center">
+      <button (click)="submitReview()" class="bg-black text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-2xl font-semibold text-sm sm:text-base w-full flex items-center justify-center">
         Submit
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 sm:ml-2 sm:w-5 sm:h-5">
           <polyline points="9,18 15,12 9,6"></polyline>

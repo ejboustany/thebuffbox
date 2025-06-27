@@ -6,4 +6,5 @@ export class AuthenticationInfo {
     subscription: any;
     callCredits: number;
     referralCode: string;
+    uncompletedCheckoutOrderId: number;
   }
