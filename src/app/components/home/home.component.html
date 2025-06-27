@@ -9,7 +9,7 @@
     (touchend)="onTouchEnd($event)">
 
     <div *ngIf="currentSlide === 0" class="absolute bottom-0 left-0 right-0 h-full pointer-events-none z-20"
-      style="background: linear-gradient(to top, rgba(0, 0, 0, 1) 55%, transparent 80%)">
+      style="background: linear-gradient(to top, rgba(0, 0, 0, 1) 48%, transparent 80%)">
     </div>
 
     <div *ngIf="currentSlide === 1" class="absolute bottom-0 left-0 right-0 h-full pointer-events-none z-20"
@@ -18,12 +18,12 @@
 
     <!-- Slide Content -->
     <div *ngIf="currentSlide === 0" class="slide">
-      <div class="flex justify-center mb-8 relative" style="z-index: -1;">
+      <div class="flex justify-center relative" style="z-index: -1;">
         <img src="../../../assets/header-proteins-slide1.png" alt="Buffbox Product" class="max-w-xs w-full h-auto">
       </div>
-      <div class="text-center px-6 mb-8 relative z-20">
+      <div class="text-center px-6 relative z-20 -mt-20">
         <h1 class="text-2xl font-bold mb-4 leading-tight text-left">Curated Protein Powder<br>Samples</h1>
-        <p class="text-base mb-8 opacity-90 leading-relaxed max-w-sm text-left">
+        <p class="text-base opacity-90 leading-relaxed max-w-sm text-left mb-2">
           Buffbox is the best supplement subscription, delivering sample packets based on your preference before you buy
           your next protein powder.
         </p>
@@ -40,12 +40,12 @@
     </div>
 
     <div *ngIf="currentSlide === 1" class="slide">
-      <div class="w-full mb-8 relative" style="z-index: -1;">
+      <div class="w-full relative" style="z-index: -1;">
         <img src="../../../assets/header-slide2.png" alt="Buffbox Product 2" class="w-full h-auto object-cover">
       </div>
-      <div class="text-center px-6 mb-8 relative z-20">
+      <div class="text-center px-6 relative z-20 -mt-6">
         <h1 class="text-2xl font-bold mb-4 leading-tight text-left">Discovery Belongs to Everyone</h1>
-        <p class="text-base mb-8 opacity-90 leading-relaxed max-w-sm text-left">
+        <p class="text-base opacity-90 leading-relaxed max-w-sm text-left mb-2">
           Try that flavor. Hit that goal. Unbox the perfect supplement. Choose your next protein powder with confidence.
         </p>
         <div class="text-left">
@@ -58,9 +58,10 @@
         </div>
 
       </div>
-    </div>
 
-    <!-- Slide Indicator -->
+      
+    </div>
+   <!-- Slide Indicator -->
     <div class="flex justify-center items-center space-x-1.5 mt-4 z-30">
       <ng-container *ngIf="currentSlide === 0; else slide1">
         <!-- Slide 0: Dash left, Dot right -->
@@ -73,6 +74,7 @@
         <div class="w-6 h-1 rounded-full transition-all bg-white/50"></div>
       </ng-template>
     </div>
+ 
 
   </div>
 
@@ -666,4 +668,6 @@ bg-[url('/assets/hero-mobile.png')] sm:bg-[url('/assets/hero-image.png')]">
 
     </div>
   </section>
+
+   <app-footer></app-footer>
 </div>

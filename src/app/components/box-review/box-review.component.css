@@ -1,0 +1,34 @@
+.gradient-bg {
+    background: linear-gradient(to right, #F05E23, #ECA741);
+}
+
+.header {
+    background-color: #EAEAEA;
+    color: #878787 ;
+}
+
+.split-border {
+    border-right: 1px solid #EAEAEA;
+}
+
+.orange-text {
+    color: #F05E23;
+}
+
+.order-item-bg {
+    background-color: #F5F5F5;
+}
+
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none;      /* Hide scrollbar for Firefox */
+  }
+
+  .borderb {
+    border-bottom: 1px solid #EAEAEA;
+  }

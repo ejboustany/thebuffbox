@@ -1,6 +1,6 @@
 <nav class="sticky top-0 bg-white z-50 shadow-md">
   <div class="mx-auto px-0 lg:px-56">
-    <div class="flex h-[80px] justify-between">
+    <div class="flex h-[53px] sm:h-[80px] justify-between">
       <div class="flex px-4">
         <div class="flex shrink-0 items-center">
           <a href="/">
@@ -18,7 +18,7 @@
         
         
         <div *ngIf="!hideMenu" class="text-white md:hidden bg-black h-full w-full flex justify-center items-center px-2">
-          <button type="button" (click)="toggleDropdown()" class="bg-black flex justify-center items-center p-3">
+          <button type="button" (click)="toggleDropdown()" class="bg-black flex justify-center items-center sm:p-3">
             <img src="../../../assets/mobile-burger-menu.svg" alt="Menu Icon" class="size-10">
           </button>
         </div>

@@ -48,7 +48,7 @@
 
                 <div class="flex items-center">
                     <button routerLink="/shop" class="orange-text font-bold text-[14px] px-4 split-border">SHOP</button>
-                    <button [routerLink]="'/review-tub/' + orderItem.productId"
+                    <button (click)="openReviewPopup(orderItem)"
                         class="orange-text font-bold text-[14px] px-4 py-2">REVIEW</button>
                 </div>
             </div>

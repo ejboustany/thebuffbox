@@ -28,6 +28,8 @@ import { UnsubscribeComponent } from './components/unsubscribe/unsubscribe.compo
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { PartnerApplicationComponent } from './components/partner-application/partner-application.component';
+import { BoxReviewComponent } from './components/box-review/box-review.component';
+import { ReviewItemComponent } from './components/review-item/review-item.component';
 
 
 const routes: Routes = [
@@ -60,6 +62,7 @@ const routes: Routes = [
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'influencer', component: PartnerApplicationComponent },
   { path: 'order-detail/:orderId', component: OrderDetailComponent, canActivate: [AuthGuard] },
+    { path: 'review-box', component: BoxReviewComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

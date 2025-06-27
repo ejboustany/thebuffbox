@@ -60,6 +60,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { FooterComponent } from './components/footer/footer.component';
 import { PartnerApplicationComponent } from './components/partner-application/partner-application.component';
 import { ReferralPopUpComponent } from './components/referral-pop-up/referral-pop-up.component';
+import { ReviewItemComponent } from './components/review-item/review-item.component';
+import { BoxReviewComponent } from './components/box-review/box-review.component';
 
 @NgModule({
   declarations: [
@@ -114,7 +116,9 @@ import { ReferralPopUpComponent } from './components/referral-pop-up/referral-po
     PrivacyPolicyComponent,
     FooterComponent,
     PartnerApplicationComponent,
-    ReferralPopUpComponent
+    ReferralPopUpComponent,
+    ReviewItemComponent,
+    BoxReviewComponent
   ],
   exports: [LastCharactersPipe],
   imports: [
